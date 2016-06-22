@@ -1,0 +1,5 @@
+/* Buyer/checkout errors */
+.checkout-error { padding: .9em 0; }
+.checkout-error__wrapper { @include wrapper; }
+.checkout-error__list { margin-left: 1%; padding-left:1em; }
+.checkout-error__item { margin-bottom: .1em; list-style: disc; }

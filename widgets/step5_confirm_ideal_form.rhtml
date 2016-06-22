@@ -1,0 +1,13 @@
+<div id="cc_results"></div>
+<button class="right"
+        onclick="
+        $j.ajax({
+                url: '/orders/create',
+                type: 'post'
+                }).done(function(data) {
+                $j('#cc_results').html(data);
+                });
+                return false;">
+  Betalen met<br/>
+  <img src="https://internetkassa.abnamro.nl/images/iDEAL_easy.gif"/>
+</button>

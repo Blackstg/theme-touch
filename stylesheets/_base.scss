@@ -1,0 +1,47 @@
+/***************************
+  Reset
+***************************/
+
+body, article, section, blockquote, dd, dl, dt, fieldset, form, footer, header, hgroup, h1, h2, h3, h4, h5, h6, p, html, legend, li, ol, ul {
+  margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; border: 0; outline: 0;
+}
+article, aside, figure, footer, header, hgroup, nav, section { display: block; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+input, select, textarea { outline: 0; }
+input[type=radio], input[type=checkbox] { border: none; }
+input[type=submit] { -webkit-appearance: none; }
+:focus { outline: 0; }
+::-moz-focus-inner { border: 0; }
+
+/***************************
+  Common styles
+***************************/
+
+html { font-size: 62.5%; }
+body { font-size:1.6rem; }
+
+a { text-decoration: underline; color: inherit; }
+a:hover { text-decoration: none; }
+
+h1 { font-size: 2.7rem; }
+h2 { font-size: 2.3rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.7rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.4rem; }
+
+ul, ol, li { list-style: none; }
+
+img { max-width: 100%; height: auto; }
+
+input, select, textarea { max-width: 100%; }
+
+/* ------------------------------
+  Unclassified
+  Everything here should BE REMOVED
+  Don't put anything new here
+------------------------------ */
+
+.clearfix:before { display: table; content: ""; }
+.clearfix:after { display: table; content: ""; clear: both; }

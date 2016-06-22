@@ -1,0 +1,75 @@
+<r:widget:show name='step_navigation'/>
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__side">
+      <div class="content__side-wrapper">
+        <r:widget:show name='step_side'/>
+      </div>
+    </div>
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <div class="checkout">
+          <r:form:buyer:errors/>
+
+          <section class="checkout__section" id="order_step_2_login">
+            <header class="checkout__header">
+              <h2 class="checkout__title"><r:t key="login.log_in"/></h2>
+            </header>
+
+            <div class="checkout__description">
+              <r:t key="login.enter_credentials"/>
+            </div>
+
+            <r:widget:show name="add_on_facebook_login"/>
+
+            <form action="/buyers/authenticate" class="checkout__form checkout__form_login" method="post" name="loginform">
+              <r:buyer:load_from_session>
+                <r:widget:show name="login_fields"/>
+              </r:buyer:load_from_session>
+
+              <input type='hidden' name='redirect_to' value='/order_step3'/>
+
+              <footer class="checkout__footer">
+                <div class="form-buttons">
+                  <button class="form-buttons__button" type="submit">
+                    <r:t key='login.login'/>
+                  </button>
+                </div>
+              </footer>
+            </form>
+          </section>
+
+          <section class="checkout__section" id="order_step_2_register">
+            <header class="checkout__header">
+              <h2 class="checkout__title"><r:t key="login.signup"/></h2>
+            </header>
+
+            <form action="/buyers" class="checkout__form checkout__form_register " method="post" name="mainform" onsubmit="return testPhoneNumber('phone_number');">
+              <input type='hidden' name='redirect_to' value='/order_step3'/>
+              <r:buyer:load_from_session>
+                <r:widget:show name="register"/>
+              </r:buyer:load_from_session>
+
+              <footer class="checkout__footer">
+                <div class="form-buttons">
+                  <button class="form-buttons__button" type="submit" onclick="ga_tracking(this); return true">
+                    <r:t key='login.register'/>
+                  </button>
+                  <a class="form-buttons__link" href="<r:shopping_page_url/>">
+                    <r:t key='navigation.back_to_menu'/>
+                  </a>
+                </div>
+              </footer>
+            </form>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

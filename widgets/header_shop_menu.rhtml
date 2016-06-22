@@ -1,0 +1,20 @@
+<r:franchised_shops:if_not_franchise>
+  <div class="dropdown-menu dropdown-menu_shop">
+    <div class="dropdown-menu__header">
+      <a href="#" class="dropdown-menu__header-link" data-toggle="shop-menu-drop-down">
+        <r:franchised_shops:if_franchised_shop>
+          <r:shop:name/>
+        </r:franchised_shops:if_franchised_shop>
+        <r:franchised_shops:if_not_franchised_shop>
+          <r:t key="general.shop_info"/>
+        </r:franchised_shops:if_not_franchised_shop>
+
+        <i class="dropdown-menu__header-icon"></i>
+      </a>
+    </div>
+
+    <div class="dropdown-menu__body" id="shop-menu-drop-down">
+      <r:widget:show name='shop_info_desktop'/>
+    </div>
+  </div>
+</r:franchised_shops:if_not_franchise>

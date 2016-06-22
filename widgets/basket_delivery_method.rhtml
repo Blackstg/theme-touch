@@ -1,0 +1,26 @@
+<span class="basket__delivery-title">
+  <r:t key='basket.order_type'/><r:t key='colon'/>
+</span>
+<r:delivery_methods:if_two>
+  <r:delivery_methods:each>
+    <label class="basket__delivery-option <r:delivery_method:if_selected>active</r:delivery_method:if_selected>">
+      <input class="basket__delivery-radio" type="radio" name="delivery_method"
+             onclick="Page.changeDeliveryMethod('<r:delivery_method:type/>');"
+             <r:delivery_method:if_selected>checked="checked"</r:delivery_method:if_selected>>
+      <span class="basket__delivery-method">
+        <r:delivery_method:humanized_type />
+      </span>
+    </label>
+  </r:delivery_methods:each>
+</r:delivery_methods:if_two>
+
+<r:delivery_methods:if_three>
+  <select class="basket__delivery-select" name="delivery_method" id="delivery_method" data-nice-select
+          onchange="Page.changeDeliveryMethod($j('#delivery_method option:selected').val());">
+    <r:delivery_methods:each>
+      <option value="<r:delivery_method:type/>" <r:delivery_method:if_selected>selected="selected"</r:delivery_method:if_selected>>
+        <r:delivery_method:humanized_type/>
+      </option>
+    </r:delivery_methods:each>
+  </select>
+</r:delivery_methods:if_three>

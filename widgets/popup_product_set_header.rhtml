@@ -1,0 +1,31 @@
+<r:option_list:if_extra_toppings>
+  <r:product:if_free_toppings>
+    <h4 class="popup-row__title">
+      <r:t key='order_item.free_toppings'/>
+    </h4>
+    <div class="popup-row__description">
+      <r:product:if_one_free_topping>
+        <r:t key='order_item.one_free_topping_instructions'/>
+      </r:product:if_one_free_topping>
+      <r:product:if_many_free_toppings>
+        <r:product:nb_free_toppings/> <r:t key='order_item.free_toppings_instructions'/>
+      </r:product:if_many_free_toppings>
+    </div>
+  </r:product:if_free_toppings>
+  <r:product:if_not_free_toppings>
+    <h4 class="popup-row__title">
+      <r:option_list:title/>
+    </h4>
+  </r:product:if_not_free_toppings>
+</r:option_list:if_extra_toppings>
+
+<r:option_list:if_not_extra_toppings>
+  <h4 class="popup-row__title">
+    <r:option_list:title/>
+  </h4>
+  <r:option_list:if_base_ingredients>
+    <div class="popup-row__description">
+      <r:t key='order_item.base_ingredients_instructions'/>
+    </div>
+  </r:option_list:if_base_ingredients>
+</r:option_list:if_not_extra_toppings>

@@ -1,0 +1,15 @@
+<header class="checkout__header">
+  <h2 class="checkout__title"><r:t key='confirmation.order_review'/></h2>
+  <r:payment_methods:load_selected>
+    <r:payment_method:if_method_type in="ingenico_direct_link,on_delivery">
+      <div class="checkout__description">
+        <r:t key='confirmation.instructions.final'/>
+      </div>
+    </r:payment_method:if_method_type>
+    <r:payment_method:if_method_type not_in="ingenico_direct_link,on_delivery">
+      <div class="checkout__description">
+        <r:t key='confirmation.instructions.not_final'/>
+      </div>
+    </r:payment_method:if_method_type>
+  </r:payment_methods:load_selected>
+</header>

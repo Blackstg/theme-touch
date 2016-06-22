@@ -1,0 +1,18 @@
+/***************************
+  Category
+***************************/
+
+.category {}
+
+.category__header { margin-bottom: 1em; }
+.category__title { }
+.category__description { margin-top: .5em; }
+
+.category__subcategory + .category__subcategory { margin-top: 2.5em; }
+.category__subcategory-title { margin-bottom: 1em; }
+
+.category__products { @include clearfix; margin: 0 -10px; }
+
+@media screen and (max-width: 32em) {
+  .category__products { margin: 1em auto 0; width: 320px; max-width: 100%; }
+}

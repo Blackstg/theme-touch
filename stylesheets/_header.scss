@@ -1,0 +1,28 @@
+/***************************
+  Header
+***************************/
+
+.header { padding: 1em 0; }
+.header__wrapper { @include wrapper; }
+
+.header__logo { float: left; }
+.header__logo-link { display: block; max-width: 100%; text-decoration: none; }
+.header__logo-image { display: block; border: none; }
+
+.header__shop-menu { position: relative; float: right; }
+.header__user-menu { position: relative; float: right; }
+
+.header__burger-menu { display: none; float: left; margin-top: .5em; }
+.header__basket-menu { display: none; float: right; margin-top: .5em; }
+
+@media screen and (max-width: 52.5em) {
+  .header { padding: 0; }
+  .header__logo { float: none; margin: 0 60px; }
+  .header__logo-image { margin: 0 auto; }
+
+  .header__shop-menu { display: none; }
+  .header__user-menu { display: none; }
+
+  .header__burger-menu { display: block; }
+  .header__basket-menu { display: block; }
+}

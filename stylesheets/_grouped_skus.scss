@@ -1,0 +1,23 @@
+/***************************
+  Grouped skus
+***************************/
+
+.grouped_skus { margin: 1em 0 2em; }
+.grouped_skus .sku-part { padding-left: 70px; }
+.grouped_skus .sku-part + .sku-part { margin-top: .7em; }
+.grouped_skus .sku-part__title { line-height: 34px; margin-left: -70px; }
+.grouped_skus .sku-part__text { height: 34px; line-height: 34px; }
+
+@media screen and (max-width: 40em) {
+  .grouped_skus .sku-part__item:nth-last-child(6):first-child,
+  .grouped_skus .sku-part__item:nth-last-child(6):first-child ~ .sku-part__item { margin-bottom: 1px; width: 33.33%; }
+  .grouped_skus .sku-part__item:nth-last-child(5):first-child,
+  .grouped_skus .sku-part__item:nth-last-child(5):first-child ~ .sku-part__item { margin-bottom: 1px; width: 33.33%; }
+  .grouped_skus .sku-part__item:nth-last-child(4):first-child,
+  .grouped_skus .sku-part__item:nth-last-child(4):first-child ~ .sku-part__item { margin-bottom: 1px; width: 50%; }
+}
+
+@media screen and (max-width: 30em) {
+  .grouped_skus .sku-part { padding-left: 0; }
+  .grouped_skus .sku-part__title { float: none; margin: 0 0 .3em; line-height: 1; }
+}

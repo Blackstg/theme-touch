@@ -1,0 +1,15 @@
+<r:sku_parts:each>
+  <div class="popup-group__line sku-part">
+    <label class="popup-group__label">
+      <r:sku_part:label/>
+    </label>
+
+    <select data-sku-part="<r:sku_part:index/>">
+      <r:sku_part_values:each>
+        <option value="<r:sku_part_value:id/>" <r:sku_part_value:if_selected>selected="selected"</r:sku_part_value:if_selected> >
+          <r:sku_part_value:name/>
+        </option>
+      </r:sku_part_values:each>
+    </select>
+  </div>
+</r:sku_parts:each>

@@ -1,0 +1,12 @@
+<r:widget:show name="category_navigation_categories"/>
+
+<r:shop:has_favourites>
+  <r:buyer:if_logged_in>
+    <li class="category-navigation__item category-navigation__item_favourites<r:if_page matches='favourites'> category-navigation__item_active</r:if_page>">
+      <a href="/favourites" class="category-navigation__link">
+        <i class="category-navigation__favourite-icon"></i>
+        <r:t key='page.favourites'/>
+      </a>
+    </li>
+  </r:buyer:if_logged_in>
+</r:shop:has_favourites>

@@ -1,0 +1,23 @@
+<nav class="account-navigation">
+  <div class="account-navigation__wrapper">
+    <ul class="account-navigation__list">
+      <li class="account-navigation__item <r:if_page matches="orders">account-navigation__item_active</r:if_page>">
+        <a href="/orders" class="account-navigation__link">
+          <r:t key='page.your_orders'/>
+        </a>
+      </li>
+
+      <li class="account-navigation__item <r:if_page matches="account|buyer">account-navigation__item_active</r:if_page>">
+        <a href="/account" class="account-navigation__link">
+          <r:t key='page.your_account'/>
+        </a>
+      </li>
+
+      <li class="account-navigation__item">
+        <a class="account-navigation__link" href="<r:shopping_page_url/>">
+          <r:t key='page.our_menu'/>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,29 @@
+<r:shop:has_online_transactions>
+  <div class="product__buttons">
+    <r:product:if_not_has_tag in='force_customisation' include_ancestors='true'>
+      <r:product:if_customisable>
+        <a class="product__customise" href="#" onclick="Basket.newItem($j(this).closest('form'), <r:widget:show name='item_target'/>); return false;">
+          <r:t key='product.customise'/>
+        </a>
+      </r:product:if_customisable>
+
+      <button type="submit" class="product__add">
+        <r:t key='product.add'/>
+      </button>
+    </r:product:if_not_has_tag>
+
+    <r:product:if_has_tag in='force_customisation' include_ancestors='true'>
+      <r:product:if_not_customisable>
+        <button type="submit" class="product__add">
+          <r:t key='product.add'/>
+        </button>
+      </r:product:if_not_customisable>
+
+      <r:product:if_customisable>
+        <button type="submit" class="product__add" onclick="Basket.newItem($j(this).closest('form'), <r:widget:show name='item_target'/>); return false;">
+          <r:t key='product.add'/>
+        </button>
+      </r:product:if_customisable>
+    </r:product:if_has_tag>
+  </div>
+</r:shop:has_online_transactions>

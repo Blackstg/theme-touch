@@ -1,0 +1,35 @@
+/***************************
+  Footer
+***************************/
+
+.footer {}
+.footer__wrapper { @include wrapper; padding: 1em 0; }
+
+.footer__link { display: inline-block; text-decoration: underline; }
+.footer__link:hover { text-decoration: none; }
+
+.footer__copyright { float: left; padding: .35em 0; }
+
+.footer__nav { float: right; padding: .35em 0; }
+.footer__text { float: left; margin-left: 2em; }
+.footer__links { float: left; }
+.footer__links li { display: inline-block; margin:0 .25em; }
+.footer .social-icons { float: right; margin-top: -.35em;}
+.footer .social-icons__icon:first-child { margin-left: 1em; }
+
+@media screen and (max-width: 52.5em) {
+  .footer { text-align: center; }
+  .footer__copyright,
+  .footer__nav,
+  .footer__links,
+  .footer__text,
+  .footer .social-icons { float: none; }
+  .footer__copyright { padding:0; }
+  .footer__nav ~ .footer__copyright { margin-top: .5em; }
+  .footer__nav { padding:0; }
+  .footer__links,
+  .footer__text,
+  .footer .social-icons { margin: .5em 0 0 0; }
+  .footer .social-icons__icon,
+  .footer .social-icons__icon:first-child { margin: 0; }
+}

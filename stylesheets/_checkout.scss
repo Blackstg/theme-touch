@@ -1,0 +1,25 @@
+/***************************
+  Checkout
+***************************/
+
+.checkout {}
+
+.checkout__section {}
+.checkout__section + .checkout__section { margin-top: 2.5em; }
+
+.checkout__header { margin-bottom: 1.5em; }
+.checkout__title { }
+.checkout__description { margin-bottom: 1.5em; }
+.checkout__header .checkout__description { margin: .5em 0 0; }
+
+.checkout__form {}
+.checkout__fieldset { margin: 0 auto; max-width: 600px; }
+
+.checkout__footer { margin-top: .5em; }
+.checkout__footer .form-buttons { margin: 0; }
+
+/* Confirmation page */
+
+.confirm-section + .confirm-section { margin-top: 1.5em; }
+.confirm-section__title { }
+.confirm-section__content { margin-top: .5em; }

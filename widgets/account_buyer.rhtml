@@ -1,0 +1,94 @@
+<section class="checkout__section">
+  <header class="checkout__header">
+    <h2 class="checkout__title"><r:t key='page.your_account'/></h2>
+  </header>
+
+  <div class="checkout__fieldset">
+    <div class="checkout-row">
+      <label class="checkout-row__label"><r:t key='buyer.full_name'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <r:buyer:first_name/>
+        <r:buyer:last_name/>
+      </div>
+    </div>
+
+    <r:shop:has_buyer_statuses>
+      <div class="checkout-row">
+        <label class="checkout-row__label"><r:t key='buyer.status'/><r:t key='colon'/></label>
+        <div class="checkout-row__group">
+          <r:buyer:status/>
+        </div>
+      </div>
+    </r:shop:has_buyer_statuses>
+
+    <r:shop:has_buyer_field name='company_name'>
+      <r:buyer:if_company_name>
+        <div class="checkout-row">
+          <label class="checkout-row__label"><r:t key='buyer.company_name'/><r:t key='colon'/></label>
+          <div class="checkout-row__group">
+            <r:buyer:company_name/>
+          </div>
+        </div>
+      </r:buyer:if_company_name>
+    </r:shop:has_buyer_field>
+
+    <div class="checkout-row">
+      <label class="checkout-row__label"><r:t key='buyer.phone_number'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <r:buyer:phone_number/>
+      </div>
+    </div>
+
+    <div class="checkout-row">
+      <label class="checkout-row__label"><r:t key='buyer.email'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <r:buyer:email/>
+      </div>
+    </div>
+
+    <div class="checkout-row">
+      <label class="checkout-row__label"><r:t key='buyer.address'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <r:buyer:address/>
+        <br/>
+
+        <r:shop:if_country in='GB'>
+          <r:buyer:city/>
+          <r:buyer:postal_code/>
+        </r:shop:if_country>
+
+        <r:shop:if_not_country in='GB'>
+          <r:buyer:postal_code/>
+          <r:buyer:city/>
+        </r:shop:if_not_country>
+
+        <r:shop:has_buyer_field name='state'>
+          <r:t key='buyer.state'/><r:t key='colon'/>
+          <r:buyer:state/>
+        </r:shop:has_buyer_field>
+
+        <r:buyer:if_building_unit_floor_door>
+          <br/>
+          <r:buyer:building_unit_floor_door/>
+        </r:buyer:if_building_unit_floor_door>
+      </div>
+    </div>
+
+    <div class="checkout-row">
+      <label class="checkout-row__label"><r:t key='buyer.delivery_info'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <r:buyer:delivery_information/>
+      </div>
+    </div>
+
+    <r:shop:has_buyer_field name='locale'>
+      <div class="checkout-row">
+        <label class="checkout-row__label"><r:t key='buyer.language'/><r:t key='colon'/></label>
+        <div class="checkout-row__group">
+          <r:buyer:language/>
+        </div>
+      </div>
+    </r:shop:has_buyer_field>
+
+  </div>
+</section>

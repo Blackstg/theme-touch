@@ -1,0 +1,53 @@
+<section class="basket <r:basket:if_empty>basket_empty</r:basket:if_empty>">
+  <r:basket_flash:if_error>
+    <div class="basket__error">
+      <r:basket_flash:error/>
+    </div>
+  </r:basket_flash:if_error>
+
+  <header class="basket__header">
+    <r:buyer:if_logged_in>
+      <r:buyer:if_not_kiosk>
+        <a href="/orders" class="basket__repeat">
+          <r:t key='order.repeat'/>
+        </a>
+      </r:buyer:if_not_kiosk>
+    </r:buyer:if_logged_in>
+
+    <a class="basket__close" href="#" onclick="$j.sidr('close', 'sidebar-ofc'); return false;">
+      <i class="basket__close-icon"></i>
+    </a>
+
+    <div class="basket__title">
+      <r:t key='basket.title'/>
+      <span id="busy" class="basket__busy" style="display: none;">&#x25a0;</span>
+    </div>
+  </header>
+
+  <div id="basket_content" class="basket__content basket_content">
+    <r:ruby:show name='basket'/>
+    <r:basket:if_empty>
+      <r:widget:show name='basket_content_empty'/>
+    </r:basket:if_empty>
+  </div>
+
+  <footer class="basket__footer">
+    <div class="basket__footer-box">
+      <r:widget:show name='basket_tips'/>
+      <r:widget:show name='basket_order_level_discount'/>
+      <r:widget:show name='basket_delivery_method_and_time'/>
+      <r:widget:show name='basket_coupon_code'/>
+      <r:widget:show name='basket_total'/>
+      <r:widget:show name='basket_button'/>
+    </div>
+    <div class="basket__footer-messages">
+      <r:widget:show name='basket_red_message'/>
+      <r:widget:show name='basket_orange_message'/>
+    </div>
+  </footer>
+
+</section>
+
+<r:widget:show name='basket_javascript'/>
+
+<r:widget:show name='basket_after'/>

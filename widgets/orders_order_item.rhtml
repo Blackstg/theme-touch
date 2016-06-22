@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <r:order_item:name/>
+    <r:order_item:if_options><span class="order__items-attribute"><r:order_item:options/></span></r:order_item:if_options>
+  </td>
+  <td>
+    <r:order_item:quantity/>
+  </td>
+  <td class="order__items-price">
+    <r:order_item:if_not_points_spent>
+      <r:order_item:subtotal/>
+    </r:order_item:if_not_points_spent>
+    <r:order_item:if_points_spent>
+      <r:order_item:points_spent/>
+      <r:t key='order.points'/>
+    </r:order_item:if_points_spent>
+  </td>
+  <td class="order__items-add">
+    <form action="#" onsubmit="Basket.repeatOrderItem('<r:order_item:link_repeat/>', $j(this)); return false;">
+      <input class="order__button" type="submit" value="<r:t key='product.add'/>" title="<r:t key='product.add_to_basket'/>">
+    </form>
+  </td>
+</tr>

@@ -1,0 +1,19 @@
+<div>
+  <h4><r:option_list:multiside_displayed_name/></h4>
+  <div>
+   <label><r:t key='product.choose_sides'/></label>
+   <select name="<r:option_list:encode_key/>">
+    <r:options:each>
+      <option value="<r:option:encode_value_for_enum/>" data-option="<r:option:html_id/>"
+              <r:option:if_selected>selected="selected"</r:option:if_selected>
+              <r:option:if_not_available>style="display:none;"</r:option:if_not_available> >
+        <r:option:name/>
+
+        <r:option:if_price>
+          (<r:option:price/>)
+        </r:option:if_price>
+      </option>
+    </r:options:each>
+   </select>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div id="popup" class="popup">
+  <a href="#" class="popup__close" onclick="Popup.close(); return false;">
+    <i class="popup__close-icon"></i>
+  </a>
+
+  <div class="popup__wrapper">
+    <form id="popup_form"
+          data-product="<r:product:handle/>"
+          data-sku="<r:sku:handle/>"
+          data-action="<r:basket:action/>"
+          data-key="<r:basket:key/>"
+          action="/">
+
+      <r:widget:show name="popup_item_top"/>
+
+      <r:widget:show name="popup_product_attributes"/>
+
+      <div class="popup__buttons popup-buttons">
+        <a class="popup-buttons__button" href="#" onclick="DealWizard.itemCreated($j('#popup_form')); return false;">
+          <r:t key='popup.continue'/>
+        </a>
+        <a class="popup-buttons__link" href="#" onclick="Popup.close(); return false">
+          <r:t key='navigation.cancel'/>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

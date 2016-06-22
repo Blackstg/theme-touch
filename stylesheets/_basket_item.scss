@@ -1,0 +1,27 @@
+/***************************
+  Basket item
+***************************/
+
+.basket-item { @include clearfix; line-height: 1.2; }
+.basket-item + .basket-item { margin-top: .5em; }
+
+.basket-item__wrapper {  }
+.basket-item__wrapper + .basket-item__wrapper { margin-top: .2em; }
+
+.basket-item__title { overflow: auto; }
+.basket-item__name { display: inline-block; float: left; width: 65%; box-sizing: border-box; }
+.basket-item__link { text-decoration: none; }
+.basket-item__link:hover { text-decoration: underline; }
+
+.basket-item__delete { display: inline-block; color: #bbb; text-decoration: none; }
+.basket-item__details { display: inline-block; float: right; width: 35%; text-align: right; box-sizing: border-box; }
+.basket-item__quantity { float: left; margin-right: .3em; }
+.basket-item__price {}
+
+.basket-item__options { /*overflow: auto;*/ }
+.basket-item__option { margin-top: .15em}
+.basket-item__option-name { display: inline-block; width: 65%; box-sizing: border-box; padding-left: .5em; }
+.basket-item__option-details { display: inline-block; float: right; width: 35%; text-align: left; box-sizing: border-box; }
+.basket-item__option-price {}
+.basket-item__option_removed .basket-item__option-name,
+.basket-item__option_removed .basket-item__option-details { text-decoration: line-through; }

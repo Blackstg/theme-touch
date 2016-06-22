@@ -1,0 +1,30 @@
+<header class="header">
+  <div class="header__wrapper">
+
+    <r:buyer:if_not_kiosk>
+      <div class="header__user-menu">
+        <r:widget:show name='header_user_menu'/>
+      </div>
+
+      <div class="header__shop-menu">
+        <r:widget:show name='header_shop_menu'/>
+      </div>
+
+      <div class="header__burger-menu">
+        <r:widget:show name='header_burger_menu'/>
+      </div>
+
+      <div class="header__basket-menu">
+        <r:widget:show name='header_basket_menu'/>
+      </div>
+    </r:buyer:if_not_kiosk>
+
+    <r:buyer:if_kiosk>
+      <r:widget:show name='header_reset_form'/>
+    </r:buyer:if_kiosk>
+
+    <r:widget:show name='header_banner'/>
+  </div>
+</header>
+
+<r:form:buyer:errors/>

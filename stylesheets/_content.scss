@@ -1,0 +1,22 @@
+/***************************
+  Content
+***************************/
+
+.content { @include clearfix; margin-top: 1.5em; margin-bottom: 1.5em; }
+.content__wrapper { @include wrapper; }
+
+.content__main { float: left; width: 68%; }
+.content__main-wrapper {}
+
+.content__side { float: right; width: 29%; }
+.content__side.floater-fixed { margin-top: 5px; }
+
+@media screen and (max-width: 60em) {
+  .content__main { width: 63%; }
+  .content__side { width: 34%; }
+}
+
+@media screen and (max-width: 52.5em) {
+  .content__main { float: none; width: 100%; }
+  .content__side { float: none; width: 430px; max-width: 100%; }
+}

@@ -1,0 +1,42 @@
+<r:skus:load_default>
+  <div class="product <r:shop:has_no_online_transactions>product_no-ordering</r:shop:has_no_online_transactions>">
+    <div class="product__wrapper">
+      <form class="product__form"
+            data-product="<r:product:handle/>"
+            data-sku="<r:sku:handle/>"
+            action="/"
+            onsubmit="Basket.createItem(this, '<r:product:js_escaped_name/>'); return false;" >
+
+        <r:widget:show name='product_picture'/>
+
+        <div class="product__top">
+          <div class="product__price" data-product-price>
+            <r:sku:price/>
+          </div>
+
+          <h4 class="product__name">
+            <r:product:name/>
+            <r:shop:has_favourites>
+              <r:widget:show name='product_favourites'/>
+            </r:shop:has_favourites>
+
+            <r:widget:show name='product_top_pictos'/>
+          </h4>
+
+          <r:product:if_description>
+            <div class="product__description">
+              <r:product:description/>
+            </div>
+          </r:product:if_description>
+        </div>
+
+        <div class="product__bottom">
+          <r:widget:show name='product_bottom_pictos'/>
+          <r:widget:show name="product_skus"/>
+        </div>
+
+        <r:widget:show name="product_add_button"/>
+      </form>
+    </div>
+  </div>
+</r:skus:load_default>

@@ -1,0 +1,15 @@
+<r:deal_basket_item:load>
+  <script type="text/javascript">
+    Product.setBasePricing('<r:product:handle/>', <r:ruby:show name="base_pricing"/>);
+    Product.setOptionsPricing('<r:product:handle/>', <r:ruby:show name="options_pricing"/>);
+  </script>
+
+  <r:widget:show name="deal_wizard_popup"/>
+
+  <script type="text/javascript">
+    Popup.open();
+    NiceSelect.init();
+  </script>
+
+  <r:widget:show name='scripts_init_product'/>
+</r:deal_basket_item:load>

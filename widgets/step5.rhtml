@@ -1,0 +1,86 @@
+<r:widget:show name='step_navigation' />
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__side">
+      <div class="content__side-wrapper">
+        <r:widget:show name='step_side'/>
+      </div>
+    </div>
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <div class="checkout">
+          <section class="checkout__section"">
+            <r:widget:show name="step5_header"/>
+
+            <r:basket:if_non_acceptance_reason>
+              <div class="confirm-section">
+                <p><r:basket:non_acceptance_reason/></p>
+              </div>
+            </r:basket:if_non_acceptance_reason>
+
+            <r:basket:if_accepted>
+              <div class="confirm-section">
+                <r:delivery_methods:selected_if_delivery>
+                  <r:widget:show name='step5_delivery_address'/>
+                </r:delivery_methods:selected_if_delivery>
+                <r:delivery_methods:selected_if_not_delivery>
+                  <r:widget:show name='step5_restaurant_address'/>
+                </r:delivery_methods:selected_if_not_delivery>
+              </div>
+
+              <div class="confirm-section">
+                <h5 class="confirm-section__title">
+                  <r:widget:show name='step5_delivery_time'/>
+                </h5>
+              </div>
+
+              <r:payment_methods:if_in_session>
+                <div class="confirm-section">
+                  <h5 class="confirm-section__title">
+                    <r:payment_method:payment_by/>
+                  </h5>
+                  <div class="confirm-section_content">
+                    <p><r:payment_method:description/></p>
+                    <r:payment_method:instructions/>
+                  </div>
+                </div>
+              </r:payment_methods:if_in_session>
+
+              <r:shop:if_loyalty_program>
+                <div class="confirm-section">
+                  <div class="confirm-section__loyalty-part">
+                    <r:widget:show name="step5_loyalty"/>
+                  </div>
+                </div>
+              </r:shop:if_loyalty_program>
+            </r:basket:if_accepted>
+
+            <r:order:if_not_created>
+              <footer class="checkout__footer">
+                <r:widget:show name="step5_above_confirm_button"/>
+                <div class="form-buttons">
+                  <r:shop:has_payment_step>
+                    <r:link_to_page name="order_step4" class="form-buttons__link"><r:t key='navigation.back_to_previous'/></r:link_to_page>
+                  </r:shop:has_payment_step>
+                  <r:shop:has_no_payment_step>
+                    <r:link_to_page name="order_step3" class="form-buttons__link"><r:t key='navigation.back_to_previous'/></r:link_to_page>
+                  </r:shop:has_no_payment_step>
+                  <r:basket:if_computed_delivery_time><r:basket:if_accepted>
+                    <r:widget:show name="step5_confirmation_form"/>
+                  </r:basket:if_accepted></r:basket:if_computed_delivery_time>
+                </div>
+              </footer>
+            </r:order:if_not_created>
+
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

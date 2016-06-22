@@ -1,0 +1,30 @@
+<r:buyer:if_logged_in>
+  <li class="mobile-menu__section mobile-menu__section_has-submenu">
+    <a class="mobile-menu__section-link" href="#">
+      <r:t key='page.account'/>
+      <i class="mobile-menu__section-icon"></i>
+    </a>
+
+    <ul class="mobile-menu__submenu">
+      <li class="mobile-menu__item">
+        <a class="mobile-menu__item-link" href="/orders">
+          <r:t key='page.your_orders'/>
+        </a>
+      </li>
+      <li class="mobile-menu__item">
+        <a class="mobile-menu__item-link" href="/account">
+          <r:t key='page.your_account'/>
+        </a>
+      </li>
+      <li class="mobile-menu__item">
+        <a class="mobile-menu__item-link" href="#" onclick="$j('#logout_form').submit(); return false;">
+          <r:t key='login.logout'/>
+        </a>
+      </li>
+    </ul>
+
+    <form id="logout_form" action="/buyers/do_logout" method="post" style="display:none;">
+      <input name="redirect_to" value="<r:shopping_page_url/>"/>
+    </form>
+  </li>
+</r:buyer:if_logged_in>

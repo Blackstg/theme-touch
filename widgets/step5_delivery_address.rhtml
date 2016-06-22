@@ -1,0 +1,26 @@
+<h5 class="confirm-section__title">
+  <r:t key='checkout.delivery_details'/><r:t key="colon"/>
+</h5>
+
+<div class="confirm-section__content">
+  <p>
+    <r:buyer:full_name/>
+    <br/>
+    <r:buyer:address/>
+    <br/>
+    <r:shop:if_country in='GB'><r:buyer:city/>, <r:buyer:postal_code/></r:shop:if_country>
+    <r:shop:if_not_country in='GB'><r:buyer:postal_code/> - <r:buyer:city/></r:shop:if_not_country>
+    <br/>
+
+    <r:buyer:has_field name='building'><r:t key='buyer.building'/><r:t key='colon'/> <r:buyer:building/><br/></r:buyer:has_field>
+    <r:buyer:has_field name='unit'><r:t key='buyer.unit'/><r:t key='colon'/> <r:buyer:unit/><br/></r:buyer:has_field>
+    <r:buyer:has_field name='floor'> - <r:t key='buyer.floor'/><r:t key='colon'/> <r:buyer:floor/><br/></r:buyer:has_field>
+    <r:buyer:has_field name='door'> - <r:t key='buyer.door'/><r:t key='colon'/> <r:buyer:door/><br/></r:buyer:has_field>
+    <r:buyer:has_field name='intercom'> - <r:t key='buyer.intercom'/><r:t key='colon'/> <r:buyer:intercom/><br/></r:buyer:has_field>
+    <r:buyer:has_field name='door_code'> - <r:t key='buyer.door_code'/><r:t key='colon'/> <r:buyer:door_code/><br/></r:buyer:has_field>
+  </p>
+
+  <r:buyer:has_field name='delivery_information'><p><r:t key='buyer.delivery_info'/><r:t key='colon'/> <r:buyer:delivery_information/></p></r:buyer:has_field>
+
+  <p><r:delivery_methods:load_selected><r:delivery_method:details/></r:delivery_methods:load_selected></p>
+</div>

@@ -1,0 +1,14 @@
+<r:order:load request_parameter="order_id">
+  <r:order:if_not_workflow_state_failed>
+    <r:buyer:if_not_kiosk>
+      <r:widget:show name='thank_you'/>
+    </r:buyer:if_not_kiosk>
+    <r:buyer:if_kiosk>
+      <r:widget:show name='kiosk_thank_you'/>
+    </r:buyer:if_kiosk>
+  </r:order:if_not_workflow_state_failed>
+
+  <r:order:if_workflow_state_failed>
+    <r:widget:show name='failed'/>
+  </r:order:if_workflow_state_failed>
+</r:order:load>

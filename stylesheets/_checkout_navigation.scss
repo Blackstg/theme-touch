@@ -1,0 +1,18 @@
+/***************************
+  Checkout navigation
+***************************/
+
+.checkout-navigation { @include clearfix; }
+.checkout-navigation__wrapper { @include wrapper; }
+.checkout-navigation__list { @include clearfix; display: block; }
+
+.checkout-navigation__item { display: inline-block; position: relative; padding: 0 2em; height:50px; line-height:54px;  }
+.checkout-navigation__item-nb { margin-right: .5em; }
+.checkout-navigation__item-title {}
+
+.checkout-navigation__item_active {}
+
+@media screen and (max-width: 40em) {
+  .checkout-navigation__item-title { display: none; }
+  .checkout-navigation__item_active .checkout-navigation__item-title { display: inline-block; }
+}

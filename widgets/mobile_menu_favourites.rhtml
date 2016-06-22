@@ -1,0 +1,10 @@
+<r:shop:has_favourites>
+  <r:buyer:if_logged_in>
+    <li class="mobile-menu__item <r:if_page matches='favourites'>mobile-menu__item_active</r:if_page>">
+      <a href="/favourites" class="mobile-menu__item-link">
+        <i class="mobile-menu__favourite-icon"></i>
+        <r:t key='page.favourites'/>
+      </a>
+    </li>
+  </r:buyer:if_logged_in>
+</r:shop:has_favourites>

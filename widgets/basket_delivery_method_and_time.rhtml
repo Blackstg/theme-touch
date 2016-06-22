@@ -1,0 +1,18 @@
+<r:buyer:if_not_kiosk>
+  <div class="basket__footer-row basket__delivery-and-time">
+    <r:delivery_methods:if_many>
+      <div class="basket__delivery
+        <r:delivery_methods:if_two>basket__delivery_radio</r:delivery_methods:if_two>
+        <r:delivery_methods:if_three>basket__delivery_select</r:delivery_methods:if_three>
+      ">
+        <r:widget:show name="basket_delivery_method"/>
+      </div>
+    </r:delivery_methods:if_many>
+
+    <div class="basket__time
+                <r:order_times:if_advanced_orders>basket__time_advanced-orders</r:order_times:if_advanced_orders>">
+      <label class="basket__time-label" for='order_time'>Order time</label>
+      <r:widget:show name="basket_delivery_time"/>
+    </div>
+  </div>
+</r:buyer:if_not_kiosk>

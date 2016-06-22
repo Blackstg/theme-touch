@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="content__wrapper">
+    <r:form:buyer:errors/>
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <r:buyer:load_from_session>
+          <section class="settings_section" id="complete_signup">
+            <header>
+              <h2><r:t key='facebook_login.welcome'/> <r:buyer:first_name/><r:t key="exclamation_mark"/></h2>
+              <r:t key='facebook_login.enter_additional_info'/>
+            </header>
+
+            <form action="/buyers/facebook/complete_signup" class="register" method="post" name="complete_signup_form">
+              <fieldset>
+                <div>
+                  <label for="phone_number"><r:t key='facebook_login.phone_number'/><r:t key='colon'/></label>
+                  <input id="phone_number" name="phone_number" type="tel" value="">
+                </div>
+
+                <r:shop:has_buyer_statuses>
+                  <div>
+                    <label for="status"><r:t key='buyer.status'/><r:t key='colon'/></label>
+                    <select id="status" name="status" value="<r:buyer:status/>">
+                      <r:buyer:statuses_for_select/>
+                    </select>
+                  </div>
+                </r:shop:has_buyer_statuses>
+              </fieldset>
+
+              <footer class="clearfix">
+                <div class="form-buttons">
+                  <r:link_to_page name='categories' class="form-buttons__link"><r:t key='navigation.back_to_menu'/></r:link_to_page>
+                  <button class="form-buttons__button" type="submit" onclick="ga_tracking(this); return true"><r:t key='facebook_login.complete_signup'/></button>
+                </div>
+              </footer>
+            </form>
+          </section>
+        </r:buyer:load_from_session>
+
+      </div>
+    </div>
+
+  </div>
+</div>

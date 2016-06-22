@@ -1,0 +1,101 @@
+<fieldset class="checkout__fieldset">
+  <div class="checkout-row">
+    <label for="first_name" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.first_name'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="first_name" name="first_name" type="text" value="<r:buyer:first_name escape_quotes='true'/>"/>
+    </div>
+  </div>
+
+  <div class="checkout-row">
+    <label for="last_name" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.last_name'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="last_name" name="last_name" type="text" value="<r:buyer:last_name escape_quotes='true'/>"/>
+    </div>
+  </div>
+
+  <r:shop:has_buyer_field name='company_name'>
+    <div class="checkout-row">
+      <label for="company_name" class="checkout-row__label">
+        <r:t key='buyer.company_name'/><r:t key='colon'/>
+      </label>
+      <div class="checkout-row__group">
+        <input class="checkout-row__field-text" id="company_name" name="company_name" type="text" value="<r:buyer:company_name escape_quotes='true'/>"/>
+      </div>
+    </div>
+  </r:shop:has_buyer_field>
+
+  <r:shop:has_buyer_statuses>
+    <div class="checkout-row">
+      <label for="status" class="checkout-row__label<r:shop:has_no_empty_buyer_status> checkout-row__label_required</r:shop:has_no_empty_buyer_status>">
+        <r:t key='buyer.status'/><r:t key='colon'/>
+      </label>
+      <select id="status" name="status" value="<r:buyer:status escape_quotes='true'/>">
+        <r:buyer:statuses_for_select/>
+      </select>
+      <r:shop:has_empty_buyer_status>
+        <span class="buyer_note"><r:t key='buyer.status_instructions'/></span>
+      </r:shop:has_empty_buyer_status>
+    </div>
+  </r:shop:has_buyer_statuses>
+
+  <div class="checkout-row">
+    <label for="phone_number" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.phone_number'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <div class="checkout-row__group-item">
+        <input class="checkout-row__field-text" id="phone_number" name="phone_number" type="tel" value="<r:buyer:phone_number escape_quotes='true'/>"/>
+        <r:widget:show name="phone_filter"/>
+      </div>
+      <div class="checkout-row__group-item">
+        <label class="checkout-row__group-label checkout-row__group-label_checkbox" for="sms_authorization">
+          <input class="checkout-row__field-chkbox" id="sms_authorization" name="sms_authorization" type="checkbox"
+                 <r:shop:if_marketing_auto_optin>checked</r:shop:if_marketing_auto_optin>
+          >
+          <span class="label-text"><r:t key='buyer.sms_authorization'/></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-row">
+    <label for="email" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.email'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <div class="checkout-row__group-item">
+        <input class="checkout-row__field-text" id="email" name="email" type="email" value="<r:buyer:email escape_quotes='true'/>"/>
+      </div>
+      <div class="checkout-row__group-item">
+        <label class="checkout-row__group-label checkout-row__group-label_checkbox" for="emailing_authorization">
+          <input class="checkout-row__field-chkbox" id="emailing_authorization" name="emailing_authorization" type="checkbox"
+              <r:shop:if_marketing_auto_optin>checked</r:shop:if_marketing_auto_optin>
+          >
+          <span class="label-text"><r:t key='buyer.email_authorization'/></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-row">
+    <label for="password" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.password'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="password" name="password" type="password" value="<r:form:last_password_typed/>"/>
+    </div>
+  </div>
+
+  <div class="checkout-row">
+    <label for="password_confirmation" class="checkout-row__label checkout-row__label_required">
+      <r:t key='buyer.retype_password'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="password_confirmation" name="password_confirmation" type="password"/>
+    </div>
+  </div>
+</fieldset>

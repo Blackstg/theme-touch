@@ -1,0 +1,16 @@
+/***************************
+  Account navigation
+***************************/
+
+.account-navigation { @include clearfix; }
+
+.account-navigation__wrapper { @include wrapper; }
+.account-navigation__list { @include clearfix; }
+
+.account-navigation__item { display: inline-block; }
+.account-navigation__link { display: inline-block; padding: 1em 1.5em; text-decoration: none; }
+.account-navigation__item_active .account-navigation__link {}
+
+@media screen and (max-width: 52.5em) {
+  .account-navigation { display: none; }
+}

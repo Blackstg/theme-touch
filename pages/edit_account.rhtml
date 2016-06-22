@@ -1,0 +1,74 @@
+<r:widget:show name="account_navigation"/>
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <div class="checkout">
+          <r:form:buyer:errors/>
+
+          <section class="checkout__section" id="buyer_profile">
+            <header class="checkout__header">
+              <h2 class="checkout__title"><r:t key='page.edit_account'/></h2>
+            </header>
+
+            <form class="checkout__form" action='/buyer/update' method='post' name='mainform' onsubmit="return testPhoneNumber('phone_number');" >
+              <fieldset class="checkout__fieldset">
+                <r:buyer:load_from_session>
+                  <r:widget:show name="edit_account_fields"/>
+                </r:buyer:load_from_session>
+              </fieldset>
+
+              <footer class="checkout__footer">
+                <div class="form-buttons">
+                  <button class="form-buttons__button" type="submit"><r:t key='buyer.save_changes'/></button>
+                  <r:link_to_page name="account" class="form-buttons__link"><r:t key='navigation.cancel'/></r:link_to_page>
+                </div>
+              </footer>
+            </form>
+          </section>
+
+          <section class="checkout__section" id="account_password_change">
+            <header class="checkout__header">
+              <h2 class="checkout__title"><r:t key='page.change_password'/></h2>
+            </header>
+
+            <form class="checkout__form" action='/buyer/change_password' method='post' name='passwordform'>
+              <fieldset class="checkout__fieldset">
+                <div class="checkout-row">
+                  <label class="checkout-row__label" for="buyer_password"><r:t key='buyer.password'/><r:t key='colon'/></label>
+                  <div class="checkout-row__group">
+                    <input class="checkout-row__field-text" name="password" type="password">
+                  </div>
+                </div>
+                <div class="checkout-row">
+                  <label class="checkout-row__label" for="buyer_new_password"><r:t key='buyer.new_password'/><r:t key='colon'/></label>
+                  <div class="checkout-row__group">
+                    <input class="checkout-row__field-text" name="new_password" type="password">
+                  </div>
+                </div>
+                <div class="checkout-row">
+                  <label class="checkout-row__label" for="buyer_new_password_confirmation"><r:t key='buyer.reenter_password'/><r:t key='colon'/></label>
+                  <div class="checkout-row__group">
+                    <input class="checkout-row__field-text" name="new_password_confirmation" type="password">
+                  </div>
+                </div>
+              </fieldset>
+
+              <footer class="checkout__footer">
+                <div class="form-buttons">
+                  <button class="form-buttons__button" type="submit"><r:t key='page.change_password'/></button>
+                  <r:link_to_page name="categories" class="form-buttons__link"><r:t key='navigation.back_to_menu'/></r:link_to_page>
+                </div>
+              </footer>
+            </form>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

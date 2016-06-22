@@ -1,0 +1,33 @@
+<script>
+  function facebook_login(redirect_url) {
+    FB.login(
+        function (response) {
+          if (response.status === 'connected') {
+            $j('#facebook_access_token').val(response.authResponse.accessToken);
+            $j('#facebook_user_id').val(response.authResponse.userID);
+            $j('#facebook_redirect_to').val(redirect_url);
+            $j('#facebook_login_form').submit()
+          }
+        },
+        {scope: 'email,public_profile'}
+    );
+  }
+
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "<r:add_on:facebook_login:app_id/>",
+      cookie: true,
+      xfbml: true,
+      version: 'v2.1'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>

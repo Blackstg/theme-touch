@@ -1,0 +1,12 @@
+<r:shop:if_delivery_information_max_length>
+  - <span id="nb_chars_left" style="font-weight: bold;"></span> <r:t key='buyer.delivery_information_chars_left'/>.
+  <script type="text/javascript">
+    $j(document).ready(function() {
+      $j('#delivery_information').textarea_limiter(
+        <r:shop:delivery_information_max_length/>,
+        $j('#nb_chars_left'),
+        $j('#nb_chars_left')
+      );
+    });
+  </script>
+</r:shop:if_delivery_information_max_length>

@@ -1,0 +1,11 @@
+/***************************
+  Basket menu
+***************************/
+
+.basket-menu {}
+.basket-menu__icons {}
+.basket-menu__basket-button { display: inline-block; }
+.basket-menu__link { position: relative; padding-right: 10px; display: inline-block; padding: .3em .3em; text-decoration: none; }
+.basket-menu__link i { font-size: 1.9em; }
+.basket-menu__items { display: inline-block; position: absolute; right: 0; top: -.2em; width: 22px; height: 18px; line-height: 18px;
+  font-size: 1.3rem; text-align: center; font-family: Arial, sans-serif; background-color: #fff; border: 2px solid #212121; border-radius: 50%; overflow: hidden; }

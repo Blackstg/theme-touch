@@ -1,0 +1,15 @@
+/***************************
+  Page
+***************************/
+
+.page {}
+.page__wrapper {}
+
+.page__header {}
+.page__content {}
+.page__footer {}
+
+
+.page__overlay { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,.7); z-index: 999; }
+.page__popup-holder { position: relative; margin: 0 auto; width: 98%; max-width: 900px; }
+

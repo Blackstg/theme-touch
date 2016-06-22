@@ -1,0 +1,28 @@
+<r:buyer:if_can_pay_with_loyalty>
+  <r:shop:if_loyalty_spending in='free_items'>
+    <r:shop:if_loyalty_program in='store_balance,update_balance'>
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="loyalty_points"><r:t key='loyalty.points_to_use'/></label>
+        <div class="checkout-row__group">
+          <input class="checkout-row__field-text auto-width" type="text" name="loyalty_points" id="loyalty_points" value="<r:form:loyalty_point_input/>" size="3"/>
+        </div>
+      </div>
+    </r:shop:if_loyalty_program>
+
+    <r:shop:if_loyalty_program in='manual_redeem'>
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="loyalty_points"><r:t key='loyalty.enter_number_of_points'/></label>
+        <input class="checkout-row__field-text auto-width" type="text" name="loyalty_points" id="loyalty_points" value="<r:form:loyalty_point_input/>" size="3"/>
+      </div>
+    </r:shop:if_loyalty_program>
+  </r:shop:if_loyalty_spending>
+
+  <r:shop:if_loyalty_spending in='discount'>
+   <div class="checkout-row">
+      <label class="checkout-row__group-label checkout-row__group-label_checkbox" for="loyalty_points">
+        <input class="checkout-row__field-chkbox checkout-row__field-chkbox_loyalty" type="checkbox" name="cb_loyalty_points" id="loyalty_points" <r:form:loyalty_point_checked/>/>
+        <span class="label-text"><r:form:use_points_for_discount_text/></span>
+      </label>
+    </div>
+  </r:shop:if_loyalty_spending>
+</r:buyer:if_can_pay_with_loyalty>

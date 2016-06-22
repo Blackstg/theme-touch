@@ -1,0 +1,29 @@
+<r:buyer:if_logged_in>
+  <li class="mobile-menu__section mobile-menu__section_user">
+    <r:t key='login.welcome_back'/>, <span class="name"><r:buyer:first_name/></span>
+
+    <r:shop:if_loyalty_program in='store_balance,update_balance'>
+      <span class="rewards-points">you have
+        <r:buyer:if_points_balance_greater_or_equal_than value="2">
+          <span class="points"><r:buyer:points_balance_integer/></span> points
+        </r:buyer:if_points_balance_greater_or_equal_than>
+        <r:buyer:if_points_balance_equal value="1">
+          <span class="points">1</span> point
+        </r:buyer:if_points_balance_equal>
+        <r:buyer:if_points_balance_lower_than value="1">
+          no point yet
+        </r:buyer:if_points_balance_lower_than>
+      </span>
+    </r:shop:if_loyalty_program>
+  </li>
+</r:buyer:if_logged_in>
+
+<r:buyer:if_not_logged_in>
+  <li class="mobile-menu__section mobile-menu__section_login">
+    <a class="mobile-menu__section-link" href="/login">
+      <r:t key='login.login'/>
+      <i class="mobile-menu__icon"></i>
+      <r:t key='login.register'/>
+    </a>
+  </li>
+</r:buyer:if_not_logged_in>

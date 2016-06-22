@@ -1,0 +1,21 @@
+<r:basket:if_tax include_delivery_charge_tax="true">
+  <div class="basket__footer-row">
+    <p class="basket__subtotal">
+      <strong><r:t key='basket.subtotal'/><r:t key='colon'/></strong>
+      <span><r:basket:total_price_without_tax/></span>
+    </p>
+    <p class="totaltax">
+      <strong><r:t key='order.tax'/><r:t key='colon'/></strong>
+      <span><r:basket:total_tax include_delivery_charge_tax="false"/></span>
+    </p>
+  </div>
+</r:basket:if_tax>
+
+<div class="basket__footer-row basket__button">
+  <div class="form-buttons">
+    <form action="/orders/create" method="post" name="delivery_form" onsubmit="preventDuplicateFormSubmit(this)">
+      <input type="hidden" name="ie11_fix" value="1">
+      <a class="form-buttons__button" href="#" onclick="$j('form[name=delivery_form]').submit();"><r:t key='confirmation.place_order_button'/></a>
+    </form>
+  </div>
+</footer>

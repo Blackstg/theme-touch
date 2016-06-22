@@ -1,0 +1,41 @@
+<r:saved_cards:if_not_empty>
+  <div class="checkout__fieldset">
+    <r:saved_cards:each_active>
+      <div class="checkout-variant <r:saved_card:if_expired>disabled_card</r:saved_card:if_expired>">
+        <label class="checkout-variant__label">
+          <input type="radio" class="checkout-variant__radio"
+                 value="<r:saved_card:id />"
+                 name="saved_card_id"
+                 <r:saved_card:if_expired>disabled="disabled"</r:saved_card:if_expired>
+                 <r:saved_card:if_default>checked</r:saved_card:if_default>
+          />
+          <span class="checkout-variant__text">
+            <r:saved_card:brand/> <r:saved_card:card_number/> -
+            <r:saved_card:cardholder_name/> -
+            <r:saved_card:if_not_expired><r:t key='card.expires_on'/> <r:saved_card:expiration_date/></r:saved_card:if_not_expired>
+            <r:saved_card:if_expired><r:t key='card.expired'/></r:saved_card:if_expired>
+          </span>
+        </label>
+        <div class="checkout-variant__helper">
+          (<a href="<r:saved_card:remove_url/>"><r:t key='card.remove'/></a>)
+        </div>
+      </div>
+
+      <div class="saved_card_cv_code saved_card_<r:saved_card:id />_cv_code">
+        <label for="saved_card_<r:saved_card:id />_cv_code"><r:t key='card.cv2_code'/><r:t key='colon'/></label>
+        <input placeholder="XXX" id="saved_card_<r:saved_card:id />_cv_code" type="text" maxlength="4" autocomplete="off">
+      </div>
+    </r:saved_cards:each_active>
+
+    <div class="checkout-variant <r:saved_card:if_expired>disabled_card</r:saved_card:if_expired>">
+      <label class="checkout-variant__label">
+        <input type="radio"
+               value=""
+               name="saved_card_id"
+               <r:saved_cards:if_no_default>checked</r:saved_cards:if_no_default>
+        />
+        <span class="checkout-variant__text"><r:t key='card.use_unsaved'/></span>
+      </label>
+    </div>
+  </div>
+</r:saved_cards:if_not_empty>

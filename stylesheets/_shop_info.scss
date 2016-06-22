@@ -1,0 +1,36 @@
+/***************************
+  Shop info
+***************************/
+
+.shop-info { box-sizing: border-box; }
+.shop-info_desktop { padding: 1.2em 1.5em 1.5em; font-size: 1.6rem; }
+.shop-info_mobile { padding: 1em 1em 1.5em; font-size: 1.4rem; }
+
+.shop-info__header { @include clearfix; margin-bottom: 1.2em; }
+
+.shop-info__title { font-size: 3rem; line-height: 1.2; }
+.shop-info_desktop .shop-info__title { float: left; }
+
+.shop-info__link { }
+
+.shop-info__social-icons {}
+.shop-info_desktop .shop-info__social-icons { float: right; }
+.shop-info_mobile .shop-info__social-icons { margin-top: .5em; }
+
+.shop-info__google-maps { margin-bottom: 1em; }
+.shop-info__google-maps iframe { width: 100%; height: 230px; }
+.shop-info_mobile .shop-info__google-maps iframe { width: 94%; height: 250px; }
+
+.shop-info__features {}
+
+.shop-info__feature { @include clearfix; margin-top: 1.5em; }
+.shop-info_mobile .shop-info__feature { margin-top: 1em; }
+
+.shop-info__feature-title { display: block; font-weight: 700; }
+.shop-info_desktop .shop-info__feature-title { float: left; width: 30%; font-weight: 700; }
+.shop-info_mobile .shop-info__feature-title { margin-bottom: .2em; font-size: 1.6rem; }
+
+.shop-info__feature-content {}
+.shop-info_desktop .shop-info__feature-content { float: right; width: 68%; }
+
+.shop-info__change-location {}

@@ -1,0 +1,28 @@
+<r:add_on:facebook_login:if_set>
+  <r:widget:show name="add_on_facebook_login_js"/>
+
+  <div class="checkout__facebook-login checkout__fieldset" id="facebook_login_option">
+    <form action="/buyers/facebook" method="post" id="facebook_login_form" style="display: none;">
+      <input type="hidden" value="" name="access_token" id="facebook_access_token">
+      <input type="hidden" value="" name="user_id" id="facebook_user_id">
+      <input type='hidden' name='redirect_to' id="facebook_redirect_to">
+    </form>
+    <div class="checkout-row">
+      <div class="checkout-row__group">
+        <a href="#" class="checkout__facebook-login-button clearfix"
+           onclick="facebook_login(
+             <r:if_page matches='order_step2'>'/order_step3'</r:if_page>
+             <r:if_not_page matches='order_step2'>'<r:shopping_page_url/>'</r:if_not_page>
+             ); return false;">
+          <i class="checkout__facebook-login-icon"></i>
+          <span class="checkout__facebook-login-text"><r:t key="facebook_login.button_label"/></span>
+        </a>
+        <div class="checkout__facebook-login-separator">
+          <span class="checkout__facebook-login-separator-text">
+            <r:t key="facebook_login.form_separator"/>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</r:add_on:facebook_login:if_set>

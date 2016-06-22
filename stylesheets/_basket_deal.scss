@@ -1,0 +1,13 @@
+/***************************
+  Basket deal
+***************************/
+
+.basket-deal { padding: 0; }
+.basket-deal__header { @include clearfix; padding: .5em 1.2rem; }
+
+.basket-deal__link { text-decoration: none; }
+.basket-deal__link:hover { text-decoration: underline; }
+.basket-deal__delete { float: right; }
+
+.basket-deal__items { padding: .5em 1.2rem; }
+.basket-deal__item-delete { }

@@ -1,0 +1,36 @@
+<section class="basket <r:basket:if_empty>basket_empty</r:basket:if_empty>">
+  <r:basket_flash:if_error>
+    <div class="basket__error">
+      <r:basket_flash:error/>
+    </div>
+  </r:basket_flash:if_error>
+
+  <header class="basket__header">
+    <a class="basket__close off-canvas__close" href="#" onclick="$j.sidr('close', 'sidebar-ofc'); return false;">
+      <i class="basket__close-icon"></i>
+    </a>
+
+    <div class="basket__title">
+      <r:t key='basket.title_during_checkout'/>
+    </div>
+  </header>
+
+  <div id="basket_content" class="basket__content basket_content">
+    <r:ruby:show name='step_deal_bags'/>
+    <r:ruby:show name='step_basket_items'/>
+  </div>
+
+  <footer class="basket__footer">
+    <r:widget:show name='basket_tips'/>
+    <r:widget:show name='step_basket_order_level_discount'/>
+    <r:widget:show name='step_basket_extra_charges_and_total'/>
+    <r:widget:show name='step_basket_coupon_code'/>
+    <r:buyer:if_kiosk>
+      <r:widget:show name='step_basket_kiosk_footer'/>
+    </r:buyer:if_kiosk>
+  </footer>
+</section>
+
+<r:widget:show name='basket_javascript'/>
+
+<r:widget:show name='step_basket_after'/>

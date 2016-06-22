@@ -1,0 +1,20 @@
+/***************************
+  Popup group
+  (quantity + skus)
+***************************/
+
+.popup-group__line { @include clearfix; font-size: 1.7rem; }
+.popup-group__line + .popup-group__line { margin-top: .7em; }
+
+.popup-group__label { display: inline-block; width: 90px; font-weight: 700; }
+.popup-group__label_quantity { float: left; line-height: 24px; }
+
+.popup-group__quantity { @include clearfix; display: inline-block; }
+.popup-group__quantity-field { float: left; padding: 0 .1em; width: 1.7em; line-height: 22px; text-align: center; border: 1px solid #ccc; }
+.popup-group__quantity-button { float: left; display: inline-block; font-size: 1.5rem; text-decoration: none; }
+.popup-group__quantity-minus-icon,
+.popup-group__quantity-plus-icon { line-height: 24px; }
+
+@media screen and (max-width: 40em) {
+  .popup-group__label { display: block; margin-bottom: .1em; width:100%; }
+}

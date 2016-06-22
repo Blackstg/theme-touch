@@ -1,0 +1,35 @@
+/***************************
+  Popup
+***************************/
+
+.popup { position: absolute; left: 0; top: 0; width: 100%; background-color: #fff; z-index: 1210; box-sizing: border-box; }
+.popup__wrapper { margin: 1.5em 3%; }
+
+.popup__close { position: absolute; top: -15px; right: -21px; display: inline-block; width: 36px; height: 36px; line-height: 36px;
+  color: #fff; font-size: 2rem; text-decoration: none; line-height: 1; text-align: center; font-family: Arial, sans-serif;
+  background-color: #212121; border-radius: 100%; box-shadow: 0 0 5px rgba(0,0,0,.3); z-index: 1205; }
+
+@media screen and (max-width: 60em) {
+  .popup__close { top: -.5%; right: -.5%; width: 26px; height: 26px; line-height: 26px; border-radius: 0 0 0 50%; }
+}
+
+@media screen and (min-width: 60em) {
+  .popup__close-icon { line-height: 36px; }
+}
+
+.popup__header { @include clearfix; padding-right: 105px; }
+.popup__title { float: left; line-height: 1.2; }
+.popup__price { float: right; margin-right: -105px; line-height: 1.2; }
+.popup__description { margin-top: .5em; line-height: 1.2; }
+.popup__group { padding: 1em 0; }
+.popup__buttons { clear: both; margin: 0; padding-top: 1.5em; }
+
+/* Picture */
+.popup__picture { float: left; margin-right: 2%; width: 28%; }
+.popup__picture ~ .popup__header { overflow: hidden; }
+.popup__picture ~ .popup__description { overflow: hidden; }
+
+@media screen and (max-width: 26em) {
+  .popup__picture { display: none; }
+}
+

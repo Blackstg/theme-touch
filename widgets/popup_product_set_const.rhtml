@@ -1,0 +1,20 @@
+<li class="popup-set__option" data-option="<r:option:html_id/>" <r:option:if_not_available>style="display:none;"</r:option:if_not_available> >
+  <label class="popup-set__label">
+    <r:option_list:if_base_ingredients>
+      <input type="checkbox" name="<r:option_list:encode_key/>"
+             value="<r:option:encode_value_for_set quantity='1'/>"
+             <r:option:if_topping_selected>checked="checked"</r:option:if_topping_selected> />
+    </r:option_list:if_base_ingredients>
+
+    <r:option_list:if_not_base_ingredients>
+      <input type="checkbox" name="<r:option_list:encode_key/>"
+             value="<r:option:encode_value_for_set quantity='1'/>"
+             <r:option:if_quantity_equal value='1'>checked="checked"</r:option:if_quantity_equal> />
+    </r:option_list:if_not_base_ingredients>
+
+    <span class="popup-set__text">
+      <span class="popup-set__name"><r:option:name/></span>
+      <r:widget:show name="popup_product_set_const_price"/>
+    </span>
+  </label>
+</li>

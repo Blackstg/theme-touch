@@ -1,0 +1,27 @@
+<r:order_times:if_advanced_orders>
+  <select name="order_day" id="order_day" data-nice-select onchange="Page.changeDate($j('#order_day option:selected').val(), null);">
+    <r:order_times:days:each delivery_method="selected">
+      <option value="<r:order_times:day:value/>"
+          <r:order_times:day:if_selected>selected="selected"</r:order_times:day:if_selected>
+          <r:order_times:day:if_disabled>disabled="disabled"</r:order_times:day:if_disabled> >
+        <r:order_times:day:label/>
+      </option>
+    </r:order_times:days:each>
+  </select>
+</r:order_times:if_advanced_orders>
+
+<select name="order_time" id="order_time" data-nice-select onchange="Page.changeTime($j('#order_time option:selected').val());">
+  <r:order_times:times:if_empty_for_selected>
+    <option value="">
+      <r:t key='general.closed'/>
+    </option>
+  </r:order_times:times:if_empty_for_selected>
+
+  <r:order_times:times:if_not_empty_for_selected>
+    <r:order_times:times:each delivery_method="selected" short_asap="true">
+      <option value="<r:order_times:time:value/>" <r:order_times:time:if_selected>selected="selected"</r:order_times:time:if_selected>>
+        <r:order_times:time:label/>
+      </option>
+    </r:order_times:times:each>
+  </r:order_times:times:if_not_empty_for_selected>
+</select>

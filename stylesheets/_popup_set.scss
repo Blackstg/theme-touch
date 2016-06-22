@@ -1,0 +1,34 @@
+/***************************
+  Popup set
+***************************/
+
+.popup-set { margin-top: .7em; }
+.popup-set__group-title { margin-bottom: .5em; }
+.popup-set__wrapper { @include clearfix; }
+
+.popup-set__option { float: left; width: 33.33%; }
+.popup-set__option:nth-child(3n+1) { clear: left; }
+
+.popup-set__label { display: block; position: relative; padding: 0 5px 8px 21px; cursor: pointer; }
+.popup-set__label input[type=checkbox] { position: absolute; left: -1px; top: -1px; }
+
+.popup-set__text { position: relative; display: block; }
+.popup-set__text:before,
+.popup-set__text:after { content:''; display: block; position: absolute; left: -21px; top: -1px; width: 16px; height: 16px; box-sizing: border-box; }
+.popup-set__text:before { width: 16px; height: 16px; border: 1px solid; }
+.popup-set__text:after { display: none; margin: 3px; width: 10px; height: 10px; }
+
+.popup-set__label input[type=checkbox]:checked + .popup-set__text { font-weight: 700; }
+.popup-set__label input[type=checkbox]:checked + .popup-set__text:after { display: block; }
+
+.popup-set__name {}
+.popup-set__price {}
+
+@media screen and (max-width: 40em) {
+  .popup-set__option { float: left; width: 50%; }
+  .popup-set__option:nth-child(3n+1) { clear: none; }
+  .popup-set__option:nth-child(2n+1) { clear: left; }
+}
+@media screen and (max-width: 30em) {
+  .popup-set__option { float: none; width: 100%; }
+}

@@ -1,0 +1,38 @@
+<r:basket:if_delivery_charge>
+  <div class="basket__footer-row">
+    <span class="basket__charge-title"><r:t key='order.delivery_charge'/></span>
+    <span class="basket__charge-amount"><r:basket:delivery_charge/></span>
+  </div>
+</r:basket:if_delivery_charge>
+
+<r:basket:if_payment_charge>
+  <div class="basket__footer-row">
+    <span class="basket__charge-title"><r:t key='order.payment_charge'/></span>
+    <span class="basket__charge-amount"><r:basket:payment_charge/></span>
+  </div>
+</r:basket:if_payment_charge>
+
+<r:basket:if_loyalty_discount>
+  <div class="basket__footer-row">
+    <span class="basket__charge-title"><r:t key='order.loyalty_discount'/></span>
+    <span class="basket__charge-amount">- <r:basket:loyalty_discount_amount/></span>
+  </div>
+</r:basket:if_loyalty_discount>
+
+<r:basket:if_tax include_delivery_charge_tax="true">
+  <div class="basket__footer-row">
+    <p class="clearfix">
+      <span class="basket__charge-title"><r:t key='basket.subtotal'/><r:t key='colon'/></span>
+      <span class="basket__charge-amount"><r:basket:total_price_without_tax/></span>
+    </p>
+    <p class="clearfix">
+      <span class="basket__charge-title"><r:t key='order.tax'/><r:t key='colon'/></span>
+      <span class="basket__charge-amount"><r:basket:total_tax include_delivery_charge_tax="true"/></span>
+    </p>
+  </div>
+</r:basket:if_tax>
+
+<div class="basket__footer-row basket__total">
+  <span class="basket__total-title"><r:t key='order.total'/></span>
+  <span class="basket__total-amount"><r:basket:total_price include_delivery_and_loyalty_discount='true' /></span>
+</div>

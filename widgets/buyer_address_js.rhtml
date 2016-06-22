@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  var streets = <r:shop:addresses_json/>;
+  var chosen_street = "<r:buyer:street_id/>";
+
+  function postalCodeSelected() {
+    $j('#buyer_street_id').val('');
+
+    var postal_code_id = $j('#buyer_postal_code_id').val();
+
+    if (postal_code_id == '') {
+      $j('#street_dropdown').hide();
+      $j('#street_dropdown_note').hide();
+      $j('#building_unit_floor_door').hide();
+      $j('#phone_nb').hide();
+      $j('#delivery_information_block').hide();
+      $j('#manual_address').hide();
+    }
+    else {
+      $j('#building_unit_floor_door').show();
+      $j('#phone_nb').show();
+      $j('#delivery_information_block').show();
+
+      var postal_streets = streets[postal_code_id];
+      if (postal_streets == null || postal_streets.length == 0) {
+        $j('#manual_address').show();
+        $j('#street_dropdown').hide();
+        $j('#street_dropdown_note').hide();
+      } else {
+        $j('#manual_address').hide();
+        $j('#street_dropdown').show();
+        $j('#street_dropdown_note').show();
+
+        $j('#buyer_street_id').empty();
+        $j('#buyer_street_id').append($j('<option value="">&nbsp;</option>'));
+        $j.each(postal_streets, function () {
+          var name = this['name'] + (this['type'] ? " (" + this['type'] + ")" : '');
+          $j('#buyer_street_id').append(
+                  $j('<option></option>').attr('value', this['value']).text(name)
+          );
+        });
+        $j('#buyer_street_id_flexselect').remove();
+        $j('#buyer_street_id').val(chosen_street);
+        $j('#buyer_street_id').flexselect();
+        $j('#buyer_street_id_flexselect').show();
+      }
+    }
+  }
+
+  $j(document).ready(function () {
+    postalCodeSelected();
+    $j('#buyer_postal_code_id').change(postalCodeSelected);
+  });
+</script>

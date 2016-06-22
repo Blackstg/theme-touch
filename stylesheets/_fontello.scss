@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('/assets-fonts/fontello.eot');
+  src: url('/assets-fonts/fontello.eot#iefix') format('embedded-opentype'),
+  url('/assets-fonts/fontello.woff2') format('woff2'),
+  url('/assets-fonts/fontello.woff') format('woff'),
+  url('/assets-fonts/fontello.ttf') format('truetype'),
+  url('/assets-fonts/fontello.svg#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@function fontello-content($name) {
+  @return map-get((
+          burger: '\e800',
+          close: '\e802',
+          trolley: '\e80b',
+
+          plus: '\e80d',
+          minus: '\e80e',
+          minus-circle: '\e803',
+
+          big-arrow-up: '\e801',
+          big-arrow-right: '\e809',
+          big-arrow-down: '\e808',
+          big-arrow-left: '\e811',
+
+          facebook: '\e804',
+          twitter: '\e805',
+          instagram: '\e806',
+          pinterest: '\e807',
+          envelope: '\e80a',
+          youtube: '\e80c',
+
+          heart: '\e80f',
+          heart-empty: '\e810',
+  ), $name);
+}
+
+@mixin fontello-icon($name, $horizontal-margin: null) {
+  &:before {
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    @if $horizontal-margin == null {
+      margin-right: .2em;
+      margin-left: .2em;
+    } @else {
+      margin-right: $horizontal-margin;
+      margin-left: $horizontal-margin;
+    }
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: fontello-content($name)
+  }
+}

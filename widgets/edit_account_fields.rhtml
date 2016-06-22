@@ -1,0 +1,98 @@
+<div class="checkout-row">
+  <label class="checkout-row__label" for="first_name">
+    <r:t key='buyer.first_name'/><r:t key='colon'/>
+  </label>
+  <div class="checkout-row__group">
+    <input class="checkout-row__field-text" id="first_name" name="first_name" type="text" value="<r:buyer:first_name escape_quotes='true'/>"/>
+  </div>
+</div>
+
+<div class="checkout-row">
+  <label class="checkout-row__label" for="last_name">
+    <r:t key='buyer.last_name'/><r:t key='colon'/>
+  </label>
+  <div class="checkout-row__group">
+    <input class="checkout-row__field-text" id="last_name" name="last_name" type="text" value="<r:buyer:last_name escape_quotes='true'/>"/>
+  </div>
+</div>
+
+<r:shop:has_buyer_statuses>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="status">
+      <r:t key='buyer.status'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <select id="status" name="status" value="<r:buyer:status/>">
+        <r:buyer:statuses_for_select/>
+      </select>
+    </div>
+  </div>
+</r:shop:has_buyer_statuses>
+
+<r:shop:has_buyer_field name='company_name'>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="company_name">
+      <r:t key='buyer.company_name'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="company_name" name="company_name" type="text" value="<r:buyer:company_name escape_quotes='true'/>"/>
+    </div>
+  </div>
+</r:shop:has_buyer_field>
+
+<div class="checkout-row">
+  <label class="checkout-row__label" for="phone_number">
+    <r:t key='buyer.phone_number'/><r:t key='colon'/>
+  </label>
+  <div class="checkout-row__group">
+    <div class="checkout-row__group-item">
+      <input class="checkout-row__field-text" id="phone_number" name="phone_number" type="tel" value="<r:buyer:phone_number escape_quotes='true'/>">
+      <r:widget:show name="phone_filter"/>
+    </div>
+    <div class="checkout-row__group-item">
+      <label class="checkout-row__group-label checkout-row__group-label_checkbox" for="sms_authorization">
+        <input class="checkout-row__field-chkbox" id="sms_authorization" name="sms_authorization" type="checkbox"
+        <r:buyer:if_sms_authorization>checked</r:buyer:if_sms_authorization>
+        />
+        <r:t key='buyer.sms_authorization'/>
+        <span class="label-text"><r:t key='buyer.sms_authorization'/></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="checkout-row">
+  <label class="checkout-row__label" for="email">
+    <r:t key='buyer.email'/><r:t key='colon'/>
+  </label>
+  <div class="checkout-row__group">
+    <div class="checkout-row__group-item">
+      <input class="checkout-row__field-text" id="email" name="email" type="email" value="<r:buyer:email escape_quotes='true'/>"/>
+    </div>
+    <div class="checkout-row__group-item">
+      <label class="checkout-row__group-label checkout-row__group-label_checkbox" for="emailing_authorization">
+        <input class="checkout-row__field-chkbox" id="emailing_authorization" name="emailing_authorization" type="checkbox"
+        <r:buyer:if_emailing_authorization>checked</r:buyer:if_emailing_authorization>
+        />
+        <span class="label-text"><r:t key='buyer.email_authorization'/></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<r:shop:has_buyer_field name='locale'>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="locale">
+      <r:t key='buyer.language'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <select id="locale" name="locale" value="<r:buyer:locale/>">
+        <r:buyer:languages_for_select/>
+      </select>
+    </div>
+  </div>
+</r:shop:has_buyer_field>
+
+<r:widget:show name="buyer_address"/>
+
+<r:widget:show name="buyer_delivery_information"/>

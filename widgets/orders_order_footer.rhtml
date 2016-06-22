@@ -1,0 +1,45 @@
+<r:order:if_loyalty_discount>
+  <tr>
+    <td class="order__items-total-title" colspan="2"><r:t key="order.loyalty_discount"/></td>
+    <td class="order__items-total-price">-&nbsp;<r:order:loyalty_discount/></td>
+    <td>&nbsp;</td>
+  </tr>
+</r:order:if_loyalty_discount>
+
+<r:order:if_delivery_charge>
+  <tr>
+    <td class="order__items-total-title" colspan="2"><r:t key="order.delivery_charge"/></td>
+    <td class="order__items-total-price"><r:order:delivery_charge/></td>
+    <td>&nbsp;</td>
+  </tr>
+</r:order:if_delivery_charge>
+
+<r:order:if_payment_charge>
+  <tr>
+    <td class="order__items-total-title" colspan="2"><r:t key="order.payment_charge"/></td>
+    <td class="order__items-total-price"><r:order:payment_charge/></td>
+    <td>&nbsp;</td>
+  </tr>
+</r:order:if_payment_charge>
+
+<r:order:if_tax>
+  <tr>
+    <td class="order__items-total-title" colspan="2"><r:t key="order.tax"/></td>
+    <td class="order__items-total-price"><r:order:total_tax/></td>
+    <td>&nbsp;</td>
+  </tr>
+</r:order:if_tax>
+
+<r:order:if_tip>
+  <tr>
+    <td class="order__items-total-title" colspan="2"><r:t key="order.tip"/></td>
+    <td class="order__items-total-price"><r:order:tip/></td>
+    <td>&nbsp;</td>
+  </tr>
+</r:order:if_tip>
+
+<tr class="order__items-order-total">
+  <td class="order__items-total-title" colspan="2"><r:t key="order.total"/><r:t key='colon'/></td>
+  <td class="order__items-total-price"><r:order:total/></td>
+  <td>&nbsp;</td>
+</tr>

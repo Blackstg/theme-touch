@@ -1,0 +1,20 @@
+<r:order_deals:if_not_empty>
+  <r:order_deals:each>
+    <tr>
+      <th colspan="3" class="deal_title"><r:order_deal:name/></th>
+    </tr>
+    <r:order_deal:each_order_item>
+      <tr class="deal_item">
+        <td class="qty"><r:order_item:quantity/></td>
+        <td class="item">
+          <r:order_item:name/>
+          <r:order_item:if_options><span><r:order_item:options/></span></r:order_item:if_options>
+        </td>
+        <td class="price"><r:order_item:subtotal/></td>
+      </tr>
+    </r:order_deal:each_order_item>
+    <tr>
+      <td class="delimiter" colspan="3">&nbsp;</td>
+    </tr>
+  </r:order_deals:each>
+</r:order_deals:if_not_empty>

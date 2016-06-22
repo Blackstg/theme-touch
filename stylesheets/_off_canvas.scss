@@ -1,0 +1,20 @@
+/***************************
+  Off canvas
+***************************/
+
+.off-canvas { width: 430px; display: block; position: fixed; top: 0; height: 100%; z-index: 3333; overflow-x: hidden; overflow-y: auto; }
+.off-canvas_open {}
+
+.off-canvas_left { left: -430px; right: auto; }
+
+.off-canvas_right { left: auto; right: -430px; position: static; width: auto; overflow: visible;}
+.off-canvas_right.off-canvas_open { position: fixed; width: 430px; max-width: 90%; overflow-x: hidden; overflow-y: auto; }
+
+.off-canvas__wrapper {}
+.off-canvas__content {}
+
+@media screen and (max-width: 52.5em) {
+  .off-canvas { max-width: 90%; }
+  .off-canvas_right .off-canvas__wrapper { display: none; }
+  .off-canvas_right.off-canvas_open .off-canvas__wrapper { display: block; }
+}

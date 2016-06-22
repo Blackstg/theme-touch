@@ -1,0 +1,47 @@
+<div class="dropdown-menu dropdown-menu_user">
+
+  <r:buyer:if_not_logged_in>
+    <div class="dropdown-menu__header">
+      <a class="dropdown-menu__header-link" href="/login">
+        <r:t key='login.login'/>
+        <i class="dropdown-menu__header-separator-icon"></i>
+        <r:t key='login.register'/>
+      </a>
+    </div>
+  </r:buyer:if_not_logged_in>
+
+  <r:buyer:if_logged_in>
+    <div class="dropdown-menu__header">
+      <a class="dropdown-menu__header-link" href="#" data-toggle="usermenu-drop-down">
+        <r:t key='login.welcome_back'/>,
+        <span class="first-name"><r:buyer:first_name/></span>
+        <i class="dropdown-menu__header-icon"></i>
+      </a>
+    </div>
+
+    <div class="dropdown-menu__body" id="usermenu-drop-down">
+      <ul class="dropdown-menu__items">
+        <li class="dropdown-menu__item">
+          <a class="dropdown-menu__item-link" href="/orders">
+            <r:t key='page.your_orders'/>
+          </a>
+        </li>
+        <li class="dropdown-menu__item">
+          <a class="dropdown-menu__item-link" href="/account">
+            <r:t key='page.your_account'/>
+          </a>
+        </li>
+        <li class="dropdown-menu__item">
+          <a class="dropdown-menu__item-link" href="#" onclick="$j('#logout_form').submit(); return false;">
+            <r:t key='login.logout'/>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <form id="logout_form" action="/buyers/do_logout" method="post" style="display:none;">
+      <input name="redirect_to" value="<r:shopping_page_url/>"/>
+    </form>
+  </r:buyer:if_logged_in>
+
+</div>

@@ -1,0 +1,53 @@
+<div id="popup" class="popup">
+  <a href="#" class="popup__close" onclick="Popup.close(); return false;">
+    <i class="popup__close-icon"></i>
+  </a>
+
+  <div class="popup__wrapper">
+    <form id="popup_form"
+          data-action="<r:basket:action/>"
+          data-key="<r:basket:key/>"
+          action="/">
+
+      <r:widget:show name="popup_deal_bag_top"/>
+
+      <fieldset class="popup-row">
+        <r:deal_basket_items:each>
+          <div class="popup-deal-line sku-part" data-deal-item>
+            <label class="popup-deal-line__label">
+              <r:deal_basket_item:label/>
+            </label>
+
+            <r:skus:if_single>
+              <r:widget:show name="popup_deal_bag_single"/>
+            </r:skus:if_single>
+
+            <r:skus:if_many>
+              <r:widget:show name="popup_deal_bag_many"/>
+            </r:skus:if_many>
+
+            <script type="text/javascript">
+              if (window.dealItemDetails === undefined) window.dealItemDetails = {};
+              window.dealItemDetails[<r:deal_bag:deal_line_number/>] = <r:ruby:show name="deal_item_details"/>;
+            </script>
+          </div>
+        </r:deal_basket_items:each>
+      </fieldset>
+
+      <div class="popup__buttons popup-buttons">
+        <a class="form-buttons__button"
+           onclick="if (! DealSelects.validate($j('#popup_form'))) return false; Popup.close(); Basket.action($j('#popup_form'), '<r:deal:js_escaped_name/>'); return false;">
+          <r:basket:if_create>
+            <r:t key='popup.continue'/>
+          </r:basket:if_create>
+          <r:basket:if_update>
+            <r:t key='popup.update'/>
+          </r:basket:if_update>
+        </a>
+        <a class="form-buttons__link" href="#" onclick="Popup.close(); return false">
+          <r:t key='navigation.cancel'/>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

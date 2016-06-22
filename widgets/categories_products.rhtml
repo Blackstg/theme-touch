@@ -1,0 +1,11 @@
+<div class="category__products">
+  <r:products:each deal_display='order_level,below_min_order'>
+    <r:product:if_not_deal>
+      <r:widget:show name="product"/>
+    </r:product:if_not_deal>
+
+    <r:product:if_deal>
+      <r:widget:show name="product_deal"/>
+    </r:product:if_deal>
+  </r:products:each>
+</div>

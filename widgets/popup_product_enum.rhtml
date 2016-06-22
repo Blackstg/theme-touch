@@ -1,0 +1,23 @@
+<fieldset class="popup-row popup-row_enum">
+  <h4 class="popup-row__title">
+    <r:option_list:name/>
+  </h4>
+
+  <ul class="popup-enum">
+    <r:options:each>
+      <li class="popup-enum__option">
+        <label class="popup-enum__label">
+          <input class="popup-enum__radio" name="<r:option_list:encode_key/>" value="<r:option:encode_value_for_enum/>" type="radio"
+                 data-option="<r:option:html_id/>"
+                 <r:option:if_selected>checked="checked"</r:option:if_selected> >
+          <span class="popup-enum__text">
+            <r:option:name/>
+            <r:option:if_price>
+              (<r:option:price explicit_sign="true"/>)
+            </r:option:if_price>
+          </span>
+        </label>
+      </li>
+    </r:options:each>
+  </ul>
+</fieldset>

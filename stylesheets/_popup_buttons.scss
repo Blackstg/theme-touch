@@ -1,0 +1,9 @@
+/***************************
+  Popup buttons
+***************************/
+
+.popup-buttons { @include clearfix; margin: 1em 0 0; }
+.popup-buttons__button { float: right; width: auto; display: inline-block; padding: .5em 1em; line-height: 1; cursor: pointer;
+  box-sizing: border-box; text-decoration: none; }
+.popup-buttons__button:hover { background-color: #555; }
+.popup-buttons__link { display: inline-block; line-height: 1; cursor: pointer; box-sizing: border-box; float: left; width: auto; padding: .8em 0; font-size: 1.6rem; }

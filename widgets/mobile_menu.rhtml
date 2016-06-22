@@ -1,0 +1,23 @@
+<div id="main-menu-ofc" class="off-canvas off-canvas_left">
+  <div class="off-canvas__wrapper">
+    <div class="off-canvas__content mobile-menu">
+
+      <div class="mobile-menu__header">
+        <a class="mobile-menu__close" href="#" onclick="$j.sidr('close','main-menu-ofc'); return false;">
+          <i class="mobile-menu__close-icon"></i>
+        </a>
+      </div>
+
+      <nav class="mobile-menu__content">
+        <ul>
+          <r:widget:show name='mobile_menu_user'/>
+          <r:widget:show name='mobile_menu_shop'/>
+          <r:widget:show name='mobile_menu_account'/>
+          <r:widget:show name='mobile_menu_categories'/>
+          <r:widget:show name='mobile_menu_additional'/>
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</div>

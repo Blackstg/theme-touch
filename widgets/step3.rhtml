@@ -1,0 +1,71 @@
+<r:widget:show name='step_navigation' />
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__side">
+      <div class="content__side-wrapper">
+        <r:widget:show name='step_side'/>
+      </div>
+    </div>
+
+    <div class="content__main">
+      <section class="content__main-wrapper">
+
+        <div class="checkout">
+          <r:form:buyer:errors/>
+
+          <form action="/orders/select_delivery" class="checkout__form checkout__form_delivery" method="post" name="delivery_form" onsubmit="return testPhoneNumber('phone_number');" >
+            <input type='hidden' name='redirect_to' value='/order_step4'/>
+
+            <section class="checkout__section" id="order_step_3">
+              <header class="checkout__header">
+                <r:delivery_methods:if_single_and_delivery><h2 class="checkout__title"><r:t key='checkout.delivery_title'/></h2></r:delivery_methods:if_single_and_delivery>
+                <r:delivery_methods:if_single_and_collection><h2 class="checkout__title"><r:t key='checkout.collection_title'/></h2></r:delivery_methods:if_single_and_collection>
+                <r:delivery_methods:if_single_and_eat_in><h2 class="checkout__title"><r:t key='checkout.eat_in_title'/></h2></r:delivery_methods:if_single_and_eat_in>
+                <r:delivery_methods:if_many><h2 class="checkout__title"><r:t key='delivery.choose_method'/></h2></r:delivery_methods:if_many>
+              </header>
+
+              <fieldset class="checkout__fieldset">
+                <r:delivery_methods:load_delivery>
+                  <r:widget:show name="step3_delivery_method"/>
+                </r:delivery_methods:load_delivery>
+
+                <r:delivery_methods:load_collection>
+                  <r:widget:show name="step3_delivery_method"/>
+                </r:delivery_methods:load_collection>
+
+                <r:delivery_methods:load_eat_in>
+                  <r:widget:show name="step3_delivery_method"/>
+                </r:delivery_methods:load_eat_in>
+              </fieldset>
+            </section>
+
+            <r:delivery_methods:load_delivery>
+              <section class="checkout__section" id="delivery_address" <r:delivery_method:if_not_selected>style="display:none"</r:delivery_method:if_not_selected>>
+                <header class="checkout__header">
+                  <h2 class="checkout__title"><r:t key='checkout.delivery_address'/></h2>
+                </header>
+                <fieldset class="checkout__fieldset">
+                  <r:buyer:load_from_session>
+                    <r:widget:show name="step3_address"/>
+                    <r:widget:show name="step3_address_extra"/>
+                  </r:buyer:load_from_session>
+                </fieldset>
+              </section>
+            </r:delivery_methods:load_delivery>
+
+            <footer class="checkout__footer">
+              <div class="form-buttons">
+                <button  class="form-buttons__button" type="submit"><r:t key='checkout.continue'/></button>
+                <a class="form-buttons__link" href="<r:shopping_page_url/>"><r:t key='navigation.back_to_menu'/></a>
+              </div>
+            </footer>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

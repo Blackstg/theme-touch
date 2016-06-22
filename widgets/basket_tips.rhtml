@@ -1,0 +1,17 @@
+<r:basket:if_delivery>
+  <r:shop:has_tips>
+    <div class="basket__footer-row basket__tip">
+      <h5 class="basket__tip-title">
+        <r:t key='basket.tip'/>
+      </h5>
+
+      <p class="basket__tip-details">
+        <strong class="tip_buttons">
+          <a onclick="Basket.decreaseTip('basket'); return false;" href="#" title="Remove tip">-</a>
+          <a onclick="Basket.increaseTip('basket'); return false;" href="#" title="Add tip">+</a>
+        </strong>
+        <span><r:basket:tip/></span>
+      </p>
+    </div>
+  </r:shop:has_tips>
+</r:basket:if_delivery>

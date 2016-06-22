@@ -1,0 +1,13 @@
+<r:if_production>
+  <r:buyer:if_not_kiosk>
+    <r:add_on:google_analytics:if_set>
+      <r:add_on:google_analytics:if_universal>
+        <r:widget:show name="add_on_google_analytics_universal"/>
+      </r:add_on:google_analytics:if_universal>
+
+      <r:add_on:google_analytics:if_not_universal>
+        <r:widget:show name="add_on_google_analytics_standard"/>
+      </r:add_on:google_analytics:if_not_universal>
+    </r:add_on:google_analytics:if_set>
+  </r:buyer:if_not_kiosk>
+</r:if_production>

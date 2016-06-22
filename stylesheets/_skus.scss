@@ -1,0 +1,57 @@
+/***************************
+  Skus
+***************************/
+
+.skus_item { margin-bottom: .3em; }
+
+.sku-part {}
+.skus_item .sku-part { padding-left: 40px; }
+.skus_item .sku-part + .sku-part { margin-top: .2em; }
+
+.sku-part__title { display: block; float: left; margin-left: -70px; font-weight: 700; }
+.skus_item .sku-part__title { margin-left: -40px; line-height: 24px; font-size: 1.3rem; }
+
+.sku-part__list { @include clearfix; }
+
+.sku-part__item { float: left; }
+.sku-part__label { display: block; position: relative;}
+.sku-part__radio { position: absolute; left: 50%; top: 0; }
+
+.sku-part__text { display: block; position: relative; text-align: center; cursor: pointer; overflow: hidden; }
+.skus_item .sku-part__text { height: 24px; line-height: 24px; font-size: 1.3rem; }
+
+.sku-part__radio:checked + .sku-part__text {}
+.sku-part__radio:disabled + .sku-part__text { cursor: default; }
+
+.sku-part__item:nth-last-child(6):first-child,
+.sku-part__item:nth-last-child(6):first-child ~ .sku-part__item { width: 16.66%; }
+.sku-part__item:nth-last-child(5):first-child,
+.sku-part__item:nth-last-child(5):first-child ~ .sku-part__item { width: 20%; }
+.sku-part__item:nth-last-child(4):first-child,
+.sku-part__item:nth-last-child(4):first-child ~ .sku-part__item { width: 25%; }
+.sku-part__item:nth-last-child(3):first-child,
+.sku-part__item:nth-last-child(3):first-child ~ .sku-part__item { width: 33.33%; }
+.sku-part__item:nth-last-child(2):first-child,
+.sku-part__item:nth-last-child(2):first-child ~ .sku-part__item { width: 50%; }
+
+.skus-summary { display: none; position: relative; float: right; padding-top: .15em; padding-right: 1.5em; text-decoration: none; cursor: pointer; }
+.skus-summary__icon { position: absolute; top: .2em; right: 0; }
+
+.skus-summary__list {}
+.skus-summary__item { display: inline-block; margin-left: .3em; font-size: 1.3rem; font-weight: 700; }
+.skus-summary__item .sku-part__name {}
+.skus-summary__item .sku-part__value {}
+
+.skus-mobile { display: none; margin: .5em 0; }
+.product__bottom.show-skus ~ .skus-mobile { display: block; }
+
+@media screen and (max-width: 52.5em) {
+  .skus_item-desktop { display: none; }
+  .skus-summary { display: block; }
+}
+
+// Customization
+.sku-part__text { background-color: #ddd; border-left: 1px solid #fff; }
+.sku-part__radio:checked + .sku-part__text { color: #fff; background-color: #212121; }
+.sku-part__radio:disabled + .sku-part__text { color: #fff; background-color: #555; }
+

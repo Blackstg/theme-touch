@@ -1,0 +1,162 @@
+<r:shop:if_address_constraint in='postal_codes'>
+  <div class="checkout-row" id="postal_code_dropdown">
+    <label class="checkout-row__label" for="city">
+      <r:t key='buyer.city'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <select name="postal_code_id" id='buyer_postal_code_id' data-nice-select>
+        <option></option>
+        <r:form:postal_codes_for_select/>
+      </select>
+    </div>
+  </div>
+
+  <div id="street_dropdown">
+    <div class="checkout-row">
+      <label class="checkout-row__label" for="street_id">
+        <r:t key='buyer.street_number'/><r:t key='colon'/>
+      </label>
+      <div class="checkout-row__group">
+        <input class="checkout-row__field-text auto-width" id="street_number" name="street_number" type="text" value="<r:buyer:street_number escape_quotes='true'/>" size="4">
+      </div>
+    </div>
+
+    <div class="checkout-row">
+      <label class="checkout-row__label" for="street_id">
+        <r:t key='buyer.street_name'/><r:t key='colon'/>
+      </label>
+      <div class="checkout-row__group">
+        <select name="street_id" id='buyer_street_id'></select>
+      </div>
+    </div>
+
+   <r:shop:has_buyer_field name='address_2'>
+     <div class="checkout-row">
+       <label class="checkout-row__label" for="street_extra">
+         <r:t key='buyer.street_extra'/><r:t key='colon'/>
+       </label>
+       <div class="checkout-row__group">
+         <input class="checkout-row__field-text" id="street_extra" name="street_extra" type="text" value="<r:buyer:address_2 escape_quotes='true'/>">
+       </div>
+     </div>
+   </r:shop:has_buyer_field>
+  </div>
+
+  <r:widget:show name="buyer_address_js"/>
+</r:shop:if_address_constraint>
+
+<div id="manual_address">
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="address_1">
+      <r:shop:has_buyer_field name='address_2'>
+        <r:t key='buyer.address_1'/><r:t key='colon'/>
+      </r:shop:has_buyer_field>
+
+      <r:shop:not_has_buyer_field name='address_2'>
+        <r:t key='buyer.address'/><r:t key='colon'/>
+      </r:shop:not_has_buyer_field>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="address_1" name="address_1" type="text" value="<r:buyer:address_1 escape_quotes='true'/>">
+    </div>
+  </div>
+
+  <r:shop:has_buyer_field name='address_2'>
+    <div class="checkout-row">
+      <label class="checkout-row__label" for="address_2">
+        <r:t key='buyer.address_2'/><r:t key='colon'/>
+      </label>
+      <div class="checkout-row__group">
+        <input class="checkout-row__field-text" id="address_2" name="address_2" type="text" value="<r:buyer:address_2 escape_quotes='true'/>">
+      </div>
+    </div>
+  </r:shop:has_buyer_field>
+</div>
+
+  <div class="checkout-row" id="building_unit_floor_door">
+    <div class="checkout-row__group-item checkout-row__group-item_atoms">
+
+  <r:shop:has_buyer_field name='unit'>
+    <span class="checkout-row__group-atom">
+      <label class="checkout-row__group-label checkout-row__group-label_atom checkout-row__label" for="unit">
+        <r:t key='buyer.unit'/><r:t key='colon'/>
+      </label>
+      <input id="unit" class="checkout-row__field-text small" name="unit" type="text" value="<r:buyer:unit escape_quotes='true'/>">
+    </span>
+  </r:shop:has_buyer_field>
+
+  <r:shop:has_buyer_field name='building,floor,door'>
+    <r:shop:has_buyer_field name='building'>
+      <span class="checkout-row__group-atom">
+        <label class="checkout-row__group-label checkout-row__group-label_atom" for="building">
+          <r:t key='buyer.building'/><r:t key='colon'/>
+        </label>
+        <input class="checkout-row__field-text small" id="building" name="building" type="text" value="<r:buyer:building escape_quotes='true'/>">
+      </span>
+    </r:shop:has_buyer_field>
+
+    <r:shop:has_buyer_field name='floor'>
+      <span class="checkout-row__group-atom">
+        <label class="checkout-row__group-label checkout-row__group-label_atom" for="floor">
+          <r:t key='buyer.floor'/><r:t key='colon'/>
+        </label>
+        <input class="checkout-row__field-text small" id="floor" name="floor" type="text" value="<r:buyer:floor escape_quotes='true'/>">
+      </span>
+    </r:shop:has_buyer_field>
+
+    <r:shop:has_buyer_field name='door'>
+      <span class="checkout-row__group-atom">
+        <label class="checkout-row__group-label checkout-row__group-label_atom" for="door">
+          <r:t key='buyer.door'/><r:t key='colon'/>
+        </label>
+        <input class="checkout-row__field-text small" id="door" name="door" type="text" value="<r:buyer:door escape_quotes='true'/>">
+      </span>
+    </r:shop:has_buyer_field>
+
+  </r:shop:has_buyer_field>
+  </div>
+</div>
+
+<r:shop:if_address_constraint not_in='postal_codes'>
+  <div id="postal_code_city_manual">
+    <r:shop:if_country in='GB'>
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="city">
+          <r:t key='buyer.city'/><r:t key='colon'/>
+        </label>
+        <div class="checkout-row__group">
+          <input class="checkout-row__field-text half" id="city" name="city" type="text" value="<r:buyer:city escape_quotes='true'/>">
+        </div>
+      </div>
+
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="postal_code">
+          <r:t key='buyer.postal_code'/><r:t key='colon'/>
+        </label>
+        <div class="checkout-row__group">
+          <input class="checkout-row__field-text half" id="postal_code" name="postal_code" type="text" value="<r:buyer:postal_code escape_quotes='true'/>">
+        </div>
+      </div>
+    </r:shop:if_country>
+
+    <r:shop:if_not_country in='GB'>
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="postal_code">
+          <r:t key='buyer.postal_code'/><r:t key='colon'/>
+        </label>
+        <div class="checkout-row__group">
+          <input class="checkout-row__field-text half" id="postal_code" name="postal_code" type="text" value="<r:buyer:postal_code escape_quotes='true'/>">
+        </div>
+      </div>
+
+      <div class="checkout-row">
+        <label class="checkout-row__label" for="city">
+          <r:t key='buyer.city'/><r:t key='colon'/>
+        </label>
+        <div class="checkout-row__group">
+          <input class="checkout-row__field-text" id="city" name="city" type="text" value="<r:buyer:city escape_quotes='true'/>">
+        </div>
+      </div>
+    </r:shop:if_not_country>
+  </div>
+</r:shop:if_address_constraint>

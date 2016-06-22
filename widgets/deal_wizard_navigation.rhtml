@@ -1,0 +1,11 @@
+<nav class="deal-wizard-navigation">
+  <ul class="deal-wizard-navigation__wrapper">
+    <r:deal_basket_items:each>
+      <li class="deal-wizard-navigation__tab">
+        <a href="deal-wizard-set-<r:deal_bag:deal_line_number/>" class="deal-wizard-navigation__link">
+          <span class="deal-wizard-navigation__title"><r:deal_basket_item:label/></span>
+        </a>
+      </li>
+    </r:deal_basket_items:each>
+  </ul>
+</nav>

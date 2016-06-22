@@ -1,0 +1,21 @@
+<r:order_items:each>
+  <tr>
+    <td class="qty">
+      <r:order_item:quantity/>
+    </td>
+    <td class="item">
+      <r:order_item:name/>
+      <r:order_item:if_options><span><r:order_item:options/></span></r:order_item:if_options>
+    </td>
+    <td class="price">
+      <r:order_item:if_not_points_spent>
+        <r:order_item:subtotal/>
+      </r:order_item:if_not_points_spent>
+
+      <r:order_item:if_points_spent>
+        <r:order_item:points_spent/>
+        <r:t key='order.points'/>
+      </r:order_item:if_points_spent>
+    </td>
+  </tr>
+</r:order_items:each>

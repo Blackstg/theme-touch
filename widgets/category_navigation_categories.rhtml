@@ -1,0 +1,11 @@
+# CACHED-RENDERING: page_url
+
+<r:category_tree:load>
+  <r:subcategories:each>
+    <li class="category-navigation__item<r:category:is_current request_parameter='id'> category-navigation__item_active</r:category:is_current>">
+      <a href="/categories/<r:product:handle/>" class="category-navigation__link">
+        <r:product:name/>
+      </a>
+    </li>
+  </r:subcategories:each>
+</r:category_tree:load>

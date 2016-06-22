@@ -1,0 +1,28 @@
+<r:buyer:if_not_logged_in>
+  <r:flash:must_be_logged_in/>
+  <r:force_redirect page='index'/>
+</r:buyer:if_not_logged_in>
+
+<r:buyer:if_logged_in>
+  <r:widget:show name='category_navigation'/>
+
+  <div class="content">
+    <div class="content__wrapper">
+      <div class="content__side">
+        <div class="content__side-wrapper">
+          <r:widget:show name="categories_side"/>
+        </div>
+      </div>
+
+      <div class="content__main">
+        <div class="content__main-wrapper">
+          <section class="category">
+            <r:widget:show name='favourites_header'/>
+            <r:widget:show name='favourites_products'/>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</r:buyer:if_logged_in>

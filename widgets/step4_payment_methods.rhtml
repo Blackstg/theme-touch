@@ -1,0 +1,9 @@
+<fieldset class="checkout__fieldset">
+  <r:payment_methods:each_online>
+    <r:widget:show name="step4_payment_method"/>
+  </r:payment_methods:each_online>
+
+  <r:payment_methods:each_on_delivery>
+    <r:widget:show name="step4_payment_method"/>
+  </r:payment_methods:each_on_delivery>
+</fieldset>

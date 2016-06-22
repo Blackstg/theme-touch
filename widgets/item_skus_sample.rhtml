@@ -1,0 +1,103 @@
+<div class="product">
+  <div class="product__wrapper">
+    <form  class="product__form">
+      <input name="quantity" value="1" type="hidden">
+
+      
+<!-- Desktop SKUS -->
+
+<!-- 1st SKUS set -->
+      <div class="skus skus_item skus_item-desktop">
+        <div class="sku-part clearfix">
+          <span class="sku-part__title">Size</span>
+          <ul class="sku-part__list" data-sku-part="0">
+            <li class="sku-part__item">
+              <label class="sku-part__label">
+                <input type="radio" class="sku-part__radio" name="size" value="medium" checked="checked">
+                <span class="sku-part__text">Medium</span>
+              </label>
+            </li>
+            <li class="sku-part__item">
+              <label class="sku-part__label">
+<!-- Disabled input sample -->
+                <input type="radio" class="sku-part__radio" name="size" value="large" disabled>
+                <span class="sku-part__text">Large</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+<!-- 2nd SKUS set -->
+        <div class="sku-part clearfix">
+          <span class="sku-part__title">Crust</span>
+          <ul class="sku-part__list" data-sku-part="1">
+            <li class="sku-part__item">
+              <label class="sku-part__label">
+                <input type="radio" class="sku-part__radio" name="crust" value="Classic" checked="checked">
+                <span class="sku-part__text">Classic</span>
+              </label>
+            </li>
+            <li class="sku-part__item">
+              <label class="sku-part__label">
+                <input type="radio" class="sku-part__radio" name="crust" value="Fine">
+                <span class="sku-part__text">Fine</span>
+              </label>
+            </li>
+            <li class="sku-part__item">
+              <label class="sku-part__label">
+                <input type="radio" class="sku-part__radio" name="crust" value="Stuffed">
+                <span class="sku-part__text">Stuffed</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+      </div> <!-- /skus skus_item -->
+
+<!-- END Desktop SKUS -->
+
+      <div class="product__picture-container">
+        <img class="product__picture" src="images/101.jpg">
+      </div>
+
+      <div class="product__top">
+        <h4 class="product__name">Product name goes here Lorem Ipsum</h4>
+        <div class="product__description">Trois ingrédients au choix + mozzarella, sauce tomate</div>
+      </div>
+
+<!-- Update: price & mobile SKUS wrapped into additional DIV (class=product__bottom) -->
+
+      <div class="product__bottom">
+
+        <div class="product__price">7.99&nbsp;€</div>
+
+        <a class="skus-summary skus-summary_clickable">
+          <i class="skus-summary__icon"></i>
+          <ul class="skus-summary__list">
+            <li class="skus-summary__item">
+              <span class="sku-part__name">Size:</span>
+              <span class="sku-part__value" data-mobile-sku-part="0">Large</span>
+            </li>
+            <li class="skus-summary__item">
+              <span class="sku-part__name">Base:</span>
+              <span class="sku-part__value" data-mobile-sku-part="1">Classic</span>
+            </li>
+          </ul>
+        </a>
+
+      </div>
+
+      <div class="skus-mobile"></div>
+
+      <div class="product__buttons">
+        <a href="#" class="product__customise">Customise</a>
+        <button class="product__add" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  $j(document).ready(function(){
+    MobileSkus.init();
+  });
+</script>

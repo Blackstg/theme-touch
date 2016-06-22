@@ -1,0 +1,11 @@
+# CACHED-RENDERING: page_url
+
+<r:category_tree:load>
+  <r:subcategories:each>
+    <li class="mobile-menu__item <r:category:is_current request_parameter='id'>mobile-menu__item_active</r:category:is_current>">
+      <a class="mobile-menu__item-link" href="/categories/<r:product:handle/>">
+        <r:product:name/>
+      </a>
+    </li>
+  </r:subcategories:each>
+</r:category_tree:load>

@@ -1,0 +1,30 @@
+<form action="/orders/create" method="post" id="ideal_form">
+  <input type="hidden" name="ie11_fix" value="1">
+  <div style="margin-left: 200px;">
+    <img src="/assets-images/ideal_logo.gif" alt="iDEAL"/><br/>
+    <select name="issuer_id" id="issuer_list">
+      <option value="" selected="selected">Kies uw bank...</option>
+      <r:payment_method:ideal_api:load_issuers>
+        <r:payment_method:ideal_api:short_issuers_each>
+          <option value='<r:payment_method:ideal_api:issuer_id/>'><r:payment_method:ideal_api:issuer_name/></option>
+        </r:payment_method:ideal_api:short_issuers_each>
+        <r:payment_method:ideal_api:if_short_and_long_issuers>
+          <option value="">---Overige banken---</option>
+        </r:payment_method:ideal_api:if_short_and_long_issuers>
+        <r:payment_method:ideal_api:long_issuers_each>
+          <option value='<r:payment_method:ideal_api:issuer_id/>'><r:payment_method:ideal_api:issuer_name/></option>
+        </r:payment_method:ideal_api:long_issuers_each>
+      </r:payment_method:ideal_api:load_issuers>
+    </select>
+    <input type="submit" id="ideal_submit" value="Ga naar betaling" onclick="$j('#ideal_form').submit();" style="display:none;"/>
+  </div>
+</form>
+
+<script type="text/javascript">
+  $j(document).ready(function () {
+    $j('#issuer_list').change(function() {
+      var selectedIssuerId = $j('#issuer_list option:selected').val();
+      $j('#ideal_submit').toggle(selectedIssuerId != '');
+    });
+  });
+</script>

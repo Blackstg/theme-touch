@@ -1,0 +1,11 @@
+/***************************
+  Popup row
+  (contains a set, an enum or a deal line)
+***************************/
+
+.popup-row { padding: 1em 0; clear: left; }
+.popup-row_enum {}
+.popup-row_set {}
+
+.popup-row__title { margin-bottom: .5em; font-size: 2rem; }
+.popup-row__description { margin-bottom: 1em; }

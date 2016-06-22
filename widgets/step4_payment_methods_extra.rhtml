@@ -1,0 +1,9 @@
+<r:payment_method:if_statement_address_required>
+  <div class="payment_method_extra payment_method_extra_<r:payment_method:id/>" style='display: none;'>
+    <r:widget:show name="step4_statement_address"/>
+  </div>
+</r:payment_method:if_statement_address_required>
+
+<script type="text/javascript">
+  step4PaymentMethodSelected('<r:payment_methods:load_selected><r:payment_method:id/></r:payment_methods:load_selected>');
+</script>

@@ -1,0 +1,19 @@
+<div id="cc_results"></div>
+
+<div class="cardsList">
+  <span><r:t key='payment.choose_card'/></span>
+
+  <r:payment_method:atos:cards:each>
+    <a href="#"
+       onclick="$j.ajax({
+                    url: '/orders/create',
+                    type: 'post',
+                    data: { cc_type: '<r:payment_method:atos:card:upcase_name/>' }
+                }).done(function(data) {
+                    $j('#cc_results').html(data);
+                });
+               return false;">
+      <img src="/assets-images/atos_<r:payment_method:atos:card:name/>.gif"/>
+    </a>
+  </r:payment_method:atos:cards:each>
+</div>

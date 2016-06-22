@@ -1,0 +1,17 @@
+<div class="checkout-variant">
+  <label class="checkout-variant__label">
+    <input type="radio" class="checkout-variant__radio"
+           value="<r:payment_method:id/>"
+           name="payment_method_id"
+           <r:payment_method:if_selected>checked="true"</r:payment_method:if_selected>
+           <r:payment_method:if_not_available>disabled</r:payment_method:if_not_available>
+           onclick="step4PaymentMethodSelected('<r:payment_method:id/>')"
+           />
+    <r:payment_method:name/>
+    <r:payment_method:if_payment_charge>(<r:payment_method:payment_charge/>)</r:payment_method:if_payment_charge>
+    <r:payment_method:if_available><r:payment_method:if_description><p class="checkout-variant__helper"><r:payment_method:description/></p></r:payment_method:if_description></r:payment_method:if_available>
+    <r:payment_method:if_not_available>
+      <p class="checkout-variant__helper"><r:t key='payment.unavailable_for_chosen_delivery_method'/></p>
+    </r:payment_method:if_not_available>
+  </label>
+</div>

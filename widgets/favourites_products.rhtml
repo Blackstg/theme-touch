@@ -1,0 +1,15 @@
+<div class="category__description category__no-favourite" <r:buyer_favourites:if_not_empty>style="display:none;"</r:buyer_favourites:if_not_empty>>
+  <r:t key='favourites.none_added_yet'/>
+</div>
+
+<div class="category__products">
+  <r:buyer_favourites:each>
+    <r:product:if_not_deal>
+      <r:widget:show name="product"/>
+    </r:product:if_not_deal>
+
+    <r:product:if_deal>
+      <r:widget:show name="product_deal"/>
+    </r:product:if_deal>
+  </r:buyer_favourites:each>
+</div>

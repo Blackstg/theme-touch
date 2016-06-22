@@ -1,0 +1,19 @@
+<script type="text/javascript">
+  NiceSelect.init();
+
+  $j(function() {
+    $j('.highlighted_item div, .highlighted_mobile_price').effect("highlight", {color: '#f9eeba'}, 1400);
+  });
+
+  <r:buyer:if_kiosk>
+    // Kiosk auto reset popup
+    var do_start = false;
+    <r:basket:if_not_empty>do_start = true;</r:basket:if_not_empty>
+    <r:basket:if_empty>if (! /categories/.exec(window.location)) do_start = true;</r:basket:if_empty>
+    if (do_start) {
+      startIdleCounter();
+    } else {
+      stopIdleCounter();
+    }
+  </r:buyer:if_kiosk>
+</script>

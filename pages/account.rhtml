@@ -1,0 +1,30 @@
+<r:widget:show name="account_navigation"/>
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <div class="checkout">
+          <section class="checkout__section" id="account_info">
+            <r:widget:show name="account_buyer"/>
+
+            <footer class="checkout__footer">
+              <div class="form-buttons">
+                <r:link_to_page name="edit_account" class="form-buttons__button">
+                  <r:t key='buyer.edit'/>
+                </r:link_to_page>
+                <r:link_to_page name="categories" class="form-buttons__link">
+                  <r:t key='navigation.back_to_menu'/>
+                </r:link_to_page>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+/***************************
+  Mobile menu
+***************************/
+
+.mobile-menu {}
+
+.mobile-menu__header { @include clearfix; padding: 1rem; color: #fff; background-color: #212121; }
+.mobile-menu__close { float: left; line-height: 1.2; text-decoration: none; }
+.mobile-menu__close-icon:before { margin-left: 0; }
+
+.mobile-menu__content {}
+
+.mobile-menu__section { display: block; }
+.mobile-menu__section-link { display: block; padding: 1.5rem 1rem 1.5rem 1.5rem; text-decoration: none; }
+.mobile-menu__section_has-submenu > .mobile-menu__section-link { }
+.mobile-menu__section_unfolded > .mobile-menu__section-link {}
+
+.mobile-menu__section_user { padding: 1.5rem 1rem 1.5rem 1.5rem; }
+.mobile-menu__section_user .name {}
+.mobile-menu__section_user .rewards-points {}
+.mobile-menu__section_user .points { font-weight: 700; }
+.mobile-menu__section_login {}
+.mobile-menu__section_active {}
+
+.mobile-menu__icon:before { content: '|'; padding-right: 3px; }
+.mobile-menu__section-icon { float: right; @include transform(0.2s ease-in-out); }
+
+/* Submenu */
+.mobile-menu__submenu { position: absolute; left: -100%; @include transform(scale(.5)); @include transform-origin(0 0); @include transition(all 0.1s ease); }
+.mobile-menu__section_unfolded .mobile-menu__submenu { position: relative; left: 0; @include transform(scale(1)); @include transition(all 0.15s ease); }
+
+.mobile-menu__item { display: block; }
+.mobile-menu__item-link { display: block; padding: 1.5rem 1rem 1.5rem 1.5rem; text-decoration: none; }
+.mobile-menu__item_active {}
+
+.mobile-menu__favourite-icon {}

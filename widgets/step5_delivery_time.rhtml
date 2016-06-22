@@ -1,0 +1,10 @@
+<r:basket:if_not_computed_delivery_time>
+  <r:t key='general.closed'/>
+</r:basket:if_not_computed_delivery_time>
+
+<r:basket:if_computed_delivery_time>
+  <r:basket:if_delivery><r:t key='checkout.expected_delivery_time'/><r:t key="colon"/></r:basket:if_delivery>
+  <r:basket:if_collection><r:t key='checkout.expected_collection_time'/><r:t key="colon"/></r:basket:if_collection>
+  <r:basket:if_eat_in><r:t key='checkout.expected_eat_in_time'/><r:t key="colon"/></r:basket:if_eat_in>
+  <r:basket:computed_delivery_time/>
+</r:basket:if_computed_delivery_time>

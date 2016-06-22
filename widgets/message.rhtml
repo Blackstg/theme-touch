@@ -1,0 +1,62 @@
+<div class="message message_info" id="fadeout-message">
+  <div class="message__wrapper">
+    <div class="message__content">
+    </div>
+  </div>
+</div>
+
+<r:flash:if_info>
+  <div class="message message_info" id="flash-info">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <r:flash:info/>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    Flash.showInfo();
+  </script>
+</r:flash:if_info>
+
+<r:flash:if_error>
+  <div class="message message_error">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <r:flash:error/>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    Flash.showError();
+  </script>
+</r:flash:if_error>
+
+<r:shop:if_emergency_mode>
+  <div class="message message_error message_persistent">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <strong>
+          <r:t key='top_message.important'/>
+        </strong>
+        <r:t key='top_message.emergency'/>
+        <span>
+          <a href="tel:<r:shop:phone/>">
+            <r:shop:phone/>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</r:shop:if_emergency_mode>
+
+<r:shop:if_closing_applicable>
+  <div class="message message_info message_persistent">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <strong><r:t key='top_message.important'/></strong>
+        <r:shop:closing_message/>
+      </div>
+    </div>
+  </div>
+</r:shop:if_closing_applicable>

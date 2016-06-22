@@ -1,0 +1,55 @@
+  <tr>
+    <td class="delimiter" colspan="3">&nbsp;</td>
+  </tr>
+<r:order:if_loyalty_discount>
+  <tr class="total">
+    <td class="title" colspan="2">
+      <r:t key='order.loyalty_discount'/>
+    </td>
+    <td class="price">-&nbsp;
+      <r:order:loyalty_discount/>
+    </td>
+  </tr>
+</r:order:if_loyalty_discount>
+
+<r:order:if_delivery_charge>
+  <tr class="total">
+    <td class="title" colspan="2">
+      <r:t key='order.delivery_charge'/>
+    </td>
+    <td class="price">
+      <r:order:delivery_charge/>
+    </td>
+  </tr>
+</r:order:if_delivery_charge>
+
+<r:order:if_payment_charge>
+  <tr class="total">
+    <td class="title" colspan="2">
+      <r:t key='order.payment_charge'/>
+    </td>
+    <td class="price">
+      <r:order:payment_charge/>
+    </td>
+  </tr>
+</r:order:if_payment_charge>
+
+<r:order:if_tax>
+  <tr class="total">
+    <td class="title" colspan="2">
+      <r:t key='order.tax'/>
+    </td>
+    <td class="price">
+      <r:order:total_tax/>
+    </td>
+  </tr>
+</r:order:if_tax>
+
+<tr class="total">
+  <td class="title" colspan="2">
+    <r:t key='order.total'/><r:t key='colon'/>
+  </td>
+  <td class="price">
+    <r:order:total/>
+  </td>
+</tr>

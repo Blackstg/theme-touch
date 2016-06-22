@@ -1,0 +1,13 @@
+<r:if_not_page matches='thank_you'>
+  <r:widget:show name='add_on_google_analytics'/>
+  <r:widget:show name='add_on_facebook_ads'/>
+</r:if_not_page>
+
+<r:if_page matches='thank_you'>
+  <r:order:load request_parameter="order_id">
+    <r:widget:show name='add_on_google_analytics_order'/>
+    <r:widget:show name='add_on_facebook_ads_order'/>
+  </r:order:load>
+</r:if_page>
+
+<r:widget:show name='scripts_head_additional'/>

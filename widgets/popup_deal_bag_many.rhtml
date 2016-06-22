@@ -1,0 +1,22 @@
+<select name="<r:deal_bag:encode_deal_item/>"
+        class="popup-deal-line__select"
+        data-nice-select>
+  <r:basket:if_create>
+    <option value='' selected="selected">
+      <r:t key='deal.empty_choice'/>
+    </option>
+    <r:deal_basket_item:options skip_selected="true" order="alphabetical"/>
+  </r:basket:if_create>
+
+  <r:basket:if_update>
+    <r:deal_basket_item:options order="alphabetical"/>
+  </r:basket:if_update>
+</select>
+
+<div class="popup-deal-line__details">
+  <div class="popup-deal-line__picture" data-deal-item-picture></div>
+
+  <div class="popup-deal-line__description" data-deal-item-description></div>
+
+  <r:widget:show name="popup_deal_item_options"/>
+</div>

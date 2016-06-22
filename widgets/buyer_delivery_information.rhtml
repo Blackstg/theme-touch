@@ -1,0 +1,15 @@
+<div>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="delivery_information">
+      <r:t key='buyer.delivery_info'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <textarea class="checkout-row__field-textarea" id="delivery_information" name="delivery_information"><r:buyer:delivery_information/></textarea>
+      <div class="checkout-row__group-item checkout-row__group-item_helper">
+        <span class="form_label_hint">
+          <r:t key='buyer.delivery_information_hint'/> <r:widget:show name="delivery_information_maxlength"/>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

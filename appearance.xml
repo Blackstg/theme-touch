@@ -1,0 +1,43 @@
+<appearance>
+  <layouts>
+    <page name="*" layout="touch"/>
+    <page name="basket" layout=""/>
+    <page name="closed" layout=""/>
+    <page name="favourites_reset" layout=""/>
+    <page name="pending_closure" layout=""/>
+    <page name="popup_deal" layout=""/>
+    <page name="popup_deal_item" layout=""/>
+    <page name="deal_wizard_popup" layout=""/>
+    <page name="popup_item" layout=""/>
+    <page name="print_order" layout=""/>
+    <page name="robots.txt" layout=""/>
+    <page name="step_basket" layout=""/>
+  </layouts>
+
+  <parameters>
+    <parameter name='homepage'/>
+    <parameter name='homepage_title'/>
+    <parameter name='homepage_content'/>
+    <parameter name='homepage_slideshow'>
+      <max_width>1200</max_width>
+    </parameter>
+
+    <parameter name='additional_info'/>
+    <parameter name='opening_times'/>
+    <parameter name='title'/>
+    <parameter name='top_links'/>
+    <parameter name='footer_links'/>
+    <parameter name='important_message'/>
+
+    <parameter name='shopping_page_url'/>
+    <parameter name='index_redirection_url'/>
+    <parameter name='banner_redirection_url'/>
+
+    <parameter name='meta_description'/>
+    <parameter name='meta_keywords'/>
+  </parameters>
+
+  <tags>
+    <tag name="force_customisation"/>
+  </tags>
+</appearance>

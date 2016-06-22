@@ -1,0 +1,93 @@
+<r:order:load request_parameter="id">
+
+<style media="all" type="text/css">
+    body { color:#000; font-size:16px; font-family: Arial,sans-serif; background-color: #fff; }
+    .receipt {width:30em}
+    h2, h3 {margin: 0; padding: 5px 0; font-size:1.4em; color:#000; }
+    h2 {display:block;float:right; margin: 0; width: 50%; text-align:right}
+    h3 { font-size:1.2em; text-transform:uppercase; font-weight:normal;}
+
+    .order_info { margin:0; padding:0; list-style:none; }
+    .order_info span { display:inline-block; padding-right:10px; width: 7em; font-size: 0.9em; font-weight:bold;}
+
+    .buyer_info {margin: 10px 0; padding: 10px 0 0 0; border-top: 1px solid #bbb; }
+    .buyer_info.border_bottom {margin-bottom:10px; padding-bottom: 10px; border-bottom: 1px solid #bbb; }
+    .buyer_info p { margin:0; padding:0; line-height:normal; font-size_:.9em; }
+
+    .delivery_info { text-align: center; text-transform: uppercase; font-weight: bold; line-height: 1.4; }
+    .delivery_info p { line-height: inherit; }
+    .delivery_info .message { font-weight: normal; text-transform: none; }
+
+    table { margin-top: 1.5em; border-collapse:collapse; width:100%;}
+    th, td { padding: 3px; text-align:left; vertical-align: top; }
+    th { font-size: 0.86em; font-weight: normal; }
+    td { padding: 3px; }
+    th.item { width:70%; }
+    th.qty { width:15%; text-align: center; }
+    th.price { width:15%; }
+    td span { display: block; margin-left:5px; font-size: 0.76em; }
+    td span:before { content:'+'; display: inline-block; margin-right:3px; }
+    .qty { text-align: center; }
+    .price { text-align:right; }
+    .title {}
+    .delimiter { font-size: 0; border-top: 1px solid #bbb; }
+
+    .deal_title { text-align: center; font-weight: bold; font-style: italic; border-bottom: 1px solid #bbb; }
+    .deal_item { font-style: italic; }
+    .deal_item .qty { font-style: normal; }
+    .total.border td { border-top:1px solid #bbb; }
+    .total .title { }
+  </style>
+
+  <div class="receipt">
+    <h2><r:shop:name/></h2>
+    <h3><r:t key='order.receipt'/></h3>
+
+    <div class="buyer_info">
+      <ul class="order_info">
+        <li><span><r:t key='order.reference'/>:</span> <r:order:ref/></li>
+        <li><span><r:t key='order.time'/>:</span> <r:order:created_at/></li>
+      </ul>
+    </div>
+
+    <div class="buyer_info">
+      <p><r:shop:name/></p>
+      <p><r:shop:address/></p>
+      <p><r:shop:city/></p>
+      <p><r:shop:phone/></p>
+    </div>
+
+    <div class="buyer_info">
+      <p><r:buyer:full_name/></p>
+      <p><r:buyer:email/></p>
+      <p><r:buyer:phone_number/></p>
+      <p><r:buyer:address_1/><br /><r:buyer:address_2/></p>
+      <p><r:buyer:postal_code/>, <r:buyer:city/></p>
+    </div>
+
+<!-- HARDCODED -->
+    <div class="buyer_info">
+      <p>Expected delivery time: 19:11 (ASAP)</p>
+    </div>
+
+    <div class="buyer_info delivery_info border_bottom">
+      <p>Delivery</p>
+      <p>19:11</p>
+      <p>PAYPAL</p>
+      <p class="message">Thanks for your order!</p>
+    </div>
+<!-- END HARDCODED -->
+
+    <table>
+      <tr>
+        <th class="qty"><r:t key='order_item.quantity'/></th>
+        <th class="item"><r:t key='order_item.name'/></th>
+        <th class="price"><r:t key='order_item.price'/></th>
+      </tr>
+      <r:widget:show name="print_order_deals"/>
+      <r:widget:show name="print_order_items"/>
+      <r:widget:show name="print_order_footer"/>
+    </table>
+  </div>
+
+</r:order:load>

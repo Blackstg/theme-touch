@@ -1,0 +1,22 @@
+/***************************
+  Checkout variant
+***************************/
+
+.checkout-variant {}
+.checkout-variant + .checkout-variant { margin-top: 1em; }
+
+.checkout-variant__label { line-height: 1; }
+.checkout-variant__info { margin-top: .5em; }
+
+.checkout-variant__radio:checked ~ .checkout-variant__text { font-weight: 700; }
+
+.checkout-variant__select { @include clearfix; margin-top: .7em; padding-left: 190px; }
+.checkout-variant__select-label { float: left; margin-left: -190px; margin-top:.2em; }
+.checkout-variant__select-set { @include clearfix; }
+.checkout-variant__select-set select,
+.checkout-variant__select-set .nice-select { margin: 0 .3em .5em 0; max-width:100%; }
+
+@media screen and (max-width: 28em) {
+  .checkout-variant__select { padding-left: 0; }
+  .checkout-variant__select-label { float: none; display: block; margin: 0 0 .2em; }
+}

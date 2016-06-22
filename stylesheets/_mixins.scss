@@ -1,0 +1,61 @@
+// Layout
+@mixin clearfix {
+  &:before { display: table; content: ""; }
+  &:after { display: table; content: ""; clear: both; }
+}
+
+@mixin wrapper {
+  @include clearfix;
+  margin: 0 auto; max-width: 1200px; width: 96%;
+}
+
+// Fonts
+@mixin set-font($font-family, $font-size, $color: null, $font-weight: null, $text-transform: null) {
+  font-size: $font-size;
+  font-family: $font-family;
+  @if $color != null {
+    color: $color;
+  }
+  @if $font-weight != null {
+    font-weight: $font-weight;
+  }
+  @if $text-transform != null {
+    text-transform: $text-transform;
+  }
+}
+
+// Button
+@mixin button($color, $background-color, $hover-color, $hover-background-color, $padding: null, $border-radius: null) {
+  color: $color;
+  background-color: $background-color;
+  border: none;
+  @if $padding {
+    padding: $padding;
+  }
+  @if $border-radius {
+    border-radius: $border-radius;
+  }
+  &:hover {
+    color: $hover-color;
+    background-color: $hover-background-color;
+  }
+}
+
+// Transitions
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -ms-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform-origin($transform-origin) {
+  -webkit-transform-origin: $transform-origin;
+  -ms-transform-origin: $transform-origin;
+  transform-origin: $transform-origin;
+}
+
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}

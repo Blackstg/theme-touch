@@ -1,0 +1,13 @@
+<div id="cc_results"></div>
+
+<button class="form-buttons__button"
+        onclick="
+          $j.ajax({
+            url: '/orders/create',
+            type: 'post'
+          }).done(function(data) {
+            $j('#cc_results').html(data);
+          });
+          return false;">
+  <r:t key='confirmation.button_pay'/>
+</button>

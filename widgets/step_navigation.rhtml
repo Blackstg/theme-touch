@@ -1,0 +1,52 @@
+<nav class="checkout-navigation checkout-navigation_checkout">
+  <div class="checkout-navigation__wrapper">
+    <ul class="checkout-navigation__list">
+      <li id="step2" class="checkout-navigation__item <r:if_page matches="order_step2">checkout-navigation__item_active</r:if_page>">
+        <span class="checkout-navigation__item-nb">1</span>
+        <span class="checkout-navigation__item-title"><r:t key='page.account'/></span>
+      </li>
+
+      <li id="step3" class="checkout-navigation__item <r:if_page matches="order_step3">checkout-navigation__item_active</r:if_page>">
+        <span class="checkout-navigation__item-nb">2</span>
+        <span class="checkout-navigation__item-title">
+          <r:delivery_methods:if_single_and_delivery>
+            <r:t key='checkout.steps.delivery'/>
+          </r:delivery_methods:if_single_and_delivery>
+          <r:delivery_methods:if_single_and_collection>
+            <r:t key='checkout.steps.collection'/>
+          </r:delivery_methods:if_single_and_collection>
+          <r:delivery_methods:if_single_and_eat_in>
+            <r:t key='checkout.steps.eat_in'/>
+          </r:delivery_methods:if_single_and_eat_in>
+          <r:delivery_methods:if_many>
+            <r:t key='checkout.steps.delivery'/>
+          </r:delivery_methods:if_many>
+        </span>
+      </li>
+
+      <r:shop:has_payment_step>
+        <li id="step4" class="checkout-navigation__item <r:if_page matches="order_step4">checkout-navigation__item_active</r:if_page>">
+          <span class="checkout-navigation__item-nb">3</span>
+          <span class="checkout-navigation__item-title">
+            <r:payment_methods:if_not_single>
+              <r:t key='checkout.steps.payment'/>
+            </r:payment_methods:if_not_single>
+            <r:payment_methods:if_single>
+              <r:t key='checkout.steps.loyalty'/>
+            </r:payment_methods:if_single>
+          </span>
+        </li>
+      </r:shop:has_payment_step>
+
+      <li id="step5" class="checkout-navigation__item <r:if_page matches="order_step5">checkout-navigation__item_active</r:if_page>">
+        <span class="checkout-navigation__item-nb">
+          <r:shop:has_payment_step>4</r:shop:has_payment_step>
+          <r:shop:has_no_payment_step>3</r:shop:has_no_payment_step>
+        </span>
+        <span class="checkout-navigation__item-title">
+          <r:t key='checkout.steps.confirmation'/>
+        </span>
+      </li>
+    </ul>
+  </div>
+</nav>

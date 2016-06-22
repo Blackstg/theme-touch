@@ -1,0 +1,60 @@
+/***************************
+  Order
+***************************/
+
+/* <<<>>> */
+/* TODO */
+.orders-points-balance {}
+.orders-description {}
+.order-disabled-message {}
+.order-list { margin-top: 1.5em; }
+/* <<<>>> */
+
+.order { margin-bottom: 1.2em; }
+.order__brief { @include clearfix; cursor: pointer; }
+.order__brief.active { font-weight: 700; }
+
+.order__brief li { display: inline-block; margin: 0 1em .5em 0; }
+
+.order__date {}
+.order__state {}
+.order__state_new {}
+.order__show {}
+.order__print {}
+
+.order__details { display: none; margin: 1em 0 2em; }
+.order__brief.active + .order__details { display: block; }
+
+.order__button { padding: .7em 1em; cursor: pointer; font-size: 1.4rem; line-height: 1; }
+.order__button:hover {}
+
+.order__items .order__button { margin-bottom: .2em; }
+
+  /* Order repeat button */
+.order__repeat {}
+.order__repeat .order__button { float: left; }
+.order__repeat-label { float: left; margin: .15em 0 0 1em; cursor: pointer; }
+.order__repeat-chkbox {}
+.order__repeat-label-text {}
+
+/* Order items */
+.order__items-container { margin-top: 1em; }
+
+.order__items { width: 100%; font-size: 1.4rem; border: 1px solid #ccc; }
+.order__items th { padding: .3em; font-size: 1.5rem; }
+.order__items td { padding: .15em .2em; vertical-align: top; }
+.order__items tr td:first-child { padding-left: .5em; }
+.order__items-attribute { display: block; font-size: 1.3rem; font-style: italic; }
+.order__items-attribute:before { content: '- '; }
+.order__items-price { font-weight: 600; text-align: right; }
+.order__items tr .order__items-add { padding-right: .5em; width: 65px; text-align: right; }
+
+.order__items-deal tr { background-color: #efefef; }
+.order__items-deal-title th { background-color: #ccc; border-bottom: 1px solid #ccc; }
+
+.order__items-footer { border-top: 1px solid #ccc; }
+.order__items-total-title,
+.order__items-total-price { font-size: 1.5rem; text-align: right; }
+.order__items-order-total { font-weight: 700; }
+
+.order__info { margin-top: .7em; font-weight: 700; }

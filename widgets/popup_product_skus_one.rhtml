@@ -1,0 +1,15 @@
+<r:product:if_multi_sku>
+  <r:sku_parts:each>
+    <div class="popup-group__line sku-part">
+      <label class="popup-group__label">
+        <r:sku_part:label/>
+      </label>
+
+      <r:sku_part_values:each>
+        <span>
+          <r:sku_part_value:name/>
+        </span>
+      </r:sku_part_values:each>
+    </div>
+  </r:sku_parts:each>
+</r:product:if_multi_sku>

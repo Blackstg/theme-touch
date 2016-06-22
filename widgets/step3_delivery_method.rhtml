@@ -1,0 +1,25 @@
+<div class="checkout-variant">
+  <label class="checkout-variant__label">
+    <r:delivery_methods:if_single>
+      <input type='hidden' name='delivery_method' value='<r:delivery_method:type />'>
+    </r:delivery_methods:if_single>
+
+    <r:delivery_methods:if_many>
+      <input type='radio' name='delivery_method' class="checkout-variant__radio"
+        onclick='Page.changeDeliveryMethodInStepBasket("<r:delivery_method:type/>"); $j("#delivery_address").<r:delivery_method:if_delivery>show()</r:delivery_method:if_delivery><r:delivery_method:if_not_delivery>hide()</r:delivery_method:if_not_delivery>; ft_fix.set_height();'
+        value='<r:delivery_method:type />'
+        <r:delivery_method:if_selected>checked="checked"</r:delivery_method:if_selected>
+      >
+      <span class="checkout-variant__text"><r:delivery_method:label/></span>
+    </r:delivery_methods:if_many>
+  </label>
+
+  <r:widget:show name="step3_delivery_method_time"/>
+
+  <div class="checkout-variant__info">
+    <p><r:delivery_method:description/></p>
+    <p><r:ruby:show name="step3_delivery_method_charge"/></p>
+  </div>
+
+  <r:widget:show name="step3_below_delivery_method_charge"/>
+</div>

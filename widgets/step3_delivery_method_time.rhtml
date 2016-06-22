@@ -1,0 +1,55 @@
+<div class="checkout-variant__select">
+  <label class="checkout-variant__select-label" for='<r:delivery_method:type/>_order_time'>
+    <r:delivery_method:if_delivery>
+      <r:t key='checkout.expected_delivery_time'/><r:t key='colon'/>
+    </r:delivery_method:if_delivery>
+
+    <r:delivery_method:if_collection>
+      <r:t key='checkout.expected_collection_time'/><r:t key='colon'/>
+    </r:delivery_method:if_collection>
+
+    <r:delivery_method:if_eat_in>
+      <r:t key='checkout.expected_eat_in_time'/><r:t key='colon'/>
+    </r:delivery_method:if_eat_in>
+  </label>
+
+  <div class="checkout-variant__select-set">
+    <r:order_times:if_not_advanced_orders>
+      <input type="hidden" name="<r:delivery_method:type/>_order_day" value="<r:order_times:days:today_value/>">
+    </r:order_times:if_not_advanced_orders>
+
+    <r:order_times:if_advanced_orders>
+      <select name="<r:delivery_method:type/>_order_day" id="<r:delivery_method:type/>_order_day" data-nice-select
+              onchange="Page.changeDateAndDeliveryMethod($j('#<r:delivery_method:type/>_order_day option:selected').val(), '<r:delivery_method:type/>');"
+              onfocus="step3SelectRadio($j(this));">
+        <r:order_times:days:each delivery_method="stack">
+          <option value="<r:order_times:day:value/>"
+              <r:order_times:day:if_selected>selected="selected"</r:order_times:day:if_selected>
+              <r:order_times:day:if_disabled>disabled="disabled"</r:order_times:day:if_disabled> >
+            <r:order_times:day:label/>
+          </option>
+        </r:order_times:days:each>
+      </select>
+    </r:order_times:if_advanced_orders>
+
+    <select name="<r:delivery_method:type/>_order_time" data-nice-select
+            id="<r:delivery_method:type/>_order_time"
+            onfocus="step3SelectRadio($j(this));">
+      <r:order_times:times:if_empty>
+        <option value="">
+          <r:t key='general.closed'/>
+        </option>
+      </r:order_times:times:if_empty>
+
+      <r:order_times:times:if_not_empty>
+        <r:order_times:times:each delivery_method="stack">
+          <option value="<r:order_times:time:value/>"
+          <r:order_times:time:if_selected>selected="selected"</r:order_times:time:if_selected>
+          >
+          <r:order_times:time:label/>
+          </option>
+        </r:order_times:times:each>
+      </r:order_times:times:if_not_empty>
+    </select>
+  </div> <!-- /checkout-variant__select-set -->
+</div>

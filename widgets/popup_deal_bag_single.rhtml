@@ -1,0 +1,23 @@
+<r:skus:each>
+  <span class="popup-deal-line__single-option">
+    <r:sku:option_text/>
+  </span>
+
+  <input type="hidden" name="<r:deal_bag:encode_deal_item/>" value="<r:sku:id/>"/>
+
+  <div class="popup-deal-line__details">
+    <r:product:if_thumbnail>
+      <div class="popup-deal-line__picture">
+        <r:product:thumbnail/>
+      </div>
+    </r:product:if_thumbnail>
+
+    <r:widget:show name="popup_deal_item_options"/>
+
+    <r:product:if_description>
+      <div class="popup-deal-line__description">
+        <r:product:description/>
+      </div>
+    </r:product:if_description>
+  </div>
+</r:skus:each>

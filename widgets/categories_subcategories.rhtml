@@ -1,0 +1,10 @@
+<r:subcategories:each>
+  <r:category:if_not_empty>
+    <div class="category__subcategory">
+      <h3 class="category__subcategory-title"><r:product:name/></h3>
+      <r:product:if_description><div class="category__description"><r:product:description/></div></r:product:if_description>
+      <r:widget:show name='categories_products'/>
+      <r:widget:show name='categories_subcategories'/>
+    </div>
+  </r:category:if_not_empty>
+</r:subcategories:each>

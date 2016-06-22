@@ -1,0 +1,14 @@
+<h5 class="confirm-section__title">
+  <r:delivery_methods:selected_if_collection><r:t key='checkout.collection_details'/><r:t key="colon"/></r:delivery_methods:selected_if_collection>
+  <r:delivery_methods:selected_if_eat_in><r:t key='checkout.eat_in_details'/><r:t key="colon"/></r:delivery_methods:selected_if_eat_in>
+</h5>
+
+<div class="confirm-section__content">
+  <p>
+    <r:shop:name/><br/>
+    <r:shop:address/><br/>
+    <r:shop:if_country in='GB'><r:shop:city/>, <r:shop:postal_code/></r:shop:if_country>
+    <r:shop:if_not_country in='GB'><r:shop:postal_code/> - <r:shop:city/></r:shop:if_not_country>
+  </p>
+  <p><r:delivery_methods:load_selected><r:delivery_method:details/></r:delivery_methods:load_selected></p>
+</div>

@@ -1,0 +1,6 @@
+<script type="text/javascript">
+  $j('form[name=delivery_form]').bind('submit', function (e) {
+    $j('#place_order').html("<r:t key='confirmation.please_wait'/>");
+    $j('#place_order').attr('disabled', true);
+  });
+</script>

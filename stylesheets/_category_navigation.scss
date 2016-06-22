@@ -1,0 +1,19 @@
+/***************************
+  Category navigation
+***************************/
+
+.category-navigation { @include clearfix; }
+
+.category-navigation__wrapper { @include wrapper; }
+.category-navigation__list { @include clearfix; }
+
+.category-navigation__item { display: inline-block; }
+.category-navigation__link { display: inline-block; padding: 1em 1.5em; text-decoration: none; }
+.category-navigation__item_active .category-navigation__link {}
+
+.category-navigation__item_favourites {}
+.category-navigation__favourite-icon {}
+
+@media screen and (max-width: 52.5em) {
+  .category-navigation { display: none; }
+}

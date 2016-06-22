@@ -1,0 +1,14 @@
+<r:option_lists:each_enum>
+  <r:widget:show name="popup_product_enum"/>
+</r:option_lists:each_enum>
+
+<r:option_lists:each_set>
+  <r:widget:show name="popup_product_set"/>
+</r:option_lists:each_set>
+
+<r:sides:each>
+  <r:widget:show name="popup_product_enum_multiside"/>
+  <r:option_lists:each_set>
+    <r:widget:show name="popup_product_set_multiside"/>
+  </r:option_lists:each_set>
+</r:sides:each>

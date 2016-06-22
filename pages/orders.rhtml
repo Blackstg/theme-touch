@@ -1,0 +1,79 @@
+<r:buyer:if_not_logged_in>
+  <r:flash:must_be_logged_in/>
+  <r:force_redirect page='index'/>
+</r:buyer:if_not_logged_in>
+
+<r:buyer:if_logged_in>
+  <r:widget:show name="account_navigation"/>
+
+  <div class="content">
+    <div class="content__wrapper">
+
+      <div class="content__side">
+        <div class="content__side-wrapper">
+          <r:widget:show name="categories_side"/>
+        </div>
+      </div>
+
+      <div class="content__main">
+        <div class="content__main-wrapper">
+          <section class="settings-section settings-section_orders" id="account_orders_section">
+            <header class="checkout__header">
+              <h2 class="checkout__title"><r:t key='page.your_orders'/></h2>
+            </header>
+            <r:widget:show name="orders_points"/>
+
+            <r:orders:if_empty nb_months="12">
+              <p class="orders-description">
+                <r:t key='orders.no_order'/>
+              </p>
+            </r:orders:if_empty>
+
+            <r:orders:if_not_empty nb_months="12">
+              <p class="orders-description">
+                <r:t key='orders.will_be_displayed_for_12m'/>
+              </p>
+              <div class="order-list">
+                <r:orders:each nb_months="12">
+                  <r:widget:show name="orders_order"/>
+                </r:orders:each>
+              </div> <!-- /.order_list -->
+            </r:orders:if_not_empty>
+
+            <footer class="checkout__footer">
+              <div class="form-buttons">
+                <r:link_to_page name="categories" class="form-buttons__link"><r:t key='navigation.back_to_menu'/></r:link_to_page>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <r:shop:has_no_online_transactions>
+    <r:widget:show name="orders_ordering_disabled_message"/>
+  </r:shop:has_no_online_transactions>
+
+</r:buyer:if_logged_in>
+
+<script type="text/javascript">
+  $j(document).ready(function() {
+    $j('.order__brief li[class!="order__print"]').click(function() {
+      var parent = $j(this).closest('.order__brief');
+      if (parent.hasClass('active')) {
+        parent.removeClass('active');
+      } else {
+        $j('.order__brief.active').removeClass('active');
+        parent.addClass('active');
+      }
+      ft_fix.set_height();
+      return false;
+    });
+// Disable ordering if transaction off
+    <r:shop:has_no_online_transactions>
+      touch_disable_order();
+    </r:shop:has_no_online_transactions>
+  });
+</script>

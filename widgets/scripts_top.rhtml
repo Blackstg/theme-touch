@@ -1,0 +1,16 @@
+<r:if_not_page matches='thank_you'>
+  <r:widget:show name='add_on_google_tag_manager'/>
+</r:if_not_page>
+
+<r:if_page matches='thank_you'>
+  <r:order:load request_parameter="order_id">
+    <r:widget:show name='add_on_google_tag_manager_order'/>
+    <r:widget:show name='add_on_google_tag_manager'/>
+  </r:order:load>
+</r:if_page>
+
+<r:add_on:facebook_login:if_set>
+  <script type="text/javascript">
+    window.facebook_login_app_id = "<r:add_on:facebook_login:app_id/>";
+  </script>
+</r:add_on:facebook_login:if_set>

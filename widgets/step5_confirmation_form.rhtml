@@ -1,0 +1,23 @@
+<r:payment_methods:load_selected>
+  <r:payment_method:if_method_type in="cmcic,paybox_system,paypal,systempay,ingenico_basic,worldpay">
+    <r:widget:show name="step5_confirm_cc_ajax"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="datacash,iridium,mercury,payline,payplug,spplus">
+    <r:widget:show name="step5_confirm_cc"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="atos">
+    <r:widget:show name="step5_confirm_atos"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="ideal_api">
+    <r:widget:show name="step5_confirm_ideal_api"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="ideal_easy,ideal_only_kassa">
+    <r:widget:show name="step5_confirm_ideal_form"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="on_delivery">
+    <r:widget:show name="step5_confirm_on_delivery"/>
+  </r:payment_method:if_method_type>
+  <r:payment_method:if_method_type in="ingenico_direct_link">
+    <r:widget:show name="step5_confirm_ingenico_direct_link"/>
+  </r:payment_method:if_method_type>
+</r:payment_methods:load_selected>

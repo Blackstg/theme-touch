@@ -1,0 +1,27 @@
+<div class="popup__top">
+  <r:product:if_picture>
+    <div class="popup__picture">
+      <r:product:picture/>
+    </div>
+  </r:product:if_picture>
+
+  <div class="popup__header">
+    <h3 class="popup__title">
+      <r:product:name/>
+    </h3>
+
+    <r:basket:if_item>
+      <r:product:if_not_multiside>
+        <div class="popup__price">
+          <span data-product-price><r:basket_item:price/></span>
+        </div>
+      </r:product:if_not_multiside>
+    </r:basket:if_item>
+  </div>
+
+  <r:product:if_description>
+    <div class="popup__description">
+      <r:product:description/>
+    </div>
+  </r:product:if_description>
+</div>

@@ -1,0 +1,161 @@
+<p class="checkout__description">
+  <r:t key='checkout.click_and_review'/>
+</p>
+
+<r:payment_method:ingenico:if_save_card>
+  <r:widget:show name="step4_ingenico_saved_cards"/>
+</r:payment_method:ingenico:if_save_card>
+
+<div class="checkout__fieldset" id="ingenico_form">
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="ingenico_direct_link_card_brand"><r:t key='card.brand'/><r:t key='colon'/></label>
+    <div class="checkout-row__group">
+      <select id="ingenico_direct_link_card_brand">
+        <option value="VISA">Visa</option>
+        <option value="MASTERCARD">Master Card</option>
+        <option value="MAESTRO">Maestro</option>
+      </select>
+    </div>
+  </div>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="ingenico_direct_link_card_number"><r:t key='card.number'/><r:t key='colon'/></label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="ingenico_direct_link_card_number" type="text" autocomplete="off"/>
+    </div>
+  </div>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="ingenico_direct_link_cardholder_name"><r:t key='card.holder_name'/><r:t key='colon'/></label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="ingenico_direct_link_cardholder_name" type="text" autocomplete="off"/>
+    </div>
+  </div>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="ingenico_direct_link_expiry"><r:t key='card.expiry'/><r:t key='colon'/></label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text auto-width" placeholder="MM/YY" id="ingenico_direct_link_expiry" type="text" maxlength="5" autocomplete="off"/>
+    </div>
+  </div>
+  <div class="checkout-row">
+    <label class="checkout-row__label" for="ingenico_direct_link_cv_code"><r:t key='card.cv2_code'/><r:t key='colon'/></label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text auto-width" placeholder="XXX" id="ingenico_direct_link_cv_code" type="text" maxlength="6" autocomplete="off">
+    </div>
+  </div>
+  <r:payment_method:ingenico:if_save_card>
+    <div class="checkout-row">
+      <label class="checkout-row__label" for="ingenico_direct_link_save_card"><r:t key='card.save_card'/><r:t key='colon'/></label>
+      <div class="checkout-row__group">
+        <input id="ingenico_direct_link_save_card" type="checkbox">
+      </div>
+    </div>
+  </r:payment_method:ingenico:if_save_card>
+</div>
+
+<script type="text/javascript">
+  $j(document).ready(function() {
+    $j('#step_submit').click(function(event) {
+      if ($j('input[name="payment_method_id"]:checked').val() == '<r:payment_method:id/>') {
+        event.preventDefault();
+
+        var saved_card_id = $j('input[name="saved_card_id"]:checked').val();
+        if (saved_card_id) {
+          payBySavedCard(saved_card_id);
+        } else {
+          payByNewCard();
+        }
+      }
+    });
+
+    $j('input[name="saved_card_id"]').click(toggleForms);
+    toggleForms();
+  });
+
+  window.shaSigns = [
+    {
+      VISA: '<r:payment_method:ingenico:direct_alias_sign card_brand="VISA" save_card="false"/>',
+      MASTERCARD: '<r:payment_method:ingenico:direct_alias_sign card_brand="MASTERCARD" save_card="false"/>',
+      MAESTRO: '<r:payment_method:ingenico:direct_alias_sign card_brand="MAESTRO" save_card="false"/>'
+    },
+    {
+      VISA: '<r:payment_method:ingenico:direct_alias_sign card_brand="VISA" save_card="true"/>',
+      MASTERCARD: '<r:payment_method:ingenico:direct_alias_sign card_brand="MASTERCARD" save_card="true"/>',
+      MAESTRO: '<r:payment_method:ingenico:direct_alias_sign card_brand="MAESTRO" save_card="true"/>'
+    }
+  ];
+
+  function payBySavedCard(saved_card_id) {
+    if (!checkFields($j('#saved_card_' + saved_card_id + '_cv_code'))) {
+      return;
+    }
+
+    ghost_form = $j('<form action="/ingenico_direct_link_payments/use_saved_card" method="POST" id="ghost_form" style="display:none;"></form>');
+    ghost_form.append('<input type="hidden" name="saved_card_id" value="' + saved_card_id + '" />');
+
+    var cv_code = $j('#saved_card_' + saved_card_id + '_cv_code').val();
+    ghost_form.append('<input type="hidden" name="cv_code" value="' + cv_code + '" />');
+
+    $j('body').append(ghost_form);
+    $j('#ghost_form').submit();
+  }
+
+  function payByNewCard() {
+    if (!checkFields($j('#ingenico_direct_link_cardholder_name, #ingenico_direct_link_card_number, #ingenico_direct_link_expiry, #ingenico_direct_link_cv_code'))) {
+      return;
+    }
+
+    ghost_form = $j('<form action="<r:payment_method:ingenico:direct_alias_url/>" method="POST" id="ghost_form" style="display:none;"></form>');
+    ghost_form.append('<input type="hidden" name="PSPID" value="<r:payment_method:ingenico:direct_link_psp_id/>"/>');
+    ghost_form.append('<input type="hidden" name="ACCEPTURL" value="<r:payment_method:ingenico:direct_alias_accept_url/>"/>');
+    ghost_form.append('<input type="hidden" name="EXCEPTIONURL" value="<r:payment_method:ingenico:direct_alias_exception_url/>"/>');
+
+    var cardBrand = $j('#ingenico_direct_link_card_brand').val();
+    var cardholderName = $j('#ingenico_direct_link_cardholder_name').val();
+    var cardNumber = $j('#ingenico_direct_link_card_number').val().replace(/\s/g, '');
+    var expiry = $j('#ingenico_direct_link_expiry').val().replace(/\//g, '');
+    var cvc = $j('#ingenico_direct_link_cv_code').val().replace(/\s/g, '');
+    var save_card = $j('#ingenico_direct_link_save_card').is(':checked');
+
+    ghost_form.append('<input type="hidden" name="BRAND" value="' + cardBrand + '" />');
+    ghost_form.append('<input type="hidden" name="CN" value="' + cardholderName + '" />');
+    ghost_form.append('<input type="hidden" name="CARDNO" value="' + cardNumber + '" />');
+    ghost_form.append('<input type="hidden" name="ED" value="' + expiry + '" />');
+    ghost_form.append('<input type="hidden" name="CVC" value="' + cvc + '" />');
+
+    if (save_card) {
+      ghost_form.append('<input type="hidden" name="ALIASPERSISTEDAFTERUSE" value="Y" />');
+      ghost_form.append('<input type="hidden" name="PARAMPLUS" value="save_card" />');
+      ghost_form.append('<input type="hidden" name="SHASIGN" value="' + window.shaSigns[1][cardBrand] + '" />');
+    } else {
+      ghost_form.append('<input type="hidden" name="PARAMPLUS" value="" />');
+      ghost_form.append('<input type="hidden" name="SHASIGN" value="' + window.shaSigns[0][cardBrand] + '" />');
+    }
+
+    $j('body').append(ghost_form);
+    $j('#ghost_form').submit();
+  }
+
+  function checkFields(inputs) {
+    var r = true;
+    inputs.each(function() {
+      if ($j(this).val() == '') {
+        $j(this).addClass('warning');
+        r = false;
+      }
+    })
+    return r;
+  }
+
+  function toggleForms() {
+    // Hide warnings
+    $j('.saved_card_cv_code input, #ingenico_form input').removeClass('warning');
+
+    // Toggle forms
+    var saved_card_id = $j('input[name="saved_card_id"]:checked').val();
+    $j('#ingenico_form').toggle(!saved_card_id);
+
+    $j('.saved_card_cv_code').hide();
+    if (saved_card_id) {
+      $j('.saved_card_' + saved_card_id + '_cv_code').show();
+    }
+  }
+</script>

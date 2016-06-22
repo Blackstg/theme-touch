@@ -1,0 +1,30 @@
+<r:if_not_request_parameter name='id'>
+  <r:force_redirect_to_shopping_page/>
+</r:if_not_request_parameter>
+
+<r:if_request_parameter name='id'>
+  <r:widget:show name='category_navigation'/>
+
+  <div class="content">
+    <div class="content__wrapper">
+      <div class="content__side">
+        <div class="content__side-wrapper">
+          <r:widget:show name="categories_side"/>
+        </div>
+      </div>
+
+      <div class="content__main">
+        <div class="content__main-wrapper">
+          <r:category:load request_parameter='id' redirect_if_not_found='true'>
+            <section class="category">
+              <r:widget:show name="categories_header"/>
+              <r:widget:show name="subcategories_navigation"/>
+              <r:widget:show name="categories_common_skus"/>
+              <r:widget:show name="categories_all_products"/>
+            </section>
+          </r:category:load>
+        </div>
+      </div>
+    </div>
+  </div>
+</r:if_request_parameter>

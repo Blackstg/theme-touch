@@ -1,0 +1,20 @@
+<r:skus:load_default>
+  <div class="product__sku-list">
+    <r:sku_parts:each>
+      <div class="product__sku">
+        <label class="product__sku-label">
+          <r:sku_part:label/>
+        </label>
+
+        <select data-sku-part="<r:sku_part:index/>" class="product__sku-select">
+          <r:sku_part_values:each>
+            <option value="<r:sku_part_value:id/>"
+                <r:sku_part_value:if_selected>selected="selected"</r:sku_part_value:if_selected> >
+              <r:sku_part_value:name/>
+            </option>
+          </r:sku_part_values:each>
+        </select>
+      </div>
+    </r:sku_parts:each>
+  </div>
+</r:skus:load_default>

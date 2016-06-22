@@ -1,0 +1,25 @@
+/***************************
+  Static page
+***************************/
+
+.static-page h1,
+.static-page h2,
+.static-page h3,
+.static-page h4,
+.static-page h5,
+.static-page h6 { margin:2rem 0 .5rem; font-weight:700; line-height: 1.2; }
+
+.static-page h1, .static-page h2 { font-size: 3rem; }
+.static-page h3 { font-size: 2.5rem; }
+.static-page h4 { font-size: 2.2rem; }
+.static-page h5 { font-size: 1.9rem; }
+.static-page h6 { font-size: 1.6rem; }
+
+.static-page .static-page__title { margin:0 0 2rem; font-size:3rem; }
+
+.static-page p { margin-bottom: 1.5em; line-height: 1.5; }
+
+.static-page img { max-width:100%; }
+.static-page__image-centre { display: block; margin: 0 auto 1rem; }
+.static-page__image-left { float: left; margin-right: 1.5rem; }
+.static-page__image-right { float: right; margin-left: 1.5rem; }

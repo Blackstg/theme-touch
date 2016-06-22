@@ -1,0 +1,20 @@
+<r:if_production>
+  <r:buyer:if_not_kiosk>
+    <r:add_on:optico:if_set>
+      <script type="text/javascript">
+        var opticoCountryCode = 33;
+        var opticoPhoneColor = ''; // optional: #3e3e3e
+        var opticoClickColor = ''; // optional: #ff5500
+
+        var opticoDirectDisplay = true;
+
+        var opticoScript = document.createElement('script');
+        opticoScript.type = 'text/javascript';
+        opticoScript.async = true;
+        opticoScript.src = '<r:add_on:optico:src/>';
+        var opticoS = document.getElementsByTagName('script')[0];
+        opticoS.parentNode.insertBefore(opticoScript, opticoS);
+      </script>
+    </r:add_on:optico:if_set>
+  </r:buyer:if_not_kiosk>
+</r:if_production>

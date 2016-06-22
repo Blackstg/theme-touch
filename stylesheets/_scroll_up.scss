@@ -1,0 +1,31 @@
+/***************************
+  Scroll up
+***************************/
+
+.scroll-up {
+  position: fixed;
+  right: -70px;
+  bottom: 2em;
+  padding: .5rem;
+  font-size: 2em;
+  text-decoration: none;
+  opacity: 0;
+  z-index: 990;
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+.scroll-up_show {
+  right: .1em;
+  opacity: .7;
+}
+
+.scroll-up_show:hover {
+  opacity: 1;
+}
+
+@media screen and (max-width: 52.5em) {
+  .scroll-up {
+    bottom: .1em;
+  }
+}

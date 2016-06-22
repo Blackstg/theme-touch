@@ -1,0 +1,19 @@
+<r:skus:load_default>
+  <r:product:if_multi_sku>
+    <div class="product__sku-list">
+      <r:sku_parts:each>
+        <div class="product__sku">
+          <label class="product__sku-label">
+            <r:sku_part:label/>
+          </label>
+
+          <r:sku_part_values:each>
+            <span class="product__sku-value">
+              <r:sku_part_value:name/>
+            </span>
+          </r:sku_part_values:each>
+        </div>
+      </r:sku_parts:each>
+    </div>
+  </r:product:if_multi_sku>
+</r:skus:load_default>

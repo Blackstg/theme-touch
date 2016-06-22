@@ -1,0 +1,30 @@
+<ul class="social-icons">
+  <r:add_on:facebook_link:if_set>
+    <li class="social-icons__icon">
+      <a href="<r:add_on:facebook_link:url/>" class="social-icons__link" target="_blank" title="Facebook">
+        <i class="social-icons__facebook"></i>
+      </a>
+    </li>
+  </r:add_on:facebook_link:if_set>
+  <r:add_on:twitter:if_set>
+    <li class="social-icons__icon">
+      <a href="<r:add_on:twitter:url/>" class="social-icons__link" target="_blank" title="Twitter">
+        <i class="social-icons__twitter"></i>
+      </a>
+    </li>
+  </r:add_on:twitter:if_set>
+  <r:add_on:instagram:if_set>
+    <li class="social-icons__icon">
+      <a href="<r:add_on:instagram:url/>" class="social-icons__link" target="_blank" title="Instagram">
+        <i class="social-icons__instagram"></i>
+      </a>
+    </li>
+  </r:add_on:instagram:if_set>
+  <r:add_on:contact:if_set>
+    <li class="social-icons__icon">
+      <a href="mailto:<r:add_on:contact:email/>" class="social-icons__link" target="_blank" title="Email">
+        <i class="social-icons__email"></i>
+      </a>
+    </li>
+  </r:add_on:contact:if_set>
+</ul>

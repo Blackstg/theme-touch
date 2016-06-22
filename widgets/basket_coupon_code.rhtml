@@ -1,0 +1,51 @@
+<r:basket:if_coupon_code>
+ <div class="basket__footer-row basket__coupon">
+
+  <div id='use_coupon_code_id' class='basket__coupon-form'>
+    <span><r:t key='basket.coupon_code'/><r:t key='colon'/></span>
+
+    <strong>
+      <r:basket:coupon_code/>
+    </strong>
+
+    <a href="#" class="basket__coupon-link" onclick="Basket.deleteCouponCode('basket'); return false;">(
+      <r:t key='coupon.delete'/>
+      )</a>
+  </div>
+
+  <div class='basket__coupon-form'>
+    <r:ruby:show name="coupon_product_picker"/>
+  </div>
+
+  <script type="text/javascript">
+    $j("#coupon_form").submit(function (event) {
+      Basket.addCouponProduct('basket');
+      return false;
+    });
+  </script>
+
+ </div>
+</r:basket:if_coupon_code>
+
+<r:basket:if_not_coupon_code>
+  <r:shop:has_available_coupons>
+   <div class="basket__footer-row basket__coupon">
+
+    <div id="coupon_code_link" class="basket__coupon-form">
+      <a href="#" class="basket__coupon-link" onclick="$j('#coupon_code_link').hide(); $j('#coupon_code_id').show(); $j('#coupon_code').focus(); return false;">
+        <r:t key='coupon.enter_code'/>
+      </a>
+    </div>
+
+    <div id="coupon_code_id" class="basket__coupon-form" style="display:none;">
+      <span><r:t key='basket.coupon_code'/><r:t key='colon'/></span>
+      <input id='coupon_code' name='coupon_code' type='text' size='8' onkeyup="if (event.keyCode == 13) { $j('#coupon_code_submit').click(); }"/>
+      <a id="coupon_code_submit" class="basket__coupon-validate coupon_code_submit" href="#"
+         onclick="Basket.setCouponCode($j('#coupon_code').val(), 'basket'); return false;">
+        <r:t key='coupon.validate'/>
+      </a>
+    </div>
+
+   </div>
+  </r:shop:has_available_coupons>
+</r:basket:if_not_coupon_code>

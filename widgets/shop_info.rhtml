@@ -1,0 +1,82 @@
+<header class="shop-info__header">
+  <h3 class="shop-info__title">
+    <r:franchised_shops:if_franchised_shop>
+      <r:shop:phone/>
+    </r:franchised_shops:if_franchised_shop>
+    <r:franchised_shops:if_not_franchised_shop>
+      <r:shop:name/>
+    </r:franchised_shops:if_not_franchised_shop>
+  </h3>
+
+  <div class="shop-info__social-icons">
+    <ul class="social-icons social-icons_large">
+      <r:widget:show name='social_icons'/>
+    </ul>
+  </div>
+</header>
+
+<r:add_on:google_maps:if_embed_code>
+  <div class="shop-info__google-maps">
+    <r:add_on:google_maps:embed_code/>
+  </div>
+</r:add_on:google_maps:if_embed_code>
+
+<div class="shop-info__features">
+  <div class="shop-info__feature">
+    <span class="shop-info__feature-title">
+      <r:t key="shop_info.address"/>
+    </span>
+
+    <div class="shop-info__feature-content">
+      <p>
+        <r:shop:address/>
+      </p>
+      <p>
+        <r:shop:city/>
+      </p>
+      <r:franchised_shops:if_not_franchised_shop>
+        <p class="phone">
+          <r:shop:phone/>
+        </p>
+      </r:franchised_shops:if_not_franchised_shop>
+      <r:franchised_shops:if_franchised_shop>
+        <r:widget:show name="shop_info_change_location"/>
+      </r:franchised_shops:if_franchised_shop>
+    </div>
+  </div>
+
+  <r:if_param name="opening_times">
+    <div class="shop-info__feature">
+      <span class="shop-info__feature-title">
+        <r:t key="shop_info.opening_hours"/>
+      </span>
+      <div class="shop-info__feature-content">
+        <r:param name="opening_times"/>
+      </div>
+    </div>
+  </r:if_param>
+
+  <r:if_param name='additional_info'>
+    <div class="shop-info__feature">
+      <span class="shop-info__feature-title">
+        <r:t key="shop_info.additional_info"/>
+      </span>
+      <div class="shop-info__feature-content">
+        <r:param name='additional_info'/>
+      </div>
+    </div>
+  </r:if_param>
+
+  <r:buyer:if_not_kiosk>
+    <r:payment_methods:has_online_payment>
+      <div class="shop-info__feature">
+        <span class="shop-info__feature-title">
+          <r:t key="shop_info.payment"/>
+        </span>
+        <div class="shop-info__feature-content">
+          <r:t key='shop_info.secure_payment'/>
+        </div>
+      </div>
+    </r:payment_methods:has_online_payment>
+  </r:buyer:if_not_kiosk>
+</div>

@@ -1,0 +1,32 @@
+<r:option_list:if_extra_toppings>
+  <input type="hidden" name="<r:option_list:encode_key/>" value=""/>
+</r:option_list:if_extra_toppings>
+
+<fieldset class="item_options">
+  <r:option_list:if_extra_toppings>
+    <div class="help_ingredients">
+      <r:t key='order_item.extra_toppings_instructions'/>
+    </div>
+  </r:option_list:if_extra_toppings>
+  <r:option_list:if_base_ingredients>
+    <div class="help_ingredients">
+      <r:t key='order_item.base_ingredients_instructions'/>
+    </div>
+  </r:option_list:if_base_ingredients>
+
+  <ul>
+    <r:options:each>
+      <li data-option="<r:option:html_id/>" <r:option:if_not_available>style="display:none;"</r:option:if_not_available> >
+        <label>
+          <input type="checkbox" name="<r:option_list:encode_key/>"
+                 value="<r:option_list:if_base_ingredients><r:option:encode_value_for_set quantity='1'/></r:option_list:if_base_ingredients><r:option_list:if_not_base_ingredients><r:option:encode_value_for_set quantity='1'/></r:option_list:if_not_base_ingredients>"
+                 <r:option:if_topping_quantity_equal value="1">checked="checked"</r:option:if_topping_quantity_equal>/>
+          <span>
+            <r:option:name/>
+            <r:widget:show name="popup_product_set_const_price"/>
+          </span>
+        </label>
+      </li>
+    </r:options:each>
+  </ul>
+</fieldset>

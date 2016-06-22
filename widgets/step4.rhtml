@@ -1,0 +1,65 @@
+<r:widget:show name='step_navigation'/>
+
+<div class="content">
+  <div class="content__wrapper">
+
+    <div class="content__side">
+      <div class="content__side-wrapper">
+        <r:widget:show name='step_side'/>
+      </div>
+    </div>
+
+    <div class="content__main">
+      <div class="content__main-wrapper">
+
+        <div class="checkout">
+          <section class="checkout__section">
+            <header class="checkout__header">
+              <h2 class="checkout__title">
+                <r:payment_methods:if_not_single>
+                  <r:t key='payment.choose_method'/>
+                </r:payment_methods:if_not_single>
+                <r:payment_methods:if_single>
+                  <r:t key='checkout.steps.loyalty'/>
+                </r:payment_methods:if_single>
+              </h2>
+            </header>
+
+            <form class="checkout__form" action="/orders/select_payment_method" method="post">
+              <input type='hidden' name='redirect_to' value='/order_step5'/>
+
+              <r:payment_methods:if_not_single>
+                <r:widget:show name="step4_payment_methods"/>
+              </r:payment_methods:if_not_single>
+
+              <r:payment_methods:if_single>
+                <r:payment_methods:each>
+                  <input type='hidden' name='payment_method_id' value='<r:payment_method:id />'>
+                </r:payment_methods:each>
+              </r:payment_methods:if_single>
+
+              <r:widget:show name="step4_payment_methods_extra"/>
+
+              <fieldset class="checkout__fieldset">
+                <r:widget:show name='step4_loyalty_points'/>
+              </fieldset>
+
+              <footer class="checkout__footer">
+                <div class="form-buttons">
+                  <button class="form-buttons__button" type="submit" id="step_submit">
+                    <r:t key='checkout.continue'/>
+                  </button>
+                  <r:link_to_page name="order_step3" class="form-buttons__link">
+                    <r:t key='navigation.back_to_previous'/>
+                  </r:link_to_page>
+                </div>
+              </footer>
+            </form>
+          </section>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<r:deal_bag:load_deal_product>
+  <r:widget:show name='category_navigation'/>
+
+  <div class="content">
+    <div class="content__wrapper">
+      <div class="content__side">
+        <div class="content__side-wrapper">
+          <r:widget:show name="categories_side"/>
+        </div>
+      </div>
+
+      <div class="content__main">
+        <div class="content__main-wrapper">
+          <section class="category deal">
+            <header class="category__header">
+              <h2 class="category__title">
+                <r:deal_bag:name/>
+              </h2>
+            </header>
+
+            <r:widget:show name="deal_wizard_navigation"/>
+
+            <div class="deal-wizard-sets">
+              <r:deal_basket_items:each>
+                <div class="deal-wizard-set" id="deal-wizard-set-<r:deal_bag:deal_line_number/>">
+                  <r:widget:show name="deal_wizard_products"/>
+                </div>
+              </r:deal_basket_items:each>
+            </div>
+
+            <script type="text/javascript">
+              $j(function () {
+                DealWizard.init('<r:product:handle/>', <r:deal:id/>, "<r:product:js_escaped_name/>");
+              });
+            </script>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</r:deal_bag:load_deal_product>

@@ -1,0 +1,13 @@
+/***************************
+  Burger menu
+***************************/
+
+.burger-menu {}
+.burger-menu__link { display: inline-block; text-decoration: none; }
+
+/* Hide icon. Can be used if needed */
+.burger-menu__icon { display: none; }
+
+/* Default CSS button */
+.burger-menu__button { width: 26px; padding: 12px 10px 10px 0; }
+.burger-menu__line { display: block; height: 3px; border-top: 4px solid #212121; }

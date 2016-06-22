@@ -1,0 +1,58 @@
+/***************************
+  Checkout row
+***************************/
+
+.checkout-row { @include clearfix; margin-bottom: 1.2em; }
+
+.checkout-row__label { display: block; box-sizing: border-box; }
+.checkout-row__label_required:after { content: '*'; display: inline-block; }
+
+/* Row layout */
+.checkout-row { padding-left: 150px; }
+.checkout-row__label { float: left; padding: .3em .5em 0 0; margin-left: -150px; width: 150px; box-sizing: border-box; }
+
+/* Row content */
+.checkout-row__group {}
+.checkout-row__group-item { margin-top: .5em; }
+.checkout-row__group-item:first-child { margin-top: 0; }
+.checkout-row__group-item_helper { margin-top: .2em; font-size: 1.3rem; }
+
+.checkout-row__group-item_atoms { margin-top: 1em; }
+.checkout-row__group-atom { display: inline-block; margin: 0 .2em .2em 0; }
+.checkout-row__group-label_atom { display: inline-block; padding: .4em .3em 0 0; box-sizing: border-box; }
+.checkout-row__group-atom:first-child .checkout-row__group-label_atom { float: left; margin-left: -150px; width: 150px; box-sizing: border-box; }
+
+.checkout-row__field-text { padding: .3em .3em; width: 100%; box-sizing: border-box; }
+.checkout-row__field-textarea { padding: .3em .3em; width: 100%; box-sizing: border-box; height: 75px; }
+.checkout-row__field-text:focus,
+.checkout-row__field-textarea:focus { border: 1px solid #ccc; box-shadow: 0 0 3px rgba(0,0,0,.3); }
+
+.checkout-row__field-text.auto-width { width: auto; }
+.checkout-row__field-text.half { width: 50%; }
+.checkout-row__field-text.large { width: 70%; }
+.checkout-row__field-text.middle { width: 90px; }
+.checkout-row__field-text.small { width: 45px; }
+
+.checkout-row__group-label_checkbox .checkout-row__field-chkbox { margin-left: 0; }
+
+.checkout-row__group .form_label_hint {}
+
+/* Facebook login button */
+.checkout__facebook-login-button { display: block; position: relative; padding:.5em 2.5em; text-decoration: none; text-align: center; }
+.checkout__facebook-login-text { display: inline-block; }
+.checkout__facebook-login-icon { position: absolute; left: .5em; top: 50%; @include transform(translateY(-50%));}
+.checkout__facebook-login-separator { margin-top: 1em; text-align: center; }
+.checkout__facebook-login-separator-text {}
+
+@media screen and (max-width: 40em) {
+  .checkout-row { padding-left: 0; }
+  .checkout-row__label { float: none; padding: 0; margin: 0 0 .3em 0; width: auto; }
+  .checkout-row__field-text.half,
+  .checkout-row__field-text.large { width: 100%; }
+  .checkout-row__group-atom:first-child .checkout-row__group-label_atom { float: none; margin-left: 0; width: auto; }
+}
+@media screen and (max-width: 30em) {
+  .checkout-row__group-atom { display: block; margin: 0 0 .5em; }
+  .checkout-row__group-label_atom,
+  .checkout-row__group-atom:first-child .checkout-row__group-label_atom { display: inline-block; width: 90px; }
+}

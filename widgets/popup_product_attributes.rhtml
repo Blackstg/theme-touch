@@ -1,0 +1,27 @@
+<fieldset class="popup__group popup-group">
+  <div class="popup-group__line">
+    <label class="popup-group__label popup-group__label_quantity" for="quantity">
+      <r:t key='order_item.quantity'/>
+    </label>
+
+    <span class="popup-group__quantity">
+      <a class="popup-group__quantity-button" onclick="Product.decQuantity($j(this).siblings('input')); return false;" href="#">
+        <i class="popup-group__quantity-minus-icon"></i>
+      </a>
+      <input type='text' name='quantity' maxlength='3' class='popup-group__quantity-field' value='<r:basket_item:quantity/>'/>
+      <a class="popup-group__quantity-button" onclick="Product.incQuantity($j(this).siblings('input')); return false;" href="#">
+        <i class="popup-group__quantity-plus-icon"></i>
+      </a>
+    </span>
+  </div>
+
+  <r:widget:show name="popup_product_skus"/>
+</fieldset>
+
+<r:option_lists:each_enum>
+  <r:widget:show name="popup_product_enum"/>
+</r:option_lists:each_enum>
+
+<r:option_lists:each_set>
+  <r:widget:show name="popup_product_set"/>
+</r:option_lists:each_set>

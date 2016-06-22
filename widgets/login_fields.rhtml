@@ -1,0 +1,27 @@
+<fieldset class="checkout__fieldset">
+  <div class="checkout-row">
+    <label for="login" class="checkout-row__label">
+      <r:t key='buyer.email'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <input class="checkout-row__field-text" id="login" name="login" type="email" value="<r:buyer:email escape_quotes='true'/>">
+    </div>
+  </div>
+
+  <div class="checkout-row">
+    <label for="password" class="checkout-row__label">
+      <r:t key='buyer.password'/><r:t key='colon'/>
+    </label>
+    <div class="checkout-row__group">
+      <div class="checkout-row__group-item checkout-row__group-item_helper">
+        <input class="checkout-row__field-text" id="password" name="password" type="password">
+      </div>
+      <div class="checkout-row__group-item checkout-row__group-item_forgot-password">
+        <r:t key="login.forgot_password"/>
+        <a href="/forgot_password" title="<r:t key='page.reset_password'/>">
+          <r:t key='login.click_here'/>
+        </a>
+      </div>
+    </div>
+  </div>
+</fieldset>

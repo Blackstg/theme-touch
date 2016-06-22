@@ -1,0 +1,24 @@
+<r:if_production>
+  <r:buyer:if_not_kiosk>
+    <r:add_on:google_adwords:if_conversion_order_label>
+      <!-- Google Code for Conversion Page -->
+      <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = '<r:add_on:google_adwords:conversion_id/>';
+        var google_conversion_language = "fr";
+        var google_conversion_format = "2";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "<r:add_on:google_adwords:conversion_order_label/>";
+        var google_conversion_value = <r:order:total_decimal/>;
+        /* ]]> */
+      </script>
+      <script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+      </script>
+      <noscript>
+        <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/<r:add_on:google_adwords:conversion_id/>/?label=<r:add_on:google_adwords:conversion_order_label/>&amp;guid=ON&amp;script=0"/>
+        </div>
+      </noscript>
+    </r:add_on:google_adwords:if_conversion_order_label>
+  </r:buyer:if_not_kiosk>
+</r:if_production>

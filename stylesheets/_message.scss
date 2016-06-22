@@ -1,0 +1,8 @@
+/* Flash message */
+.message { display: none; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;}
+.message_persistent { display: block; position: static; }
+.message_info {}
+.message_error {}
+
+.message__wrapper { margin: 0 auto; max-width: 1200px; }
+.message__content { text-align: center; padding: .7em 1em; }

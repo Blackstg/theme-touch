@@ -1,0 +1,88 @@
+<div class="order">
+  <ul class="order__brief">
+    <li class="order__date">
+      <r:order:created_at format="%d/%m/%Y"/>
+      <r:franchised_shops:if_franchised_shop>
+        <r:shop:if_fa_name>
+          - <r:shop:fa_name/>
+        </r:shop:if_fa_name>
+      </r:franchised_shops:if_franchised_shop>
+    </li>
+    <li class="order__state <r:order:if_workflow_state_new>order__state_new</r:order:if_workflow_state_new>">
+      <r:order:workflow_state/>
+    </li>
+    <li class="order__show">
+      <a href="#">
+        <r:t key='order.view_or_repeat'/>
+      </a>
+    </li>
+    <li class="order__print">
+      <r:link_to_page name='print_order' resource='order' target='_blank'>
+        <r:t key='order.print_receipt'/>
+      </r:link_to_page>
+    </li>
+  </ul>
+
+  <div class="order__details">
+
+    <div class="order__repeat">
+      <form class="clearfix" action="#" onsubmit="Basket.repeatOrder('<r:order:link_repeat/>', $j(this)); return false;">
+        <button class="order__button" type="submit">
+          <r:t key='repeat.repeat_full_order'/>
+        </button>
+        <label class="order__repeat-label">
+          <input class="order__repeat-chkbox" type="checkbox" name="clear_basket" value="1">
+          <span class="order__repeat-label-text"><r:t key='repeat.empty_basket_before'/></span>
+        </label>
+      </form>
+    </div>
+
+    <div class="order__items-container">
+      <table  class="order__items" cellpadding="0" cellspacing="0" border="0">
+        <r:order_deals:if_not_empty>
+          <tbody class="order__items-deal">
+            <r:order_deals:each>
+              <r:widget:show name="orders_order_deal"/>
+            </r:order_deals:each>
+            <tr class="separator">
+              <td colspan="4"/>
+            </tr>
+          </tbody>
+        </r:order_deals:if_not_empty>
+
+        <tbody class="order__items-default">
+          <r:order_items:each>
+            <r:widget:show name="orders_order_item"/>
+          </r:order_items:each>
+        </tbody>
+
+        <tbody class="order__items-footer">
+          <r:widget:show name="orders_order_footer"/>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="order__info">
+      <r:order:if_delivery>
+        <r:t key='order.for_delivery'/>
+      </r:order:if_delivery>
+      <r:order:if_collection>
+        <r:t key='order.for_collection'/>
+      </r:order:if_collection>
+      <r:order:if_eat_in>
+        <r:t key='order.for_eat_in'/>
+      </r:order:if_eat_in>
+
+      <r:order:if_future>
+        <r:t key='ordering_time.on'/>
+        <r:order:expected_time format="%m/%d"/>
+        <r:t key='ordering_time.on_at'/>
+        <r:order:expected_time/>.
+      </r:order:if_future>
+      <r:order:if_not_future>
+        <r:t key='ordering_time.at'/>
+        <r:order:expected_time/>.
+      </r:order:if_not_future>
+    </div>
+  </div>
+</div>
