@@ -67,11 +67,15 @@ $basket-menu-items-border-color: #212121;
 $shop-info-color: #212121;
 $shop-info-background-color: #efefef;
 $shop-info-title-color: #212121;
+$shop-info-feature-title-color: #212121;
 $shop-info-link-color: #212121;
 $shop-info-social-icons-color: #fff;
 $shop-info-social-icons-background-color: #999;
 $shop-info-social-icons-hover-color: #fff;
 $shop-info-social-icons-hover-background-color: #212121;
+@mixin shop-info-font { @include set-font($base-font, 1.6rem, $shop-info-color); }
+@mixin shop-info-title-font { @include set-font($base-font, 3rem, $shop-info-title-color, 700); }
+@mixin shop-info-feature-title-font { @include set-font($base-font, 1.6rem, $shop-info-feature-title-color, 700); }
 
 // ----------
 // Burger menu
@@ -133,7 +137,7 @@ $mobile-menu-item-separator-color: #efefef;
 // Checkout
 // ----------
 @mixin checkout-title-font { @include set-font($base-font, 2rem, #212121, 700) }
-@mixin checkout-label-font { @include set-font($base-font, 1.7rem, #212121) }
+@mixin checkout-label-font { @include set-font($base-font, 1.6rem, #212121) }
 @mixin checkout-font { @include set-font($base-font, 1.4rem, #212121) }
 
 // Facebook login buton
@@ -161,7 +165,7 @@ $repeat-order-button-border-radius: 0em;
 $basket-border-color: #212121;
 
 $basket-header-background-color: #212121;
-@mixin basket-title-font { @include set-font($base-font, 1.7rem, #fff); }
+@mixin basket-title-font { @include set-font($base-font, 1.6rem, #fff); }
 @mixin basket-title-repeat-font { @include set-font($base-font, 1.2rem, #fff); }
 
 // Basket deal title
@@ -195,8 +199,8 @@ $basket-item-delete-hover-color: #212121;
 // Basket footer
 $basket-footer-color: #212121;
 $basket-footer-background-color: #efefef;
-@mixin basket-charge-font { @include set-font($base-font, 1.4rem, $basket-footer-color, 600); }
-@mixin basket-total-font { @include set-font($base-font, 1.7rem, $basket-footer-color, 600); }
+@mixin basket-charge-font { @include set-font($base-font, 1.4rem, $basket-footer-color, 700); }
+@mixin basket-total-font { @include set-font($base-font, 1.6rem, $basket-footer-color, 700); }
 
 // Basket delivery method switch
 $basket-delivery-color: #212121;
@@ -213,7 +217,7 @@ $basket-button-background-color: #212121;
 $basket-button-hover-color: #fff;
 $basket-button-hover-background-color: #555;
 $basket-button-border-radius: 0px;
-@mixin basket-button-font { @include set-font($base-font, 1.7rem, null, 600); }
+@mixin basket-button-font { @include set-font($base-font, 1.6rem, null, 700); }
 
 // Important message displayed at the bottom of the basket
 $basket-orange-message-color: #212121;
@@ -263,7 +267,7 @@ $scroll-up-radius: 0em;
 // Category
 // ----------
 @mixin category-title-font { @include set-font($base-font, 2.3rem, #212121, 700, uppercase); }
-@mixin subcategory-title-font { @include set-font($base-font, 1.7rem, #212121, 700); }
+@mixin subcategory-title-font { @include set-font($base-font, 2rem, #212121, 700); }
 @mixin category-description-font { @include set-font($base-font, 1.4rem, #212121); }
 
 // ----------
@@ -293,11 +297,11 @@ $product-button-customise-hover-background-color: #555;
 // ----------
 $popup-color: #212121; // Default font color
 $popup-border-radius: 0px;
-$popup-quantity-font-size: 1.7rem;
+$popup-quantity-font-size: 1.6rem;
 
 @mixin popup-title-font { @include set-font($base-font, 2rem, $popup-color, 700); } // Title (product or deal name at the top)
 @mixin popup-font { @include set-font($base-font, 1.4rem, $popup-color); } // Description and options (sets and enums)
-@mixin popup-label-font { @include set-font($base-font, 1.7rem, $popup-color, 700); } // Quantity, size and titles
+@mixin popup-label-font { @include set-font($base-font, 1.6rem, $popup-color, 700); } // Quantity, size and titles
 
 $popup-enum-color: #212121;
 $popup-enum-background-color: #ddd;
@@ -308,7 +312,7 @@ $popup-checkbox-border-color: #212121;
 $popup-checkbox-background-color: #fff;
 $popup-checkbox-ticked-color: #212121;
 
-@mixin popup-options-group-title-font { @include set-font($base-font, 1.7rem, #777, 700); } // Title for a group of options
+@mixin popup-options-group-title-font { @include set-font($base-font, 1.6rem, #777, 700); } // Title for a group of options
 
 $popup-button-color: #fff;
 $popup-button-background-color: #212121;
@@ -325,7 +329,7 @@ $popup-cancel-link-hover-color: #000;
 // ----------
 // Messages
 // ----------
-@mixin message-font { @include set-font($base-font, 1.7rem); }
+@mixin message-font { @include set-font($base-font, 1.6rem); }
 
 // Transient information message displayed at the top
 // Eg. when a product has just been added
@@ -338,6 +342,41 @@ $message-info-opacity: 0.9;
 $message-error-color: #fff;
 $message-error-background-color: #d9230b;
 $message-error-opacity: 1;
+
+// ----------
+// Sku buttons
+// (optional feature)
+// ----------
+// This feature displays product sizes (skus) as buttons instead of selects
+// To activate it, create a 'size_buttons' tag and set it on the chosen products/categories
+$sku-buttons-color: #212121;
+$sku-buttons-background-color: #ddd;
+$sku-buttons-active-color: #fff;
+$sku-buttons-active-background-color: #212121;
+$sku-buttons-disabled-color: #fff;
+$sku-buttons-disabled-background-color: #555;
+$sku-buttons-separator-color: #fff;
+$sku-buttons-summary-name-color: #555;
+$sku-buttons-summary-value-color: #212121;
+$sku-buttons-border-radius: 0em;
+
+// ----------
+// Grouped skus
+// (optional feature)
+// ----------
+// This feature allows to select the size at the top of the page, instead of for every product.
+// To activate it, create a 'size_group' tag and set it on one or several main (topmost) categories.
+$grouped-skus-title-color: #212121;
+$grouped-skus-border-radius: 0em;
+$grouped-skus-button-color: #212121;
+$grouped-skus-button-background-color: #ddd;
+$grouped-skus-button-separator-color: #fff;
+$grouped-skus-button-active-color: #fff;
+$grouped-skus-button-active-background-color: #212121;
+$grouped-skus-button-disabled-color: #fff;
+$grouped-skus-button-disabled-background-color: #555;
+@mixin grouped-skus-title-font { @include set-font($base-font, 1.6rem, $grouped-skus-title-color, 700) }
+@mixin grouped-skus-button-font { @include set-font($base-font, 1.4rem, $grouped-skus-button-color, 400); }
 
 // *********************************************
 // CSS definitions
@@ -372,10 +411,11 @@ input, select, textarea { @include field-font }
 .basket-menu__items { background-color: $basket-menu-items-background-color; border: 2px solid $basket-menu-items-border-color; }
 
 // Shop info
-.shop-info { color: $shop-info-color; background-color: $shop-info-background-color; }
-.shop-info__title { color: $shop-info-title-color; }
+.shop-info { background-color: $shop-info-background-color; }
+.shop-info__title { @include shop-info-title-font; line-height: 1.2; }
+.shop-info__feature-title { @include shop-info-feature-title-font; }
+.shop-info__feature-content { @include shop-info-font; }
 .shop-info__link { color: $shop-info-link-color; }
-.shop-info__feature-content { color: $shop-info-color; }
 
 .shop-info .social-icons__link { color: $shop-info-social-icons-color; background-color: $shop-info-social-icons-background-color; }
 .shop-info .social-icons__link:hover { color: $shop-info-social-icons-hover-color; background-color: $shop-info-social-icons-hover-background-color; }
@@ -390,7 +430,7 @@ input, select, textarea { @include field-font }
 .category-navigation__item_active .category-navigation__link { color: $navigation-active-color; background-color: $navigation-background-active-color; }
 
 // Account navigation
-.account-navigation { @include navigation-font; background-color: $navigation-background-color; }
+.account-navigation { background-color: $navigation-background-color; }
 .account-navigation__item { @include navigation-font; }
 .account-navigation__link:hover,
 .account-navigation__item_active .account-navigation__link { color: $navigation-active-color; background-color: $navigation-background-active-color; }
@@ -407,13 +447,15 @@ input, select, textarea { @include field-font }
 .checkout-variant__select-label,
 .checkout-row__label,
 .checkout-row__group-label,
-.confirm-section__title { @include checkout-label-font; }
 .checkout__fieldset { font-size: 1.6rem; }
 .checkout-variant__label { font-size: 1.6rem; }
 .checkout__description,
-.confirm-section__content { @include checkout-font; }
 .checkout-row__field-text { font-size: 1.6rem; }
 .checkout-row__field-textarea { font-size: 1.6rem; }
+
+// Checkout confirmation page
+.checkout-confirm__title { @include checkout-label-font; }
+.checkout-confirm__content { @include checkout-font; }
 
 // Basket
 .basket { border: 1px solid $basket-border-color; }
@@ -449,19 +491,19 @@ input, select, textarea { @include field-font }
 
 // Basket deal item
 .basket-deal__items { background-color: $basket-deal-item-background-color; }
-.basket-deal .basket-item__title { @include basket-deal-item-font; }
-.basket-deal .basket-item__link:hover { color: $basket-deal-item-hover-color; }
-.basket-deal .basket-item__option { @include basket-deal-item-option-font; }
-.basket-deal .basket-item__delete-icon { @include fontello-icon('minus-circle', 0em); color: $basket-deal-item-delete-color; }
-.basket-deal .basket-item__delete:hover .basket-item__delete-icon { color: $basket-deal-item-delete-hover-color; }
+.basket-deal__item-title { @include basket-deal-item-font; }
+.basket-deal__item-link:hover { color: $basket-deal-item-hover-color; }
+.basket-deal__item-option { @include basket-deal-item-option-font; }
+.basket-deal__item-delete-icon { @include fontello-icon('minus-circle', 0em); color: $basket-deal-item-delete-color; }
+.basket-deal__item-delete:hover .basket-deal__item-delete-icon { color: $basket-deal-item-delete-hover-color; }
 
 // Basket item
 .basket__items { background-color: $basket-item-background-color; }
-.basket__items .basket-item__title { @include basket-item-font; }
-.basket__items .basket-item__link:hover { color: $basket-item-hover-color; }
-.basket__items .basket-item__option { @include basket-item-option-font; }
-.basket__items .basket-item__delete-icon { @include fontello-icon('minus-circle', 0em); color: $basket-item-delete-color; }
-.basket__items .basket-item__delete:hover .basket-item__delete-icon { color: $basket-item-delete-hover-color; }
+.basket-item__title { @include basket-item-font; }
+.basket-item__link:hover { color: $basket-item-hover-color; }
+.basket-item__option { @include basket-item-option-font; }
+.basket-item__delete-icon { @include fontello-icon('minus-circle', 0em); color: $basket-item-delete-color; }
+.basket-item__delete:hover .basket-item__delete-icon { color: $basket-item-delete-hover-color; }
 
 // Nice select
 .nice-select { @include nice-select-font; border: 1px solid $nice-select-border-color; border-radius: $nice-select-border-radius; }
@@ -503,12 +545,18 @@ input, select, textarea { @include field-font }
 .scroll-up__icon { @include fontello-icon('big-arrow-up'); }
 
 // Social icons
-.social-icons__link i:before { margin-left: .2em; font-size: 1.5em; }
-.social-icons_large .social-icons__link i:before { margin: 0; line-height: 36px; font-size: 2rem; }
-.social-icons__email { @include fontello-icon('envelope'); }
-.social-icons__facebook { @include fontello-icon('facebook'); }
-.social-icons__instagram { @include fontello-icon('instagram'); }
-.social-icons__twitter { @include fontello-icon('twitter'); }
+.social-icons__email { @include fontello-icon('envelope',0); }
+.social-icons__facebook { @include fontello-icon('facebook',0); }
+.social-icons__instagram { @include fontello-icon('instagram',0); }
+.social-icons__twitter { @include fontello-icon('twitter',0); }
+
+.shop-info__social-icons .social-icons__link i:before { line-height: 36px; font-size: 2rem; }
+.footer__nav .social-icons__link i { display: inline-block; margin-left: .2em; }
+.footer__nav .social-icons__link i:before { font-size: 1.5em; }
+
+@media screen and (max-width: 52.5em) {
+  .footer__nav .social-icons__link i { margin: 0 .3em; }
+}
 
 // Off-canvas
 .off-canvas_open { background-color: $off-canvas-background-color; }
@@ -545,11 +593,6 @@ input, select, textarea { @include field-font }
 
 .product__favourite_add .product__favourite-icon { @include fontello-icon('heart-empty'); color: $product-add-favourite-icon-color; }
 .product__favourite_remove .product__favourite-icon { @include fontello-icon('heart'); color: $product-remove-favourite-icon-color; }
-
-// Skus mobile
-.skus-summary { color: #212121; }
-.skus-summary__item .sku-part__name { color: #555; }
-.skus-summary__icon { @include fontello-icon('big-arrow-down'); }
 
 // Popup
 .popup { border-radius: $popup-border-radius;}
@@ -609,3 +652,20 @@ input, select, textarea { @include field-font }
 .message_error a:hover { color: $message-error-color; }
 
 .checkout-error { color: $checkout-error-color; background-color: $checkout-error-background-color; }
+
+// Sku buttons
+.sku-buttons { border-radius: $sku-buttons-border-radius; }
+.sku-buttons__text { color: $sku-buttons-color; background-color: $sku-buttons-background-color; border-left: 1px solid $sku-buttons-separator-color; }
+.sku-buttons__radio:checked + .sku-buttons__text { color: $sku-buttons-active-color; background-color: $sku-buttons-active-background-color; }
+.sku-buttons__radio:disabled + .sku-buttons__text { color: $sku-buttons-disabled-color; background-color: $sku-buttons-disabled-background-color; }
+.sku-buttons-summary__name { color: $sku-buttons-summary-name-color; }
+.sku-buttons-summary__value { color: $sku-buttons-summary-value-color; }
+.sku-buttons-summary__icon { @include fontello-icon('big-arrow-down'); }
+
+// Grouped skus
+.grouped-skus__title { @include grouped-skus-title-font; }
+.grouped-skus__list { border-radius: $grouped-skus-border-radius; }
+.grouped-skus__text { @include grouped-skus-button-font; background-color: $grouped-skus-button-background-color; border-left: 1px solid $grouped-skus-button-separator-color; }
+.grouped-skus__item:first-child .grouped-skus__text { border-left: none; }
+.grouped-skus__radio:checked + .grouped-skus__text { color: $grouped-skus-button-active-color; background-color: $grouped-skus-button-active-background-color; }
+.grouped-skus__radio:disabled + .grouped-skus__text { color: $grouped-skus-button-disabled-color; background-color: $grouped-skus-button-disabled-background-color; }

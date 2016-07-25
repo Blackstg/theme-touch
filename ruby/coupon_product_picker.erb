@@ -1,0 +1,28 @@
+<%
+  rs_shop = tag.globals.rs_shop
+  basket = tag.globals.rs_theme_page.user_data.basket
+  coupon_code = tag.globals.rs_theme_page._session[:coupon_code]
+  delivery_method_type = tag.globals.rs_theme_page.delivery_method_type
+
+  rs_deal = RsDeal.where(shop_id: [rs_shop.id, rs_shop.menu_shop_id].compact, coupon_code: coupon_code).take
+
+  if rs_deal && rs_deal.rs_deal_items.size == 1 && !basket.coupon_code
+    rs_deal_item = rs_deal.rs_deal_items[0]
+%>
+    <div>
+      <form id="coupon_form" action="/">
+        <select>
+          <option value="">[<%= I18n.t(:'coupon.choose_item') %>]</option>
+          <%
+            RsSku.find_all_by_matching_deal_item(rs_deal_item, rs_shop).
+                map(&:first).
+                select { |rs_sku| rs_sku.is_available(rs_shop, delivery_method_type) }.
+                each do |rs_sku|
+          %>
+              <%= "<option value='#{rs_sku.rs_product.handle}####{rs_sku.handle}'>#{rs_sku.name}</option>" %>
+          <% end %>
+        </select>
+        <input type="submit" value="<%= I18n.t(:'basket.add') %>">
+      </form>
+    </div>
+<% end %>

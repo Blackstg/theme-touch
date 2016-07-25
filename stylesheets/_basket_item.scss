@@ -14,11 +14,12 @@
 .basket-item__link:hover { text-decoration: underline; }
 
 .basket-item__delete { display: inline-block; color: #bbb; text-decoration: none; }
+.basket-item__delete-icon { padding-left: .3em; }
 .basket-item__details { display: inline-block; float: right; width: 35%; text-align: right; box-sizing: border-box; }
 .basket-item__quantity { float: left; margin-right: .3em; }
 .basket-item__price {}
 
-.basket-item__options { /*overflow: auto;*/ }
+.basket-item__options { }
 .basket-item__option { margin-top: .15em}
 .basket-item__option-name { display: inline-block; width: 65%; box-sizing: border-box; padding-left: .5em; }
 .basket-item__option-details { display: inline-block; float: right; width: 35%; text-align: left; box-sizing: border-box; }

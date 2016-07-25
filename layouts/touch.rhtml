@@ -5,54 +5,20 @@
     <r:widget:show name='layout_meta'/>
     <link rel="icon" href="/assets-images/favicon.png" type="image/x-icon">
 
-    <r:stylesheets>
-      <r:stylesheet name='jquery-ui.css'/>
-      <r:stylesheet name='touch.css'/>
-      <r:stylesheet name='theme.css'/>
-      <r:widget:show name='layout_additional_css'/>
-    </r:stylesheets>
+    <r:stylesheet name='touch.css'/>
+    <r:stylesheet name='theme.css'/>
+    <r:widget:show name='layout_additional_css'/>
 
-    <r:javascripts>
-      <r:javascript name='modernizr.js'/>
-      <r:javascript name='jquery.js'/>
-      <r:javascript name='jquery-ui.js'/>
-      <r:javascript name='jquery_sidr_min.js'/>
-      <r:javascript name='jquery_scrollto_min.js'/>
-      <script type="text/javascript">
-        var $j = jQuery.noConflict();
-      </script>
+    <r:javascript name='touch.js'/>
+    <r:javascript name='theme.js'/>
+    <r:widget:show name='layout_additional_js'/>
 
-      <r:widget:show name='layout_additional_js'/>
+    <r:shop:if_language in='fr'><r:javascript name='touch_fr.js'/></r:shop:if_language>
+    <r:shop:if_language in='nl'><r:javascript name='touch_nl.js'/></r:shop:if_language>
+    <r:shop:if_language in='ru'><r:javascript name='touch_ru.js'/></r:shop:if_language>
+    <r:shop:if_not_language in='fr,nl,ru'><r:javascript name='touch_en.js'/></r:shop:if_not_language>
 
-      <r:javascript name='_basket.js'/>
-      <r:javascript name='_deal_selects.js'/>
-      <r:javascript name='_deal_wizard.js'/>
-      <r:javascript name='_dropdown_menu.js'/>
-      <r:javascript name='_favourites.js'/>
-      <r:javascript name='_flash.js'/>
-      <r:javascript name='_floater.js'/>
-      <r:javascript name='_mobile_skus.js'/>
-      <r:javascript name='_money.js'/>
-      <r:javascript name='_nice_select.js'/>
-      <r:javascript name='_page.js'/>
-      <r:javascript name='_popup.js'/>
-      <r:javascript name='_product.js'/>
-      <r:javascript name='_util.js'/>
-
-      <r:shop:if_language in='fr'><r:javascript name='touch_fr.js'/></r:shop:if_language>
-      <r:shop:if_language in='nl'><r:javascript name='touch_nl.js'/></r:shop:if_language>
-      <r:shop:if_language in='ru'><r:javascript name='touch_ru.js'/></r:shop:if_language>
-      <r:shop:if_not_language in='fr,nl,ru'><r:javascript name='touch_en.js'/></r:shop:if_not_language>
-
-      <r:if_page matches='order_step3|edit_account'>
-        <r:javascript name='flexselect.js'/>
-        <r:javascript name='liquidmetal.js'/>
-      </r:if_page>
-
-      <r:javascript name='misc.js'/>
-      <r:javascript name='theme.js'/>
-      <r:widget:show name='scripts_head'/>
-    </r:javascripts>
+    <r:widget:show name='scripts_head'/>
   </head>
 
   <body class="page <r:page_classes/> <r:buyer:if_kiosk>kiosk</r:buyer:if_kiosk>">

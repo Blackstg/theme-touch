@@ -1,0 +1,16 @@
+/***************************
+  Sku buttons summary
+***************************/
+
+.sku-buttons-summary { display: none; position: relative; float: right; padding-top: .15em; padding-right: 1.5em; text-decoration: none; cursor: pointer; }
+.sku-buttons-summary__icon { position: absolute; top: .2em; right: 0; }
+
+.sku-buttons-summary__list {}
+.sku-buttons-summary__item { display: inline-block; margin-left: .3em; font-size: 1.3rem; font-weight: 700; }
+.sku-buttons-summary__name {}
+.sku-buttons-summary__value {}
+
+@media screen and (max-width: 52.5em) {
+    // TODO: reenable mobile sku buttons
+    //.sku-buttons-summary { display: block; }
+}

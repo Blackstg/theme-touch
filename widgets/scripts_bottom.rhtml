@@ -12,13 +12,12 @@
   <r:widget:show name='add_on_google_adwords_signup'/>
 </r:event:signup>
 
-<r:widget:show name='scripts_bottom_additional'/>
+<r:buyer:if_logged_in>
+  <script type="text/javascript">
+    Favourites.init(<r:buyer_favourites:js_array/>);
+  </script>
+</r:buyer:if_logged_in>
 
-<script type="text/javascript">
-  NiceSelect.init();
-  DropdownMenu.init();
-  Page.equalizeProducts();
-  Floater.addElement('.content__side');
-  Floater.addElement('.content__secondary'); // Only applicable for sidetouch
-  Favourites.init(<r:buyer_favourites:js_array/>);
-</script>
+<r:widget:show name="scripts_bottom_theme"/>
+
+<r:widget:show name='scripts_bottom_additional'/>

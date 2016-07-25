@@ -1,0 +1,46 @@
+<div id="popup" class="basket_popup">
+  <div class="basket_popup_wrapper">
+    <form id="popup_form"
+          data-product="<r:product:handle/>"
+          data-sku="<r:sku:handle/>"
+          data-action="<r:basket:action/>"
+          data-key="<r:basket:key/>"
+          action="/"
+          onsubmit="Deal.customizedItemAdded($j(this)); return false;"
+    >
+
+      <script type="text/javascript">
+        Product.setBasePricing('<r:product:handle/>', <r:ruby:show name="base_pricing"/>);
+        Product.setOptionsPricing('<r:product:handle/>', <r:ruby:show name="options_pricing"/>);
+      </script>
+
+      <div class="popup_title">
+        <h3>
+          <r:product:name/>
+        </h3>
+      </div>
+
+      <r:product:if_description>
+        <div class="description">
+          <r:product:description/>
+        </div>
+      </r:product:if_description>
+
+      <div class="form_skus">
+        <r:widget:show name="popup_product_attributes_for_deal_edition"/>
+
+        <div class="buttons">
+          <a class="link left" onclick="closeCustomizationPopup(); return false" href="#">
+            <r:t key='navigation.cancel'/>
+          </a>
+          <button type="submit" class="button right">
+            <r:t key='popup.continue'/>
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<r:widget:show name='scripts_init_product'/>

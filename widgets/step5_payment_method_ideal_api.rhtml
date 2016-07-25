@@ -1,0 +1,22 @@
+<div class="checkout-confirm__ideal-api">
+  <img class="checkout-confirm__ideal-api-logo" src="/assets-images/ideal_logo.gif" alt="iDEAL"/>
+
+  <div class="checkout-confirm__ideal-api-select">
+    <select name="issuer_id" id="ideal_api_list" data-nice-select>
+      <option value="" selected="selected">Kies uw bank...</option>
+
+      <r:payment_method:ideal_api:countries:each>
+        <option value="">[
+          <r:payment_method:ideal_api:country:name/>
+          ]
+        </option>
+
+        <r:payment_method:ideal_api:issuers:each>
+          <option value='<r:payment_method:ideal_api:issuer:id/>'>
+            <r:payment_method:ideal_api:issuer:name/>
+          </option>
+        </r:payment_method:ideal_api:issuers:each>
+      </r:payment_method:ideal_api:countries:each>
+    </select>
+  </div>
+</div>

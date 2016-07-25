@@ -1,0 +1,15 @@
+<r:product:if_has_tag in="size_buttons" include_ancestors="true">
+  <r:product:if_not_has_tag in="size_group" include_ancestors="true">
+
+    <r:skus:if_single>
+      <r:widget:show name="product_sku_select_one"/>
+    </r:skus:if_single>
+
+    <r:skus:if_many>
+      <div class="product__sku-buttons">
+        <r:widget:show name="product_sku_buttons_many"/>
+      </div>
+    </r:skus:if_many>
+
+  </r:product:if_not_has_tag>
+</r:product:if_has_tag>

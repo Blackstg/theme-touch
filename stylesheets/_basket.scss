@@ -29,10 +29,6 @@
 .basket__delivery-and-time { padding-top: 1em; padding-bottom: 1em; }
 .basket__total {}
 
-/* Delete icons */
-.basket-deal__delete-icon,
-.basket-item__delete-icon { padding-left: .3em; }
-
 /* Delivery */
 .basket__delivery { @include clearfix; }
 .basket__delivery-title { display: none; }
@@ -47,10 +43,14 @@
 .basket__time { @include clearfix; margin-top: .7em; }
 .basket__time-label { display: none; }
 
-.basket__time .nice-select { margin: .1em 0; width:50%; box-sizing: border-box; }
-.basket__time_advanced-orders .nice-select { margin-right: 1%; width: 49%;}
-.basket__time_advanced-orders .nice-select ~ .nice-select { margin-right: 0; margin-left: 1%; }
+.basket__time .nice-select__container { display: block; float: left; margin: .1em 0; width:50%; box-sizing: border-box; }
+.basket__time_advanced-orders .nice-select__container { margin-right: 1%; width: 49%;}
+.basket__time_advanced-orders .nice-select__container ~ .nice-select__container { margin-right: 0; margin-left: 1%; }
+.basket__time .nice-select { width: 100%; max-width: 100%; }
 .basket__time .nice-select .list { width:100%; }
+/* Nice select -> page height fix */
+.basket__time .nice-select .list { width: 100%; max-height: 0; overflow: hidden; }
+.basket__time .nice-select.open .list { max-height: none; height: 270px; overflow-y: auto; }
 
 /* Coupon */
 .basket__coupon {}

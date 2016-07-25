@@ -1,0 +1,15 @@
+<r:payment_method:if_method_type in="ideal_api">
+  <r:widget:show name="step5_payment_method_ideal_api"/>
+</r:payment_method:if_method_type>
+
+<r:payment_method:if_description>
+  <div class="checkout-confirm__content">
+    <r:payment_method:description/>
+  </div>
+</r:payment_method:if_description>
+
+<r:payment_method:if_instructions>
+  <div class="checkout-confirm__content">
+    <r:payment_method:instructions/>
+  </div>
+</r:payment_method:if_instructions>

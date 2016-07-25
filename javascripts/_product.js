@@ -5,7 +5,20 @@
 var Product = (function () {
     var WARNING_PRICING_NOT_INITIALIZED = 'Product library not initialized. Call Product.setPricing(...) first.';
 
+    // Ex.: EUR
     var currency;
+
+    // Ex.: fr-FR
+    var locale;
+
+    // null, '1_by_1' or 'charge_difference'
+    var swap_toppings;
+
+    // 'average', 'most_expensive' or 'most_expensive_incl_toppings'
+    var multiside_side_pricing;
+
+    // 'split', 'once' or 'full'
+    var multiside_topping_pricing;
 
     // product handle -> 'sku_handles' -> sku key -> sku handle
     //                -> 'skus' -> sku handle -> price
@@ -14,6 +27,7 @@ var Product = (function () {
 
     // product handle -> sku handle -> 'options' -> HMTL id -> price
     //                              -> 'toppings' -> HMTL id -> price
+    //                              -> 'multiside_toppings' -> HMTL id -> price
     //                              -> 'ingredients' -> HMTL id -> price
     //                              -> 'enums' -> HTML id -> price
     var optionPricing = {};
@@ -23,7 +37,7 @@ var Product = (function () {
     };
 
     var moneyToString = function (cents) {
-        return Money.toString(cents, currency);
+        return Money.toString(cents, currency, locale);
     };
 
     var updateQuantity = function (field, action) {
@@ -38,20 +52,36 @@ var Product = (function () {
         field.val(value);
     };
 
+    var useGlobalSkus = function (form) {
+        return form.find("[data-sku-part]").length == 0;
+    };
+
     var useSelect = function (form) {
-        return form.find("select[data-sku-part], [data-sku-part] select").length > 0;
+        if (useGlobalSkus(form)) {
+            return $j("select[data-grouped-sku-part], [data-grouped-sku-part] select").length > 0;
+        } else {
+            return form.find("select[data-sku-part], [data-sku-part] select").length > 0;
+        }
     };
 
     var sortedSkuParts = function (form) {
-        return $j(
-            [form.find("[data-sku-part=0]")[0], form.find("[data-sku-part=1]")[0]].filter(function (n) {
-                return n !== undefined;
-            }));
+        if (useGlobalSkus(form)) {
+            return $j(
+                [$j("[data-grouped-sku-part=0]")[0], $j("[data-grouped-sku-part=1]")[0]].filter(function (n) {
+                    return n !== undefined;
+                }));
+        } else {
+            return $j(
+                [form.find("[data-sku-part=0]")[0], form.find("[data-sku-part=1]")[0]].filter(function (n) {
+                    return n !== undefined;
+                }));
+
+        }
     };
 
     var skuHandle = function (form) {
         // If there is no sku part selector (ie when a multi sku product has only one available sku), return the sku hardcoded in the form
-        if (form.find('[data-sku-part]').length == 0) return form.attr('data-sku');
+        if (!useGlobalSkus(form) && form.find('[data-sku-part]').length == 0) return form.attr('data-sku');
 
         var product_handle = form.attr('data-product'),
             use_select = useSelect(form),
@@ -130,11 +160,13 @@ var Product = (function () {
             price = basePricing[product_handle]['skus'][sku_handle],
             nb_free_toppings = basePricing[product_handle]['nb_free_toppings'] || 0;
 
-        if (price !== undefined) {
-            // Add options price
-            var toppings = [];
-            form.find('[data-option] input:checked, [data-option]:checked').each(function (i, e) {
+        if (price) {
+            var toppings = [],
+                ingredients = [];
+
+            form.find('[data-option] input, input[data-option]').each(function (i, e) {
                 var input = $j(e),
+                    is_checked = input.is(':checked'),
                     data_option = input.closest('[data-option]'),
                     html_id = data_option.attr('data-option'),
                     quantity = input.attr('data-quantity') || 1,
@@ -144,20 +176,51 @@ var Product = (function () {
                     ingredient_value = (sku_options['ingredients'] || {})[html_id],
                     option_price = (sku_options['options'] || {})[html_id],
                     enum_price = sku_options['enums'] && sku_options['enums'][html_id] ? sku_options['enums'][html_id][1] : null;
-                if (topping_price) {
+                if (topping_price && is_checked) {
                     if (force_ingredient) quantity--;
                     for (var i = 0; i < quantity; ++i) toppings.push(topping_price);
-                } else if (option_price || enum_price) {
+                } else if (ingredient_value && !is_checked) {
+                    ingredients.push(ingredient_value);
+                } else if ((option_price || enum_price) && is_checked) {
                     price += (option_price || enum_price) * quantity;
                 }
-            })
+            });
+
             toppings.sort(function (a, b) {
                 return a - b
             });
-            toppings = toppings.slice(nb_free_toppings);
-            $j.each(toppings, function () {
-                price += this;
+
+            ingredients.sort(function (a, b) {
+                return a - b
             });
+
+            if (swap_toppings == '1_by_1') {
+                $j.each(toppings.reverse(), function (i, topping_value) {
+                    var topping_index = toppings.findIndex(function (_topping_value) {
+                        return topping_value == _topping_value;
+                    });
+                    var ingredient_index = ingredients.findIndex(function (ingredient_value) {
+                        return ingredient_value >= topping_value;
+                    });
+                    if (ingredient_index >= 0) {
+                        toppings.splice(topping_index, 1);
+                        ingredients.splice(ingredient_index, 1);
+                    }
+                });
+            }
+
+            toppings = toppings.slice(nb_free_toppings);
+            var toppings_price = 0;
+            $j.each(toppings, function () {
+                toppings_price += this;
+            });
+
+            if (swap_toppings == 'charge_difference') {
+                $j.each(ingredients, function () {
+                    toppings_price = Math.max(0, toppings_price - this);
+                });
+            }
+            price += toppings_price;
 
             // Display the price
             form.find('[data-product-price]').html(moneyToString(price));
@@ -180,6 +243,13 @@ var Product = (function () {
             });
         })
 
+        $j.each(optionPricing[product_handle][sku_handle]['multiside_toppings'], function (html_id, price) {
+            var option = $j('[data-option=' + html_id + ']');
+            option.toggle(price !== null);
+            if (multiside_topping_pricing == 'split') price = Math.floor(price / 2);
+            option.find('[data-option-price]').html(moneyToString(price));
+        });
+
         // Disable unavailable enum options and update their price
         $j.each(optionPricing[product_handle][sku_handle]['enums'], function (html_id, value) {
             var name_with_price = value[0],
@@ -193,13 +263,27 @@ var Product = (function () {
         });
     };
 
+    var updateForm = function (form) {
+        updateSkus(form);
+        updatePrice(form);
+        updateOptions(form);
+    };
+
     var setupHandlers = function () {
         // Sku handlers
         $j('[data-sku-part]').each(function () {
             var data_sku_part = $j(this),
                 form = data_sku_part.closest('form');
             data_sku_part.find('select, input[type=radio]').addBack('select').change(function () {
-                Product.updateAll(form);
+                Product.updateForm(form);
+            });
+        });
+
+        // Global sku handlers
+        $j('[data-grouped-sku-part]').each(function () {
+            var data_grouped_sku_part = $j(this);
+            data_grouped_sku_part.find('select, input[type=radio]').addBack('select').change(function () {
+                Product.updateGroup();
             });
         });
 
@@ -214,8 +298,12 @@ var Product = (function () {
     };
 
     return {
-        init: function (_currency) {
-            currency = _currency;
+        init: function (options) {
+            currency = options['currency'];
+            locale = options['locale'];
+            swap_toppings = options['swap_toppings'];
+            multiside_side_pricing = options['multiside_side_pricing'];
+            multiside_topping_pricing = options['multiside_topping_pricing'];
             setupHandlers();
         },
 
@@ -241,12 +329,19 @@ var Product = (function () {
             updatePrice(form);
         },
 
-        updateAll: function (_form) {
+        updateForm: function (_form) {
             checkInit();
             var form = $j(_form);
-            updateSkus(form);
-            updatePrice(form);
-            updateOptions(form);
+            updateForm(form);
+        },
+
+        updateGroup: function () {
+            checkInit();
+            $j('form[data-product]').each(function () {
+                var form = $j(this);
+                updateSkus(form);
+                updatePrice(form);
+            })
         }
     }
 })();

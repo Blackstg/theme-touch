@@ -36,27 +36,30 @@ var Page = (function () {
         });
     };
 
+    var equalizeDivs = function (elements, nb_columns) {
+        elements.height('');
+
+        for (var i = 0; i < elements.length; i += nb_columns) {
+            var row_elements = elements.slice(i, i + nb_columns),
+                heights = row_elements.map(function (i, e) {
+                    return $j(e).height()
+                }),
+                max_height = Math.max.apply(Math, heights);
+            row_elements.height(max_height);
+        }
+    }
+
     var equalizeProducts = function () {
         var category_products = $j('.category__products:visible');
         if (category_products.length == 0) return;
-
-        category_products.find('.product__top').height('');
 
         var first_product = $j('.product').first(),
             nb_columns = Math.floor(category_products.width() / first_product.width());
         if (nb_columns <= 1) return;
 
         category_products.each(function () {
-            var product_tops = $j(this).find('.product__top');
-
-            for (var i = 0; i < product_tops.length; i += nb_columns) {
-                var row_product_tops = product_tops.slice(i, i + nb_columns),
-                    heights = row_product_tops.map(function (i, e) {
-                        return $j(e).height()
-                    }),
-                    max_height = Math.max.apply(Math, heights);
-                row_product_tops.height(max_height);
-            }
+            equalizeDivs($j(this).find('.product__top'), nb_columns);
+            equalizeDivs($j(this).find('.product__bottom'), nb_columns);
         });
     };
 
@@ -71,7 +74,7 @@ var Page = (function () {
         // Layout
         equalizeProducts: function () {
             equalizeProducts();
-            $j(window).on('resize', equalizeProducts);
+            $j(window).on('load resize', equalizeProducts);
         }
     }
 }());

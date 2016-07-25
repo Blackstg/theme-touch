@@ -11,6 +11,7 @@
 
 .header__shop-menu { position: relative; float: right; }
 .header__user-menu { position: relative; float: right; }
+.header__ordering-menu { float: right; }
 
 .header__burger-menu { display: none; float: left; margin-top: .5em; }
 .header__basket-menu { display: none; float: right; margin-top: .5em; }
@@ -22,6 +23,7 @@
 
   .header__shop-menu { display: none; }
   .header__user-menu { display: none; }
+  .header__ordering-menu { display: none; }
 
   .header__burger-menu { display: block; }
   .header__basket-menu { display: block; }

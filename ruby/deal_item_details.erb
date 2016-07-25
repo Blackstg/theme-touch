@@ -1,0 +1,12 @@
+{<%=
+    rs_skus_and_premiums = tag.globals.rs_skus_and_premiums
+
+    rs_skus_and_premiums.map do |rs_sku_and_premium|
+      rs_sku = rs_sku_and_premium.first
+      rs_sku.rs_product
+    end.uniq.map do |rs_product|
+      description   = rs_product.description ? rs_product.description.gsub("'", "\\\\'").gsub("\n", ' ') : nil
+      thumbnail_url = rs_product.thumbnail_url
+      "'#{rs_product.handle}': {'description':'#{description}', 'thumbnail_url':'#{thumbnail_url}'}"
+    end.join(",\n")
+%>}

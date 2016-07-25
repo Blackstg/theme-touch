@@ -25,7 +25,7 @@
               </h2>
             </header>
 
-            <form class="checkout__form" action="/orders/select_payment_method" method="post">
+            <form class="checkout__form" id="step4_form" action="/orders/select_payment_method" method="post">
               <input type='hidden' name='redirect_to' value='/order_step5'/>
 
               <r:payment_methods:if_not_single>
@@ -40,9 +40,7 @@
 
               <r:widget:show name="step4_payment_methods_extra"/>
 
-              <fieldset class="checkout__fieldset">
-                <r:widget:show name='step4_loyalty_points'/>
-              </fieldset>
+              <r:widget:show name='step4_loyalty_points'/>
 
               <footer class="checkout__footer">
                 <div class="form-buttons">

@@ -8,7 +8,7 @@
       <r:basket:coupon_code/>
     </strong>
 
-    <a href="#" class="basket__coupon-link" onclick="Basket.deleteCouponCode('basket'); return false;">(
+    <a href="#" class="basket__coupon-link" onclick="Basket.deleteCouponCode(); return false;">(
       <r:t key='coupon.delete'/>
       )</a>
   </div>
@@ -19,7 +19,7 @@
 
   <script type="text/javascript">
     $j("#coupon_form").submit(function (event) {
-      Basket.addCouponProduct('basket');
+      Basket.addCouponProduct();
       return false;
     });
   </script>
@@ -41,7 +41,7 @@
       <span><r:t key='basket.coupon_code'/><r:t key='colon'/></span>
       <input id='coupon_code' name='coupon_code' type='text' size='8' onkeyup="if (event.keyCode == 13) { $j('#coupon_code_submit').click(); }"/>
       <a id="coupon_code_submit" class="basket__coupon-validate coupon_code_submit" href="#"
-         onclick="Basket.setCouponCode($j('#coupon_code').val(), 'basket'); return false;">
+         onclick="Basket.setCouponCode($j('#coupon_code').val()); return false;">
         <r:t key='coupon.validate'/>
       </a>
     </div>

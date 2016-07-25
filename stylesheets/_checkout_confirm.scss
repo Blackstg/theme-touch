@@ -1,0 +1,31 @@
+/***************************
+  Checkout confirm
+***************************/
+
+.checkout-confirm {}
+
+.checkout-confirm + .checkout-confirm { margin-top: 1.5em; }
+
+.checkout-confirm__title { }
+.checkout-confirm__content { margin-top: .5em; }
+
+.checkout-confirm__loyalty { margin: 1rem 0; line-height: 1.5; }
+.checkout-confirm__loyalty-redeemed,
+.checkout-confirm__loyalty-earned { display: inline-block;}
+.checkout-confirm__loyalty-redeemed + .checkout-confirm__loyalty-earned:before { content: '-'; padding: 0 .5rem; }
+.checkout-confirm__loyalty-redeemed-points,
+.checkout-confirm__loyalty-earned-points { font-weight: bold; }
+
+@media screen and (max-width: 52.5em) {
+    .checkout-confirm__loyalty-redeemed,
+    .checkout-confirm__loyalty-earned { display: block;}
+    .checkout-confirm__loyalty-earned:before { display: none; }
+}
+
+
+// iDEAL API
+.checkout-confirm__ideal-api { margin-bottom: 3rem; }
+.checkout-confirm__ideal-api-logo { width: 65px; position: relative; top: 10px; }
+.checkout-confirm__ideal-api-select { display: inline-block; }
+.checkout-confirm__ideal-api-form {}
+.checkout-confirm__ideal-api-button { }

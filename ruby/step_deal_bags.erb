@@ -1,0 +1,49 @@
+<%
+  basket = tag.globals.rs_theme_page.user_data.basket
+  basket.deal_bags.each do |deal_bag|
+%>
+    <div class="basket-deal">
+      <div class="basket-deal__header">
+        <div class="basket-deal__title">
+          <%= deal_bag.deal_name %>
+        </div>
+      </div>
+
+      <ul class="basket-deal__items">
+        <%
+          idx = 0
+          deal_bag.items.each do |deal_basket_item|
+            tag.globals.basket_item = deal_basket_item
+        %>
+            <li class="basket-deal__item" id="<%= "deal_item_#{idx}" %>">
+              <div class="basket-deal__item-wrapper">
+                <div class="basket-deal__item-title">
+                  <span class="basket-deal__item-name">
+                    <%= deal_basket_item.name_and_variant %>
+                  </span>
+
+                  <span class="basket-deal__item-details">
+                    <span class="basket-deal__item-quantity">
+                      <%= deal_basket_item.quantity %>
+                    </span>
+
+                    <span class="basket-deal__item-price">
+                      <%= deal_basket_item.price.to_html %>
+                    </span>
+                  </span>
+                </div>
+
+                <div class="basket-deal__item-options">
+                  <%= tag.render('widget:show', 'name' => 'basket_item_options') %>
+                </div>
+              </div>
+            </li>
+        <%
+          idx += 1
+          end
+        %>
+      </ul>
+    </div>
+<%
+  end
+%>

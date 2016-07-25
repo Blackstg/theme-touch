@@ -1,30 +1,20 @@
-<form action="/orders/create" method="post" id="ideal_form">
+<form action="/orders/create" method="post" id="ideal_api_form" class="checkout-confirm__ideal-api-form">
   <input type="hidden" name="ie11_fix" value="1">
-  <div style="margin-left: 200px;">
-    <img src="/assets-images/ideal_logo.gif" alt="iDEAL"/><br/>
-    <select name="issuer_id" id="issuer_list">
-      <option value="" selected="selected">Kies uw bank...</option>
-      <r:payment_method:ideal_api:load_issuers>
-        <r:payment_method:ideal_api:short_issuers_each>
-          <option value='<r:payment_method:ideal_api:issuer_id/>'><r:payment_method:ideal_api:issuer_name/></option>
-        </r:payment_method:ideal_api:short_issuers_each>
-        <r:payment_method:ideal_api:if_short_and_long_issuers>
-          <option value="">---Overige banken---</option>
-        </r:payment_method:ideal_api:if_short_and_long_issuers>
-        <r:payment_method:ideal_api:long_issuers_each>
-          <option value='<r:payment_method:ideal_api:issuer_id/>'><r:payment_method:ideal_api:issuer_name/></option>
-        </r:payment_method:ideal_api:long_issuers_each>
-      </r:payment_method:ideal_api:load_issuers>
-    </select>
-    <input type="submit" id="ideal_submit" value="Ga naar betaling" onclick="$j('#ideal_form').submit();" style="display:none;"/>
-  </div>
+  <input type="hidden" name="issuer_id" value="1">
+  <button class="form-buttons__button checkout-confirm__ideal-api-button" type="submit">
+    Ga naar betaling
+  </button>
 </form>
 
 <script type="text/javascript">
-  $j(document).ready(function () {
-    $j('#issuer_list').change(function() {
-      var selectedIssuerId = $j('#issuer_list option:selected').val();
-      $j('#ideal_submit').toggle(selectedIssuerId != '');
-    });
+  function idealApiIssuerSelected() {
+    var selected_issuer_id = $j('#ideal_api_list option:selected').val();
+    $j('#ideal_api_form button').toggle(selected_issuer_id != '');
+    $j('#ideal_api_form input[name=issuer_id]').val(selected_issuer_id);
+  }
+
+  $j(function () {
+    idealApiIssuerSelected();
+    $j('#ideal_api_list').change(idealApiIssuerSelected);
   });
 </script>

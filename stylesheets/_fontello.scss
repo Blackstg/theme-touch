@@ -44,7 +44,7 @@
     font-weight: normal;
     speak: none;
     display: inline-block;
-    text-decoration: inherit;
+    text-decoration: none; /* fix fontello default settin: was text-decoration: inherit */
     width: 1em;
     text-align: center;
     font-variant: normal;

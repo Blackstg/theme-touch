@@ -13,11 +13,14 @@
 @import '_category.scss';
 @import '_category_navigation.scss';
 @import '_checkout.scss';
+@import '_checkout_confirm.scss';
 @import '_checkout_error.scss';
+@import '_checkout_loyalty.scss';
 @import '_checkout_navigation.scss';
 @import '_checkout_row.scss';
 @import '_checkout_variant.scss';
 @import '_content.scss';
+@import '_deal_wizard.scss';
 @import '_deal_wizard_navigation.scss';
 @import '_deal_wizard_set.scss';
 @import '_dropdown_menu.scss';
@@ -34,6 +37,7 @@
 @import '_page.scss';
 @import '_popup.scss';
 @import '_popup_buttons.scss';
+@import '_popup_deal_line.scss';
 @import '_popup_enum.scss';
 @import '_popup_group.scss';
 @import '_popup_row.scss';
@@ -41,6 +45,11 @@
 @import '_product.scss';
 @import '_scroll_up.scss';
 @import '_shop_info.scss';
-@import '_skus.scss';
+@import '_sku_buttons.scss';
+@import '_sku_buttons_summary.scss';
 @import '_social_icons.scss';
 @import '_static.scss';
+
+/* Third party */
+@import 'jquery-ui.css';
+@import 'unslider.css';

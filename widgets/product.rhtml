@@ -9,6 +9,8 @@
 
         <r:widget:show name='product_picture'/>
 
+        <r:widget:show name="product_sku_buttons"/>
+
         <div class="product__top">
           <div class="product__price" data-product-price>
             <r:sku:price/>
@@ -32,10 +34,15 @@
 
         <div class="product__bottom">
           <r:widget:show name='product_bottom_pictos'/>
-          <r:widget:show name="product_skus"/>
+          <r:widget:show name="product_sku_select"/>
+          <r:widget:show name="product_sku_buttons_mobile"/>
         </div>
 
-        <r:widget:show name="product_add_button"/>
+        <r:franchised_shops:if_not_franchise>
+          <r:widget:show name="product_add_button"/>
+        </r:franchised_shops:if_not_franchise>
+
+        <r:widget:show name="product_js"/>
       </form>
     </div>
   </div>

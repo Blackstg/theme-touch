@@ -1,27 +1,26 @@
-<r:basket:if_points_spent>
-  <div class="points_spent">
-    <r:shop:if_loyalty_program in='manual_redeem'>
-      <r:t key='order.points_to_redeem'/><r:t key='colon'/>
-    </r:shop:if_loyalty_program>
+<r:shop:if_loyalty_program>
+  <div class="checkout-confirm__content">
+    <div class="checkout-confirm__loyalty">
+      <r:basket:if_points_spent>
+        <div class="checkout-confirm__loyalty-redeemed">
+          <r:shop:if_loyalty_program in='manual_redeem'>
+            <r:t key='order.points_to_redeem'/><r:t key='colon'/>
+          </r:shop:if_loyalty_program>
 
-    <r:shop:if_loyalty_program in='store_balance,update_balance'>
-      <r:t key='order.points_used'/><r:t key='colon'/>
-    </r:shop:if_loyalty_program>
+          <r:shop:if_loyalty_program in='store_balance,update_balance'>
+            <r:t key='order.points_used'/><r:t key='colon'/>
+          </r:shop:if_loyalty_program>
 
-    <span>
-      <r:basket:points_spent/>
-    </span>
+          <span class="checkout-confirm__loyalty-redeemed-points"><r:basket:points_spent/></span>
+        </div>
+      </r:basket:if_points_spent>
+
+      <r:basket:if_points_earned>
+        <div class="checkout-confirm__loyalty-earned">
+          <r:t key="order.points_earned"/><r:t key='colon'/>
+          <span class="checkout-confirm__loyalty-earned-points"><r:basket:points_earned_human/></span>
+        </div>
+      </r:basket:if_points_earned>
+    </div>
   </div>
-</r:basket:if_points_spent>
-
-<r:basket:if_points_earned>
-  <div class="points_earned">
-    <r:t key="loyalty.you_get_points_1"/>
-
-    <span>
-      <r:basket:points_earned_human/>
-    </span>
-
-    <r:t key="loyalty.you_get_points_2"/>
-  </div>
-</r:basket:if_points_earned>
+</r:shop:if_loyalty_program>

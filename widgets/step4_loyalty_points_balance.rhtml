@@ -1,5 +1,5 @@
 <r:shop:if_loyalty_program in='store_balance,update_balance'>
-  <p>
-    <r:t key='loyalty.current_balance'/> <strong><r:buyer:points_balance_human/></strong>.
-  </p>
+  <div class="checkout-loyalty__balance">
+    <r:t key='loyalty.current_balance'/> <span class="checkout-loyalty__balance__points"><r:buyer:points_balance_human/></span>.
+  </div>
 </r:shop:if_loyalty_program>

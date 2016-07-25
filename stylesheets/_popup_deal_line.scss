@@ -1,0 +1,19 @@
+/***************************
+  Popup deal line
+***************************/
+
+.popup-deal-line { @include clearfix; }
+.popup-deal-line + .popup-deal-line { margin-top: 2em; }
+
+.popup-deal-line__label { display: block; float: left; width: 90px; }
+.popup-deal-line__select {}
+
+.popup-deal-line__details { @include clearfix; clear: both; margin-left: 90px; padding-top: .5em; }
+.popup-deal-line__picture { float: left; margin-right: 1rem; max-width: 150px; }
+.popup-deal-line__description {}
+
+@media screen and (max-width: 40em) {
+    .popup-deal-line__label { float: none; width: auto; }
+    .popup-deal-line__details { margin-left: 0; }
+    .popup-deal-line__picture { display: none; }
+}

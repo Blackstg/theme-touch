@@ -1,0 +1,30 @@
+<%=
+  # Map: Sku key -> [price, sku]
+  rs_skus = tag.globals.rs_skus_and_premiums.map(&:first)
+
+  rs_product = tag.globals.rs_product
+  rs_shop = tag.globals.rs_shop
+  delivery_method_type = tag.globals.rs_theme_page.delivery_method_type
+
+  base = {
+      'sku_handles' => {},
+      'skus'        => {},
+  }
+  base['nb_free_toppings'] = rs_product.nb_free_toppings if rs_product.nb_free_toppings > 0
+
+  rs_skus.each do |rs_sku|
+    price = rs_product.is_multiside? ? nil : rs_sku.price(rs_shop, delivery_method_type).cents
+
+    if rs_sku.variant_name
+      key = rs_shop.variant_name_parts(rs_sku).map { |label, variant_name_part| variant_name_part.to_javascript_id }.join('$')
+      key.gsub!(/'/) { '\\\'' } # Escape ' with \' in the javascript code
+    else
+      key = ''
+    end
+
+    base['sku_handles'][key]    = rs_sku.handle
+    base['skus'][rs_sku.handle] = price
+  end
+
+  base.to_json
+%>

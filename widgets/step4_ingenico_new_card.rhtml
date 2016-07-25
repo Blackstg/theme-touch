@@ -88,7 +88,9 @@
       return;
     }
 
-    ghost_form = $j('<form action="/ingenico_direct_link_payments/use_saved_card" method="POST" id="ghost_form" style="display:none;"></form>');
+    var ghost_form = $j('<form action="/ingenico_direct_link_payments/use_saved_card" method="POST" id="ghost_form" style="display:none;"></form>');
+    appendFormFields($j('#step4_form'), ghost_form);
+
     ghost_form.append('<input type="hidden" name="saved_card_id" value="' + saved_card_id + '" />');
 
     var cv_code = $j('#saved_card_' + saved_card_id + '_cv_code').val();
@@ -103,7 +105,9 @@
       return;
     }
 
-    ghost_form = $j('<form action="<r:payment_method:ingenico:direct_alias_url/>" method="POST" id="ghost_form" style="display:none;"></form>');
+    var ghost_form = $j('<form action="<r:payment_method:ingenico:direct_alias_url/>" method="POST" id="ghost_form" style="display:none;"></form>');
+    appendFormFields($j('#step4_form'), ghost_form);
+
     ghost_form.append('<input type="hidden" name="PSPID" value="<r:payment_method:ingenico:direct_link_psp_id/>"/>');
     ghost_form.append('<input type="hidden" name="ACCEPTURL" value="<r:payment_method:ingenico:direct_alias_accept_url/>"/>');
     ghost_form.append('<input type="hidden" name="EXCEPTIONURL" value="<r:payment_method:ingenico:direct_alias_exception_url/>"/>');
@@ -132,6 +136,12 @@
 
     $j('body').append(ghost_form);
     $j('#ghost_form').submit();
+  }
+
+  function appendFormFields(source_form, dest_form) {
+    $j.each(source_form.serializeArray(), function (i, field) {
+      dest_form.append('<input type="hidden" name="passthrough_' + field.name + '" value="' + field.value + '" />');
+    });
   }
 
   function checkFields(inputs) {

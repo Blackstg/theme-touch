@@ -6,7 +6,7 @@
 .popup-group__line { @include clearfix; font-size: 1.7rem; }
 .popup-group__line + .popup-group__line { margin-top: .7em; }
 
-.popup-group__label { display: inline-block; width: 90px; font-weight: 700; }
+.popup-group__label { display: inline-block; width: 90px; font-weight: 700; float: left; }
 .popup-group__label_quantity { float: left; line-height: 24px; }
 
 .popup-group__quantity { @include clearfix; display: inline-block; }

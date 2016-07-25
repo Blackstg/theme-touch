@@ -3,6 +3,7 @@
 
   $j(function() {
     $j('.highlighted_item div, .highlighted_mobile_price').effect("highlight", {color: '#f9eeba'}, 1400);
+    $j('.basket-menu__items').html('<r:basket:nb_items/>');
   });
 
   <r:buyer:if_kiosk>

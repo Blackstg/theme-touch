@@ -1,0 +1,20 @@
+<r:product:if_has_tag in="size_buttons" include_ancestors="true">
+  <r:product:if_not_has_tag in="size_group" include_ancestors="true">
+
+    <a class="sku-buttons-summary">
+      <i class="sku-buttons-summary__icon"></i>
+      <ul class="sku-buttons-summary__list">
+        <r:sku_parts:each>
+          <li class="sku-buttons-summary__item">
+            <span class="sku-buttons-summary__name"><r:sku_part:label/><r:t key='colon'/></span>
+            <span class="sku-buttons-summary__value" data-mobile-sku-part="<r:sku_part:index/>"></span>
+          </li>
+        </r:sku_parts:each>
+      </ul>
+    </a>
+
+    <div class="product__mobile-sku-buttons">
+    </div>
+
+  </r:product:if_not_has_tag>
+</r:product:if_has_tag>

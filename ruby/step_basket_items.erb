@@ -1,0 +1,64 @@
+<ul class="basket__items">
+  <%
+     basket_items = tag.globals.rs_theme_page.user_data.basket.basket_items
+
+     basket_items.each do |basket_item|
+       tag.globals.basket_item = basket_item
+  %>
+    <li class="basket-item">
+      <div class="basket-item__wrapper">
+        <div class="basket-item__title">
+          <span class="basket-item__name">
+            <%= basket_item.name_and_variant %>
+          </span>
+
+          <%
+             #########
+             # Non pure loyalty item
+             if basket_item.quantity > 0
+          %>
+            <span class="basket-item__details">
+              <span class="basket-item__quantity"><%= basket_item.quantity %></span>
+              <span class="basket-item__price"><%= basket_item.subtotal.to_html %></span>
+            </span>
+          <%
+             #########
+             # Pure loyalty item
+             else
+          %>
+            <span class="basket-item__details">
+              <span class="basket-item__quantity"><%= basket_item.paid_by_lp %></span>
+              <span class="basket-item__price"><%= (points_spent = basket_item.points_spent_subtotal).nice_s %> <%= (points_spent > 1) ? I18n.t(:'loyalty.points') : I18n.t(:'loyalty.point') %></span>
+            </span>
+          <%
+             end
+          %>
+        </div>
+        <div class="basket-item__options">
+          <%= tag.render('widget:show', 'name' => 'basket_item_options') %>
+        </div>
+      </div>
+    </li>
+
+    <%
+       #########
+       # Loyalty item associated with non loyalty item
+       if basket_item.quantity > 0 && basket_item.paid_by_lp > 0
+    %>
+      <li class="basket-item">
+        <div class="basket-item__wrapper">
+          <div class="basket-item__title">
+            <span class="basket-item__name"><%= basket_item.name_and_variant %></span>
+            <span class="basket-item__details">
+              <span class="basket-item__quantity"><%= basket_item.paid_by_lp %></span>
+              <span class="basket-item__price"><%= (points_spent = basket_item.points_spent_subtotal).nice_s %> <%= (points_spent > 1) ? I18n.t(:'loyalty.points') : I18n.t(:'loyalty.point') %></span>
+              <%= tag.render('widget:show', 'name' => 'basket_item_options') %>
+            </span>
+          </div>
+        </div>
+      </li>
+    <%
+       end
+       end
+    %>
+</ul>

@@ -1,23 +1,35 @@
-<r:option_list:if_base_ingredients>
-  <input type="hidden" name="<r:option_list:encode_key/>" value=""/>
-</r:option_list:if_base_ingredients>
-
 <fieldset class="popup-row popup-row_set">
+  <r:option_list:if_base_ingredients>
+    <input type="hidden" name="<r:option_list:encode_key/>" value=""/>
+  </r:option_list:if_base_ingredients>
+
   <r:widget:show name="popup_product_set_header"/>
 
-  <r:option_groups:each_by_tag>
+  <r:option_list:if_base_ingredients>
     <div class="popup-set">
-      <r:option_group:if_tag>
-        <h5 class="popup-set__group-title">
-          <r:option_group:tag/>
-        </h5>
-      </r:option_group:if_tag>
-
       <ul class="popup-set__wrapper">
         <r:options:each order='alphabetical'>
           <r:widget:show name="popup_product_set_const"/>
         </r:options:each>
       </ul>
     </div>
-  </r:option_groups:each_by_tag>
+  </r:option_list:if_base_ingredients>
+
+  <r:option_list:if_not_base_ingredients>
+    <r:option_groups:each_by_tag>
+      <div class="popup-set">
+        <r:option_group:if_tag>
+          <h5 class="popup-set__group-title">
+            <r:option_group:tag/>
+          </h5>
+        </r:option_group:if_tag>
+
+        <ul class="popup-set__wrapper">
+          <r:options:each order='alphabetical'>
+            <r:widget:show name="popup_product_set_const"/>
+          </r:options:each>
+        </ul>
+      </div>
+    </r:option_groups:each_by_tag>
+  </r:option_list:if_not_base_ingredients>
 </fieldset>

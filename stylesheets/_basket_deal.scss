@@ -7,7 +7,30 @@
 
 .basket-deal__link { text-decoration: none; }
 .basket-deal__link:hover { text-decoration: underline; }
-.basket-deal__delete { float: right; }
+.basket-deal__delete { float: right; text-decoration: none; }
+.basket-deal__delete-icon { padding-left: .3em; }
 
 .basket-deal__items { padding: .5em 1.2rem; }
+
+.basket-deal__item { @include clearfix; line-height: 1.2; }
+.basket-deal__item + .basket-deal__item { margin-top: .5em; }
+.basket-deal__item-wrapper + .basket-deal__item-wrapper { margin-top: .2em; }
+
+.basket-deal__item-title { overflow: auto; }
+.basket-deal__item-name { display: inline-block; float: left; width: 65%; box-sizing: border-box; }
+.basket-deal__item-link { text-decoration: none; }
+.basket-deal__item-link:hover { text-decoration: underline; }
+
 .basket-deal__item-delete { }
+.basket-deal__item-delete-icon { padding-left: .3em; }
+.basket-deal__item-details { display: inline-block; float: right; width: 35%; text-align: right; box-sizing: border-box; }
+.basket-deal__item-quantity { float: left; margin-right: .3em; }
+.basket-deal__item-price { }
+
+.basket-deal__item-options { }
+.basket-deal__item-option { margin-top: .15em}
+.basket-deal__item-option-name { display: inline-block; width: 65%; box-sizing: border-box; padding-left: .5em; }
+.basket-deal__item-option-details { display: inline-block; float: right; width: 35%; text-align: left; box-sizing: border-box; }
+.basket-deal__item-option-price {}
+.basket-deal__item-option_removed .basket-deal__item-option-name,
+.basket-deal__item-option_removed .basket-deal__item-option-details { text-decoration: line-through; }

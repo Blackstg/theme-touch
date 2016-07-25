@@ -95,6 +95,10 @@ var Basket = (function () {
         }
     };
 
+    var basketPageName = function () {
+        return $j('.basket_step-basket').size() > 0 ? 'step_basket' : 'basket';
+    };
+
     return {
         // ------------------
         // Single items
@@ -326,16 +330,20 @@ var Basket = (function () {
         // ------------------
         // Coupon codes
         // ------------------
-        setCouponCode: function (coupon_code, page) {
-            ajaxPost('/coupon_code?code=' + encodeURIComponent(coupon_code) + '&page=' + page, page);
+        setCouponCode: function (coupon_code) {
+            var page_name = basketPageName();
+            ajaxPost('/coupon_code?code=' + encodeURIComponent(coupon_code) + '&page=' + page_name, page_name);
         },
 
-        deleteCouponCode: function (page_name) {
+        deleteCouponCode: function () {
+            var page_name = basketPageName();
             ajaxPost('/coupon_code?code=&page=' + page_name, page_name);
         },
 
-        addCouponProduct: function (page_name) {
-            var product_handle = selectedCouponProductHandle();
+        addCouponProduct: function () {
+            var product_handle = selectedCouponProductHandle(),
+                page_name = basketPageName();
+
             if (product_handle !== '') {
                 var product_name = $j('#coupon_form option:selected').html();
                 Flash.itemAdded($j('#coupon_form'), product_name);

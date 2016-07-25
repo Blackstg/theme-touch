@@ -12,7 +12,9 @@
           <h4 class="product__name">
             <r:product:name/>
             <r:shop:has_favourites>
-              <r:widget:show name='product_favourites'/>
+              <r:deal:if_item_level>
+                <r:widget:show name='product_favourites'/>
+              </r:deal:if_item_level>
             </r:shop:has_favourites>
 
             <r:widget:show name='product_top_pictos'/>
@@ -23,6 +25,12 @@
               <r:product:description/>
             </div>
           </r:product:if_description>
+
+          <r:deal:if_order_level>
+            <div class="product__order-level-deal">
+              <r:t key='deal.applies_automatically'/>
+            </div>
+          </r:deal:if_order_level>
         </div>
 
         <div class="product__bottom">
@@ -33,7 +41,9 @@
           <r:widget:show name='product_bottom_pictos'/>
         </div>
 
-        <r:widget:show name="product_add_button"/>
+        <r:deal:if_item_level>
+          <r:widget:show name="product_add_button"/>
+        </r:deal:if_item_level>
       </form>
     </div>
   </div>

@@ -15,6 +15,9 @@
 .checkout-variant__select-set { @include clearfix; }
 .checkout-variant__select-set select,
 .checkout-variant__select-set .nice-select { margin: 0 .3em .5em 0; max-width:100%; }
+/* Nice select -> page height fix */
+.checkout-variant__select-set .nice-select .list { max-height: 0; overflow: hidden; }
+.checkout-variant__select-set .nice-select.open .list { max-height: 300px; overflow-y: auto; }
 
 @media screen and (max-width: 28em) {
   .checkout-variant__select { padding-left: 0; }

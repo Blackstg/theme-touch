@@ -10,7 +10,7 @@
 .popup-set__option:nth-child(3n+1) { clear: left; }
 
 .popup-set__label { display: block; position: relative; padding: 0 5px 8px 21px; cursor: pointer; }
-.popup-set__label input[type=checkbox] { position: absolute; left: -1px; top: -1px; }
+.popup-set__label input[type=checkbox] { position: absolute; left: 1px; top: 1px; margin: 0; opacity: 0; }
 
 .popup-set__text { position: relative; display: block; }
 .popup-set__text:before,

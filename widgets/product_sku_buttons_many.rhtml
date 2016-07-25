@@ -1,0 +1,24 @@
+<div class="sku-buttons">
+  <r:sku_parts:each>
+    <div class="sku-buttons__part <r:sku_parts:if_single>sku-buttons__part_no-label</r:sku_parts:if_single>">
+      <r:sku_parts:if_many>
+        <span class="sku-buttons__part-label">
+          <r:sku_part:label/>
+        </span>
+      </r:sku_parts:if_many>
+
+      <ul class="sku-buttons__list" data-sku-part="<r:sku_part:index/>">
+        <r:sku_part_values:each>
+          <li class="sku-buttons__item">
+            <label class="sku-buttons__item-label">
+              <input type="radio" class="sku-buttons__radio" name="<r:sku_part:label/>" value="<r:sku_part_value:id/>"
+                     <r:sku_part_value:if_default>checked="checked"</r:sku_part_value:if_default>
+              />
+              <span class="sku-buttons__text"><r:sku_part_value:name/></span>
+            </label>
+          </li>
+        </r:sku_part_values:each>
+      </ul>
+    </div>
+  </r:sku_parts:each>
+</div>

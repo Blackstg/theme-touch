@@ -1,10 +1,10 @@
 <r:sku_parts:each>
-  <div class="popup-group__line sku-part">
+  <div class="popup-group__line">
     <label class="popup-group__label">
       <r:sku_part:label/>
     </label>
 
-    <select data-sku-part="<r:sku_part:index/>">
+    <select data-sku-part="<r:sku_part:index/>" data-nice-select>
       <r:sku_part_values:each>
         <option value="<r:sku_part_value:id/>" <r:sku_part_value:if_selected>selected="selected"</r:sku_part_value:if_selected> >
           <r:sku_part_value:name/>

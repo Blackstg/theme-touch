@@ -5,7 +5,7 @@
 .popup-enum { @include clearfix; }
 .popup-enum__option { float: left; margin-bottom: 2px; margin-right: 2px; }
 .popup-enum__label { display: block; position: relative; }
-.popup-enum__radio { position: absolute; left: 0; top: 0; }
+.popup-enum__radio { position: absolute; left: 0; top: 0; margin: 0; opacity: 0; }
 .popup-enum__text { display: block; position: relative; padding: .5em 1em; text-align: center; cursor: pointer; overflow: hidden; }
 .popup-enum__radio:checked + .popup-enum__text {}
 .popup-enum__radio:disabled + .popup-enum__text { cursor: default; }

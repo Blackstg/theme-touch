@@ -1,4 +1,4 @@
-<section class="basket <r:basket:if_empty>basket_empty</r:basket:if_empty>">
+<section class="basket basket_step-basket <r:basket:if_empty>basket_empty</r:basket:if_empty>">
   <r:basket_flash:if_error>
     <div class="basket__error">
       <r:basket_flash:error/>
@@ -22,9 +22,9 @@
 
   <footer class="basket__footer">
     <r:widget:show name='basket_tips'/>
-    <r:widget:show name='step_basket_order_level_discount'/>
+    <r:widget:show name='basket_order_level_discount'/>
     <r:widget:show name='step_basket_extra_charges_and_total'/>
-    <r:widget:show name='step_basket_coupon_code'/>
+    <r:widget:show name='basket_coupon_code'/>
     <r:buyer:if_kiosk>
       <r:widget:show name='step_basket_kiosk_footer'/>
     </r:buyer:if_kiosk>

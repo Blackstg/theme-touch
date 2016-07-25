@@ -5,7 +5,7 @@
 var Money = (function () {
     var UNKNOWN_CURRENCY = 'Unknown currency: ';
 
-    var toString = function (cents, currency) {
+    var toString = function (cents, currency, locale) {
         if (cents === null) return '';
         var sign = cents >= 0 ? '' : '-';
         var decimal = '' + (Math.abs(cents) / 100).toFixed(2);
@@ -19,7 +19,10 @@ var Money = (function () {
             case 'CHF':
                 return sign + decimal + '&nbsp;CHF';
             case 'EUR':
-                return sign + decimal + '&nbsp;€';
+                if (locale == 'nl-NL')
+                    return sign + '€&nbsp;' + decimal;
+                else
+                    return sign + decimal + '&nbsp;€';
             case 'GBP':
                 return sign + '£' + '&nbsp;' + decimal;
             case 'UAH':

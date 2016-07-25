@@ -10,6 +10,12 @@
         <r:widget:show name='header_shop_menu'/>
       </div>
 
+      <r:if_page matches='index|static'>
+        <div class="header__ordering-menu">
+          <r:widget:show name='header_ordering_menu'/>
+        </div>
+      </r:if_page>
+
       <div class="header__burger-menu">
         <r:widget:show name='header_burger_menu'/>
       </div>

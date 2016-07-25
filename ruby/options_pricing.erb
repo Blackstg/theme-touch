@@ -1,0 +1,48 @@
+<%=
+  rs_product = tag.globals.rs_product
+  rs_shop = tag.globals.rs_shop
+  product_attributes = tag.globals.product_attributes
+  delivery_method_type = tag.globals.rs_theme_page.delivery_method_type
+  html_id_store = tag.globals.html_id_store
+
+  skus = {}
+
+  rs_product.rs_skus.each do |rs_sku|
+    sku = skus[rs_sku.handle] = {}
+
+    product_attributes.each do |product_attribute|
+      next if !(product_attribute.is_enum? || product_attribute.is_multiside_enum?)
+      product_attribute.product_consts.each do |product_const|
+        html_id         = product_const.html_id(html_id_store, rs_product, product_attribute)
+        price_m         = product_const.price(delivery_method_type, rs_sku.index)
+        name_with_price = product_const.escaped_name + (price_m && price_m.cents > 0 ? " (#{price_m.to_html(:explicit_sign => true)})" : '')
+
+        sku['enums']          ||= {}
+        sku['enums'][html_id] = [name_with_price, price_m ? price_m.cents : nil]
+      end
+    end
+
+    product_attributes.each do |product_attribute|
+      next if !product_attribute.is_set?
+
+      if product_attribute.is_extra_toppings?
+        set_type = product_attribute.is_side? ? 'multiside_toppings' : 'toppings'
+      elsif product_attribute.is_base_ingredients?
+        set_type = 'ingredients'
+      else
+        set_type = 'options'
+      end
+
+      product_attribute.product_consts.each do |product_const|
+        price   = product_const.price(delivery_method_type, rs_sku.index)
+        price_s = price ? price.cents : nil
+        html_id = product_const.html_id(html_id_store, rs_product, product_attribute)
+
+        sku[set_type]          ||= {}
+        sku[set_type][html_id] = price_s
+      end
+    end
+  end
+
+  skus.to_json
+%>

@@ -6,7 +6,7 @@ var Favourites = (function () {
 
     function init(_buyer_favourites) {
         buyer_favourites = _buyer_favourites;
-        $j('[data-favourite-product]').addClass('product__favourite_add');
+        $j('[data-favourite-product]').addClass('product__favourite_add').css('display', 'inline-block');
 
         $j.each(buyer_favourites, function () {
             var product_handle = this[1];

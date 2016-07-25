@@ -1,0 +1,33 @@
+<r:product:if_has_tag in="size_group">
+  <div class="category__grouped-skus grouped-skus">
+    <r:sku_parts:each>
+      <div class="grouped-skus__part">
+        <span class="grouped-skus__title">
+          <r:sku_part:label/>
+        </span>
+
+        <ul class="grouped-skus__list" data-grouped-sku-part="<r:sku_part:index/>">
+          <r:sku_part_values:each>
+            <li class="grouped-skus__item">
+              <label class="grouped-skus__label">
+                <input class="grouped-skus__radio" name="<r:sku_part:label/>" value="<r:sku_part_value:id/>" type="radio"
+                       <r:sku_part_value:if_default>checked="checked"</r:sku_part_value:if_default>
+                />
+                <span class="grouped-skus__text"><r:sku_part_value:name/></span>
+              </label>
+            </li>
+          </r:sku_part_values:each>
+        </ul>
+      </div>
+    </r:sku_parts:each>
+
+    <script>
+      // Just to disable the unavailable global sku parts
+      // TODO: this should be automatic in product.js
+      // TODO: currently the disable status is set based on the last product of the page. All product should be checked instead.
+      $j(function() {
+        Product.updateGroup();
+      })
+    </script>
+  </div>
+</r:product:if_has_tag>

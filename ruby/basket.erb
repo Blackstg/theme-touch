@@ -1,0 +1,132 @@
+<%
+  rs_shop = tag.globals.rs_shop
+  basket = tag.globals.rs_theme_page.user_data.basket
+  basket.preload_items(rs_shop)
+
+  basket.deal_bags.each do |deal_bag|
+    tag.with(
+        deal_bag: deal_bag,
+        rs_deal:  deal_bag.rs_deal,
+    ) do
+
+      ###########
+      # DEAL ITEMS
+%>
+        <div class="basket-deal" data-key="<%= deal_bag.deal_bag_key %>">
+          <div class="basket-deal__header">
+            <a class="basket-deal__delete" href="<%= deal_bag.link_destroy %>" title="<%= I18n.t(:'deal.delete') %>"
+               onclick="Basket.deleteDeal('<%= tag.render('basket:link_destroy_deal_bag', 'deal_bag_key' => deal_bag.deal_bag_key) %>', '<%= deal_bag.deal_name %>'); return false;">
+              <i class="basket-deal__delete-icon"></i>
+            </a>
+            <div class="basket-deal__title">
+              <a href="#" class="basket-deal__link" title="<%= I18n.t(:'deal.edit') %>"
+                 onclick="Basket.editDeal('<%= tag.render('basket:link_edit_deal_bag', 'deal_bag_key' => deal_bag.deal_bag_key) %>', <%= tag.render('widget:show', 'name' => 'deal_target_update') %>); return false;"
+              ><%= deal_bag.deal_name %></a>
+            </div>
+          </div>
+
+          <ul class="basket-deal__items">
+            <%
+              deal_bag.items.each do |deal_basket_item|
+                tag.with(
+                    basket_item: deal_basket_item,
+                    rs_product:  deal_basket_item.rs_product,
+                ) do
+                  highlight_items = tag.globals.highlight_items || []
+                  is_highlighted  = (highlight_items.include?(deal_basket_item))
+            %>
+                    <li class="basket-deal__item" <%= is_highlighted ? 'class="highlighted_item" data-edited' : '' %> data-key="<%= deal_basket_item.deal_basket_item_key %>">
+                      <div class="basket-deal__item-wrapper">
+                        <div class="basket-deal__item-title">
+                          <span class="basket-deal__item-name">
+                            <a class="basket-deal__item-link" href="#" title="<%= I18n.t(:'order_item.edit') %>"
+                               onclick="Basket.editDealItem('<%= tag.render('basket:link_edit_deal_basket_item', 'deal_basket_item_key' => deal_basket_item.deal_basket_item_key) %>', <%= tag.render('widget:show', 'name' => 'item_target') %>); return false;">
+                              <%= deal_basket_item.name_and_variant %>
+                            </a>
+                          </span>
+
+                          <span class="basket-deal__item-details">
+                            <span class="basket-deal__item-quantity">
+                              <%= deal_basket_item.quantity %>
+                            </span>
+
+                            <span class="basket-deal__item-price">
+                              <%= deal_basket_item.price.to_html %>
+                            </span>
+
+                            <a class="basket-deal__item-delete" href="#" title="<%= I18n.t(:'order_item.delete') %>"
+                               onclick="Basket.deleteDealItem('<%= deal_basket_item.link_destroy %>', '<%= ActionController::Base.helpers.escape_javascript(deal_basket_item.product_name) %>'); return false;">
+                              <i class="basket-deal__item-delete-icon"></i>
+                            </a>
+                          </span>
+                        </div>
+
+                        <div class="basket-deal__item-options">
+                          <%= tag.render('widget:show', 'name' => 'basket_item_options') %>
+                        </div>
+                      </div>
+                    </li>
+                <%
+                  end
+                  end
+                %>
+          </ul>
+        </div>
+    <%
+      end
+      end
+
+      ###########
+      # NON DEAL ITEMS
+
+      if basket.basket_items.size > 0
+    %>
+    <ul class="basket__items">
+      <%
+        basket.basket_items.each do |basket_item|
+          tag.with(
+              basket_item: basket_item,
+              rs_product:  basket_item.rs_product,
+          ) do
+            highlight_items = tag.globals.highlight_items || []
+            is_highlighted  = (highlight_items.include?(basket_item))
+      %>
+              <li class="basket-item" <%= is_highlighted ? 'class="highlighted_item" data-edited' : '' %> data-key="<%= basket_item.basket_item_key %>">
+                <div class="basket-item__wrapper">
+                  <div class="basket-item__title">
+                    <span class="basket-item__name">
+                      <a class="basket-item__link" href="#" title="<%= I18n.t(:'order_item.edit') %>"
+                         onclick="Basket.editItem('<%= tag.render('basket:link_edit_basket_item', 'basket_item_key' => basket_item.basket_item_key) %>', <%= tag.render('widget:show', 'name' => 'item_target') %>); return false;">
+                        <%= basket_item.name_and_variant %>
+                      </a>
+                    </span>
+
+                    <span class="basket-item__details">
+                      <span class="basket-item__quantity">
+                        <%= basket_item.quantity %>
+                      </span>
+
+                      <span class="basket-item__price">
+                        <%= basket_item.subtotal.to_html %>
+                      </span>
+
+                      <a class="basket-item__delete" href="#" title="<%= I18n.t(:'order_item.delete') %>"
+                         onclick="Basket.deleteItem('<%= basket_item.basket_item_key %>', '<%= ActionController::Base.helpers.escape_javascript(basket_item.product_name) %>'); return false;">
+                        <i class="basket-item__delete-icon"></i>
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="basket-item__options">
+                    <%= tag.render('widget:show', 'name' => 'basket_item_options') %>
+                  </div>
+                </div>
+              </li>
+          <%
+            end
+            end
+          %>
+    </ul>
+<%
+  end
+%>
